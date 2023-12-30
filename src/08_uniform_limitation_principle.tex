@@ -148,7 +148,7 @@
 \begin{theorem}[Банах-Штейнгауз, критерий существования сильного предела]
     $X,Y$ --- банахово, $U_n \in \B(X,Y)$. Для того чтобы существовал $\slim U_n$, необходимо и достаточно 
     \begin{enumerate}
-        \item $\exists M > 0: \norm{U_n} \leq m \: \forall n \in \bN$ 
+        \item $\exists M > 0: \norm{U_n} \leq M \: \forall n \in \bN$ 
         \item $\exists E \subset X, E$ полное, то есть $\overline{\calL(E)} = X$. $\seq{U_nx}$ --- фундаментальная для $\forall x \in E$ 
     \end{enumerate}
 \end{theorem}
@@ -183,7 +183,7 @@
 Заплатим жестокую цену за такую теорему: раньше $U$ не было, оно появлялось, критерий существования всё-таки, а здесь же мы предположим сразу непрерывность этого $U$
 \begin{theorem}[Банах-Штейнгауз]
     $X$ --- банахово, $Y$ --- нормированное, $U_n \in \B(X,Y), U \in \B(X,Y)$ \\
-    $ u = \slim U_n \Leftrightarrow$ 
+    $ U = \slim U_n \Leftrightarrow$ 
     \begin{enumerate}
         \item $\sup_n \norm{U_n} \leq M < +\infty$ 
         \item $\exists E \subset X, \overline{\calL(E)} = X, \: \forall x \in E \: \exists \liml_{n \to \infty} U_n x $
@@ -198,7 +198,7 @@
         \text{пусть } x \in X, \varepsilon > 0 \: \exists z \in \calL(E), \norm{x-z} < \varepsilon, \: \exists N: n \geq N \Rightarrow \norm{Uz-U_nz} < \varepsilon \\
         \norm{Ux - U_nx} \leq \underbrace{\norm{Ux-Uz}}_{\leq \norm{U} \cdot \norm{x-z} \leq \norm{U}\varepsilon}+\underbrace{\norm{Uz-U_nz}}_{<\varepsilon} + \underbrace{\norm{U_nz-U_nx}}_{\norm{U_n} \cdot \norm{x-z} \leq M \varepsilon} 
         \intertext{мы тут сразу пользуемся тем, что $U$ --- непрерывный оператор и у него есть норма} 
-        \leq \varepsilon(1 + \norm{U} + M) \Rightarrow \: \exists \liml_{n \to infty} U_n x = Ux \: \forall x \in X
+        \leq \varepsilon(1 + \norm{U} + M) \Rightarrow \: \exists \liml_{n \to \infty} U_n x = Ux \: \forall x \in X
     \end{gather*}
 \end{proof}
 
@@ -295,7 +295,7 @@
 результат математического анализа за весь XX век.
 
 \begin{lemma}[Риман-Лебег]
-    $ f \in \L^1[-\pi,\pi]$
+    $ f \in L^1[-\pi,\pi]$
     \[c_n(f) = \frac{1}{2\pi} \int^\pi_{-\pi} f(x)e^{-inx} dx \Rightarrow \liml_{n \to \infty} c_n(f) = 0 \]
 \end{lemma}
 

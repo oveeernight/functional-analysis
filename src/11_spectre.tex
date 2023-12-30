@@ -364,12 +364,414 @@ $\Com(X,Y)$ --- множество всех компактных операто�
         \text{пусть } \seq{x_n}^\infty_{n=1} \text{ --- линейно назвисимы }, Tx_n = \lambda_n x_n, \abs{\lambda_n} > \delta
         \intertext{возможно, $\lambda_n = \lambda_m$ при $n \ne m$}
         L_n = \calL \seq{x_j}^n_{j=1}, L_n \subsetneq L_{n+1} \\
-        [[\text{ следствие из леммы Рисса  (тык \ref{} )}]] \Rightarrow % ссылку 
+        [[\text{ следствие из леммы Рисса  (тык \ref{chap6:riss} )}]] \Rightarrow % ссылку 
         \exists \seq{y_n}^\infty_{n=1}, \norm{y_n} = 1, \rho(y_{n+1}, L_n) \geq \frac{1}{2} \\
         T \in \Com(X) \Rightarrow \: \exists \seq{n_k}^\infty_{k=1} \\
         \exists \liml_{k \to \infty} Ty_{n_k}
         \intertext{Проверим, что $\norm{Ty_n - Ty_m} > \varepsilon(\delta) > 0$, то есть не существует фундаментальной подпоследовательности}
+        y_n = \alpha_n x_n + U_n, U_n \in L_{n-1} \\
+        Ty_n = \alpha_n \lambda_n x_n + T U_n, Tx_j = \lambda_j x_j \Rightarrow T(L_n) \subset L_n
+        \intertext{учёным образом говоря, $L_n$ --- инвариантное подпространство относительно оператора $T$}
+        Ty_n = \lambda_n(\alpha_n x_n + U_n) - \lambda_n U_n + TU_n = \lambda_n y_n + V_n, \: V_n \in L_{n-1} \\
+        \intertext{сейчас докажем, что $\norm{Ty_n - Ty_m}$ отделена от нуля, это и есть наша мечта, это и будет противоречием}
+    \end{gather*}
+    пусть $n > m$
+    \begin{multline*}
+        \norm{Ty_n - Ty_m} = \norm{\lambda_n y_n + V_n - Ty_m} = \abs{\lambda_n} \norm{y_n + \frac{1}{\lambda_n}(V_n - Ty_m)} \geq \\
+        \delta \rho(y_n, L_{n-1}) \geq \frac{1}{2} \delta
+    \end{multline*}
+\end{proof}
+
+
+Отметим такое тривиальное следствие
+\begin{corollary}
+    $X$ --- банахово пространство, $T \in \Com(X) \Rightarrow$
+    \begin{enumerate}
+        \item $\delta > 0, \# \seq{\lambda \in \sigma_p(T), |\lambda| \geq \delta} < +\infty$
+        \item $\lambda \in \sigma_p(T), \lambda \ne 0 \Rightarrow \dim X_\lambda < +\infty$
+        \item $\sigma_p(T) \setminus \{ 0 \} = \seq{\lambda_n}^N_{n=1}, 0 \leq N \leq +\infty$.
+        Если $N = +\infty$, то $\liml_{n \to \infty} \lambda_n = 0$, можно занумеровать $|\lambda_1| \geq  |\lambda_2| \geq \ldots$
+    \end{enumerate}
+\end{corollary}
+Всё очевидно, разве что про 3 что-то сказать. Dспоминаем одно из эквивалентных определений предела. Вот у нас есть 0, его $\delta$-окрестность, знаем что там только конечное число элементов последовательности, а это и значит, что 0 --- предел.
+
+\section{Самосопряжённые операторы}
+
+\begin{theorem}[простейшие свойства самоспоряженного оператора]
+    $H$ --- гильбертово, $T \in \B(H), T = T^* ((Tx, y) = (x, Ty) \: \forall x, y \in H)$
+    \begin{enumerate}
+        \item $(Tx, x) \in \bR$ 
+        \item $\lambda \in \sigma_p(T) \Rightarrow \lambda \in \bR$
+        \item $\lambda, \mu \in \sigma_p(T), \lambda \ne \mu$, $Tu = \lambda u, Tv = \mu v \Rightarrow (u, v) = 0$
+        \item $\norm{T} = \sup_{\seq{x: \norm{x} = 1}} \abs{(Tx, x)}$
+        
+    \end{enumerate}
+\end{theorem}
+Свойства 1--3 были доказаны в алгебре, вероятно, да и вообще доказываются в одну секунду. Будем считать их очевидными. Четвертый пункт самый содержательный
+
+\begin{proof}[1]
+       \[ (Tx, x) [[\text{ так как } T = T^*]] (x, Tx)  = \overline{(Tx, x)} \Rightarrow (Tx, x) \in \bR  \]
+\end{proof}
+\begin{proof}[2]
+    \[ \lambda \in \sigma_p(T) \Rightarrow \: \exists x > 0 : \: Tx = \lambda x \Rightarrow \] 
+    \[ (Tx, x) = \lambda(x,x) \Rightarrow \lambda = \frac{(Tx,x)}{\norm{x}^2} \in \bR \]
+\end{proof}
+
+\begin{proof}[3]
+    \begin{gather*}
+        \lambda \ne \mu, \: \lambda, \mu \in \bR \text{из (2)} \\
+        (Tu, v) = (\lambda u, v) = \lambda(u, v) \\
+        (Tu, v) = (u, Tv) = (u, \mu v) = \mu(u, v) \\
+        0 = (\lambda - \mu)(u,v), \lambda \ne \mu \Rightarrow (u, v) = 0
     \end{gather*}
 \end{proof}
+
+\begin{proof}[4]
+    \begin{gather*}
+        Q = \sup_{\seq{x: \norm{x} = 1}} \abs{(Tx, x)}, \norm{x} = 1 \Rightarrow \\
+        \abs{(Tx, x)} \leq \norm{Tx} \cdot \norm{x} \leq \norm{T} \cdot \norm{x}^2 = \norm{T} \\
+        \forall x : \norm{x} = 1 \Rightarrow Q \leq \norm{T} \\
+        \text{пусть } U \in H, u \ne 0, \norm{\frac{u}{\norm{u}}} = 1 \Rightarrow \abs{\left( \frac{u}{\norm{u}}, \frac{u}{\norm{u}} \right)} \leq Q \Rightarrow \\
+        \abs{(Tu, u)} \leq Q \norm{u}^2 \: \forall u \in H \\
+        \text{пусть } x, y \in H, u = x + y \Rightarrow \\
+        (T(x+y), x + y) \leq Q {\norm(x+y)}^2 \\
+        -(T(x-y), x - y) \leq Q \norm{x-y}^2 \\
+        \intertext{неравенства складывать можно, а вычитать нельзя, поэтому во втором неравенства появился минус}
+        (T(x+y), x + y) = (Tx, x) + (Ty, x) + (Tx, y) + (Ty, y) = \\
+         [[ (Tx, y) = (x, Ty) = \overline{Ty, x}]] = \\
+        = (Tx, x) + 2 \Real(Tx, y) + (Ty, y) \\
+        (T(x-y), x-y) = (Tx, x) - 2 \Real(Tx, y) + (Ty, y)
+        \intertext{вспомним тождество параллелограмма}
+        \left.
+        \begin{matrix}
+            4 \Real(Tx, y) \leq 2Q(\norm{x}^2 + \norm{y}^2) \\
+            \text{пусть } \norm{x} = 1, \text{ пусть } Tx \ne 0, y = \frac{Tx}{\norm{Tx}} \Rightarrow \norm{y} = 1
+        \end{matrix} \right\} \Rightarrow \\
+        4 \Real \left(Tx, \frac{Tx}{\norm{Tx}} \right) \leq 4Q \Rightarrow \norm{Tx} \leq Q \: \forall x, \norm{x} = 1 \\
+        \Rightarrow \norm{T} = \sup_{\seq{x: \norm{x = 1}}} \norm{Tx} \leq Q
+    \end{gather*}
+\end{proof}
+
+\begin{definition}[границы оператора]
+    \[T = T^*,  M = \sup_{x: \norm{x} = 1} (Tx, x), m  = \inf_{x: \norm{x} = 1} (Tx, x) \] 
+    $m, M$ --- границы оператора $T$
+\end{definition}
+
+\begin{remark}
+    $T = T^* \Rightarrow \norm{T} = \max\{ |m|, M \}$
+\end{remark}
+Еще одна причина, почему <<границы>>
+\begin{remark}[без доказательства]
+    $T = T* \Rightarrow \sigma(T) \subset [m, M]$
+\end{remark}
+
+Вот минимальные сведения о самосопряжённых операторах 
+
+\section{Компактные самосопряжённые операторы}
+
+\begin{theorem}
+    $H$ --- гильбертово, $T \subset \B(H), T \in \Com(H), T = T^*$
+    \[ \Rightarrow \exists \lambda \in \sigma_p(T), \abs{\lambda} = \norm{T} \]
+\end{theorem}
+
+\begin{proof}
+    \begin{gather*}
+        M = \sup_{x: \norm{x} = 1} (Tx, x), m  = \inf_{x: \norm{x} = 1} (Tx, x) \\
+        \norm{T} = \max\{ |m|, M \} \\
+        \text{пусть } \norm{T} = M \quad \exists \seq{x_n}^\infty_{n=1}, \norm{x_n} = 1 \\
+        M = \liml_{n \to \infty} (Tx_n, x_n), T \in \Com(H), \: \exists \seq{n_k}^\infty_{k=1} \text{ т.ч.} \\
+        \exists \liml_{k \to \infty} Tx_{n_k} = y 
+        \intertext{не умаляя общности $\exists \liml_{n \to \infty} Tx_n = y$. Сейчас убедимся, что $y$ --- искомый собственный вектор, то есть $y \ne 0, Ty = My$}
+        \norm{Tx_n} \leq \norm{T} \cdot \norm{x_n} = M \\ 
+        \norm{y} = \liml_{n \to \infty} \norm{Tx_n} \Rightarrow \norm{y} \leq M \\
+        0 \leq \norm{Tx_n - M x_n}^2 
+    \end{gather*}
+    наша мечта доказать, что эта разница стремится к нулю при $n \to \infty$
+    \begin{multline*}
+        \norm{Tx_n - M x_n}^2 = (Tx_n - Mx_n, Tx_n - Mx_n) = \underbrace{\norm{Tx_n}^2}_{\to \norm{y}^2} - \underbrace{M(Tx_n, x_n)}_{\to M} - \underbrace{M(x_n, Tx_n)}_{\to M} + M^2 \underset{n \to \infty}{\longrightarrow} \\underset{n \to \infty}{\longrightarrow} \norm{y}^2 - M^2 \\
+        \Rightarrow \norm{y} \geq M \Rightarrow \norm{y} = M \Rightarrow y \ne 0 \\
+        \Rightarrow \liml_{n \to \infty} Tx_n = M \cdot \liml_{n \to \infty} x_n \Rightarrow y = M \cdot \liml_{n \to \infty} x_n [[\text{ применим } T]] \Rightarrow \\
+        Ty = M \cdot \underbrace{\liml_{n \to \infty} Tx_n}_{=y} \Rightarrow Ty = My \\
+        \text{Если } \norm{T} = |m| \: T_1 = -T \: \sup_{\seq{x: \norm{x} = 1}} (T_1x, x) = -m \\
+        \text{по 1 } \exists y \ne 0 \: T_1 y = -my \Rightarrow Ty = my, \lambda \in \sigma_p(T), \lambda = m \\
+        |\lambda| = \abs{m}
+    \end{multline*}
+    короче говоря, применим первую часть доказательства к $T_1$ и получим то, что надо
+\end{proof}
+
+\begin{theorem}[Гильберт-Шмидт]
+    $H$ --- гильбертово, $T \in \Com(H), T = T^*, \sigma_p(T) \setminus \{0\} = \seq{\lambda_n}^N_{n=1}, 0 \leq n \leq + \infty$ 
+    \begin{gather*}
+        H_{\lambda_n} = \Ker(\lambda_n, I - T), P_{\lambda_n} \text{ --- ортогональный проектор на } H_{\lambda_n} \\
+        \Rightarrow T = \sum^N_{n=1} \lambda_n P_{\lambda_n}
+    \end{gather*}
+    если $N = +\infty$, то $\liml_{n \to \infty} \norm{T - \sum^n_{k=1} \lambda_k P_{\lambda_k}} = 0$
+\end{theorem}
+
+\begin{proof}
+    Доказательство действительно напоминает то, как это делается в алгебре. Отщепляем собственные подпространства. Тут мы  ещё можем и перейти к пределу. 
+    Сначала сделаем такое абстрактное действие 
+    \begin{gather*}
+        \lambda \in \sigma_p(T), \lambda \ne 0, \: H = \Ker(\lambda I - T), \: P_\lambda : H \rightarrow H_\lambda \text{ --- ортпроектор }
+        \intertext{и что за отщепление?}
+        \widetilde{T} = T - \lambda P_\lambda
+        \intertext{щас отметим,  что он самосопряженный, компактный, собственные числа и собственные подпространства такие же, как у оператора $T$. Обсудим подробнее связь 
+        $T$ и $\widetilde{T}$}
+        (\widetilde{T})^* = T^* - \overline{\lambda} P^*_\lambda = T - \lambda P_\lambda \text{ т.к. } \lambda \in \bR, T = T^*, P^*_\lambda = P_\lambda \\
+        L = H^\perp_\lambda \text{ то есть } H = H_\lambda \oplus L \\
+        \widetilde{T} |_L = T, \widetilde{T} |_{H_\lambda} = 0 \text{ так как } Tx = \lambda x, x \in H_\lambda \\
+        \text{пусть } \mu \in \sigma_p (T), \mu \ne 0, \mu \ne \lambda \Rightarrow H_\mu \perp H_\lambda \Rightarrow H_\mu \subset L \\
+        \Rightarrow \mu \in \sigma_p(\widetilde{T}), \Ker(\mu I - \widetilde{T}) = H_\mu = \Ker(\mu I - T)
+        \intertext{то есть отщепление никак не испортит остальные собственные числа и собственные подпространства}
+        \exists \lambda_1 \quad \lambda_1 \in \sigma_p(T), \abs{\lambda_1} = \norm{T}
+        \text{так как мы знаем, что } \forall \lambda \in \sigma(T), |\lambda| \leq \norm{T} \\
+        \lambda_1 \text{ имет наибольший возможный модуль} \\
+        \intertext{если вдруг окажется, что $\lambda_1 = 0$, то $T = \bZero$. Тогда вообще непонятно, что утверждает теорема, ноль равен сумма пустого числа слагаемых... далее пусть $T \ne \bZero$}
+        T_1 = T \quad T_2 = T_1 - \lambda_1 P_{\lambda_1} \\
+        \text{если } T_2 = \bZero, \text{ то } T = \lambda_1 P_{\lambda_1} \\
+        \text{если } T_2 \ne \bZero, \text{ то } \exists \lambda_2 = \norm{T_2} = \sup_{\seq{x: \norm{x} = 1}} \abs{(T_2x, x)} = \sup_{\seq{x: \norm{x} = 1, x \perp H_{\lambda_1}}} \abs{(Tx, x)} \\
+        \text{и так далее } T_n = T - \lambda_1 P_{\lambda_1} - \ldots - \lambda_{n-1} P_{\lambda_{n-1}} \\
+        \text{если } T_n = \bZero, \text{ то } T_n = \sum^{n-1}_{k=1} \lambda_k P_{\lambda_k} \\
+        \text{если } \forall n \: T_n \ne \bZero \quad \norm{T_n} = \abs{\lambda_n} = \sup_{\seq{x: \norm{x} = 1, x \perp H_{\lambda_j}, 1 \leq j \leq n - 1}} \abs{(Tx, x)} \\
+        \text{если } N = +\infty, \text{ то } \liml_{n \to \infty} \lambda_n = 0 \\
+        \abs{\lambda_n} = \norm{T - \sum^{n-1}_{k=1} \lambda_k P_{\lambda_k}} \underset{n \to \infty}{\longrightarrow} 0 \\
+    \end{gather*}
+\end{proof}
+
+\begin{theorem}[Гильберт-Шмидт]
+    В сепарабельном гильбертовом пространстве у самосопряженного компактного оператора существует О.Н.Б из собственных векторов
+\end{theorem}
+
+Это та самая теорема, которая обещалась на первой лекции! Тут уже почти нечего доказывать.
+
+$H$ --- гильбертово, $T = T^*, T \in \Com(H) \Rightarrow \: \exists \seq{e_n}^\infty_{n=1} \text{ О.Н.Б. }, e_n \text{ --- собственные векторы}$
+
+\begin{proof}
+    \begin{gather*}
+        \sigma_p(T)  \setminus \{ 0 \} = \seq{\lambda_n}^N_{n=1}, 1 \leq N \leq +\infty \\
+        H_{\lambda_n} = \Ker(\lambda_n I - T), m_n = \dim H_{\lambda_n} \\
+        m_1 < +\infty, \seq{e_{n, j}}^{m_n}_{j=1} \text{ --- О.Н.Б. в } H_{\lambda_n}
+        \intertext{возьмём все векторы и рассмотрим замыкание линейной оболочки}
+        L = \overline{\calL \seq{e_{n,j}}^N_{n=1, 1 \leq j \leq m_n}} \text{ --- замыкание линейной оболочки} 
+        \intertext{используя предыдущую теорему, проверим, что $L = \overline{T(H)}$}
+        Te_{n,j} = \lambda_n e_{n,j}, \lambda_n \ne 0 \Rightarrow e_{n,j} = T \left( \frac{e_{n,j}}{\lambda_n} \right) \Rightarrow L \subset \overline{T(H)} \\
+        x \in H \text{ по теореме Г-Ш 1} \: Tx = \sum^N_{n=1} \lambda_n P_{\lambda_n} x \Rightarrow Tx \subset L \Rightarrow T(H) \subset L \\
+        P_{\lambda_n} x = \sum^{m_n}_{j=1} (x, e_{n,j}) e_{n,j} \Rightarrow \overline{T(H)} \subset L
+        \intertext{$T(H)$ --- всегда есть О.Н.Б. из собственных векторов $H$ (для $\forall H$, не обязательно сепарабельного)}
+        [[\text{ доказали для } \forall T ]] H = \overline{T(H)} \oplus \Ker T^* = \overline{T(H)} \oplus \Ker T, H_0 = \Ker(0 \cdot I - T) = \Ker T \Rightarrow \\
+        H = L \oplus H_0 
+        \intertext{$H$ --- сепарабельное $\Rightarrow H_0$ --- сепарабельное, $m_0 = \dim H_0, 0 \leq m_0 \leq +\infty$} 
+        \seq{\lambda_{0,j}}_{j=1}^{m_0} \text{ --- О.Н.Б. в } H_0 \\
+        \Rightarrow \seq{e_{n,j}}^N_{n=0, 1 \leq j \leq m_n} \text{ --- О.Н.Б. в }
+    \end{gather*}
+\end{proof}
+
+\begin{theorem}[о спектре компактного самоспоряженного оператора]
+    $H$ --- бесконечноемерное гильбертово пространство, $T \in \Com(H), T = T^*$ 
+    \[ \Rightarrow \sigma_(T) = \sigma_p(T) \cup \{ 0 \} \] 
+\end{theorem}
+
+0 может быть собственным числом, а может и не быть. Остальные комплексные числа, не 0 и не собственные, являются регулярными. Начнём с тривиальной леммы. Раньше её вариант 
+давался в качестве задачки на 5 на экзамене.
+
+\begin{lemma}
+    $\HCal$ --- сепарабельное гильбертово пространство, $\seq{e_n}^\infty_{n=1}$ --- О.Н.Б. 
+        \[ seq{\mu_n}^\infty_{n=1}, \mu_n \in \bC, Ae_n \coloneq \mu_n e_n  \]
+    продолжим по линейности на $\calL \seq{e_n}^\infty_{n=1}$
+    \begin{enumerate}
+        \item $A \in \B(\HCal) \Leftrightarrow \seq{\mu_n}^\infty_{n=1} \in l^\infty, \norm{A} = \norm{\seq{\mu_n}}_{l^\infty} = \sup_{n \in \bN} \abs{\mu_n}$ 
+        \item $\exists A^{-1} \in \B(\HCal) \Leftrightarrow \inf_{n \in \bN} \abs{\mu_n} = \delta > 0$
+    \end{enumerate}
+\end{lemma}
+
+\begin{proof}[Доказательство первого утверждения леммы]
+    $\Rightarrow$ \\
+    \begin{gather*}
+        A \in \B(\HCal) \Rightarrow \norm{A} = \sup_{\seq{x: \norm{x} = 1}} \norm{Ax} \geq \norm{Ae_n} = \abs{\mu_n}  \: \forall n \\
+        \Rightarrow \seq{\mu_n} \in l^\infty, \norm{A} \geq {\norm{\seq{\mu_n}}}_{l^\infty} \\
+        \Leftarrow \\
+        x \in \HCal \Rightarrow x = \sum^\infty_{n=1} x_n e_n \Rightarrow \norm{x}^2 = \sum^\infty_{n=1} \abs{x_n}^2 \\
+        \norm{Ax}^2 = \sum^\infty_{n=1} \abs{\mu_n}^2 \norm{x_n}^2 \leq \norm{\seq{\mu_n}}^2_\infty \norm{x}^2 \Rightarrow \norm{A} \leq \norm{\seq{\mu_n}}_\infty
+    \end{gather*}
+\end{proof}
+
+\begin{proof}[Доказательство второго утверждения леммы]
+    \[ A^{-1} e_n = \frac{1}{\mu_n} e_n \: \text{ из 1 } A^{-1} \in \B(\HCal) \Leftrightarrow \seq{\frac{1}{\mu_n}} \in l^\infty \Leftrightarrow \int_{n \in \bN} \abs{\mu_n} > 0 \] 
+\end{proof}
+
+\begin{proof}[Доказательство теоремы]
+    \begin{gather*}
+        \seq{\lambda_n}^N_{k=1} = \sigma_p(T) \setminus \setminus \{ 0 \} \\
+        E = \sigma_p(T) \cup \{ 0 \} \Rightarrow E \text{ --- замкнутое} \\
+        \lambda \notin E \: \exists \delta > 0 \: \abs{\lambda - \lambda_n} \geq \lambda, \abs{\lambda} \geq \delta \\
+        H_{\lambda_n}, \seq{e_{n,j}}^{m_n}_{j=1} \text{ --- О.Н.Б. в } H_{\lambda_n} \\
+        x \in H \: x = x_0 + x_1, x_0 \in H_0 \quad x_1 \in L = \overline{T(H)} \\
+        Tx = \underbrace{Tx_0}_{=0} + Tx_1 = \sum^N_{n=1} \lambda_n \sum_{j=1}^{m_n} (x, e_{n,j}) e_{n,j} \\
+        (\lambda I - T)x = \lambda x_0 + \sum^N_{n=1} (\lambda - \lambda_n) \sum^{m_n}_{j=1} (x, e_{n,j}) e_{n,j} \\
+        \abs{\lambda - \lambda_n} \geq \lambda, \abs{\frac{1}{\lambda-\lambda_n}} \leq \frac{1}{\delta}, \seq{\frac{1}{\lambda-\lambda_n}} \in l^\infty [[\text{ лемма }]] \Rightarrow \\
+        \exists R(\lambda) = (\lambda I - T)^{-1} \\ 
+        (\lambda I - T)^{-1} y = \frac{1}{\lambda} y_0 + \sum^N_{n=1} \frac{1}{\lambda-\lambda_n} \sum^{m_n}_{j=1} (y, e_{n,j}) e_{n,j}
+    \end{gather*}
+\end{proof}
+
+\begin{remark}[без доказательства]
+    $X$ --- банахово бесконечноемерное, $T \in \Com(X) \Rightarrow \sigma(T) = \sigma_p(T) \cup \seq{0}$
+\end{remark}
+
+\section{Интегральный оператор в $L^2$}
+
+Это главный пример оператора, к которому применяют эти все теоремы Гильберта-Шмидта.
+
+\begin{theorem}
+    $X \subset \bR^n, Y \subset \bR^m, X, Y$ --- измеримые по мере Лебега множества. 
+       \[  K(x,y) \in L^2(X+Y, dx dy_{\text{ в } \bR^{m+n}}) \]
+    \[ \left( \int_X \int_Y \abs{K(x,y)}^2 dxdy \right)^{\frac{1}{2}} < +\infty \] 
+    \[ (\K f) (x) = \int_Y K(x,y) f(y) dy, f \in L^2(y) \] 
+    $\Rightarrow \K \in \Com(L^2(Y), L^2(X))$
+\end{theorem}
+
+\begin{proof}
+    Докажем, что $\norm{\K} \leq \norm{K(x,y)}_{L^2(X \times Y)}$.
+    Идея такая: будем приближить этот компактный оператор операторами конечного ранга. Мы знаем, что они компактные и мы знаем, что можно переходить к пределу. А предел компктных 
+    операторов --- компактный оператор.
+    \begin{gather*}
+        L^2(X) \text{ --- сепарабельное } \Rightarrow \exists \seq{\varphi_n(x)}^\infty_{m=1} \text{ О.Н.Б. в } L^2(X) \\
+        L^2(Y) \text{ --- сепарабельное } \Rightarrow \exists \seq{\psi_n(x)}^\infty_{m=1} \text{ О.Н.Б. в } L^2(Y) \\
+        \int_X \varphi_n(x) \overline{\varphi_m(x)} dx = \begin{cases}
+            0 & n \ne m \\
+            1 & n = m
+        \end{cases}
+        \intertext{проверим $\seq{\varphi_n(x) \varphi_m(y)}_{n, m \in \bN}$ --- О.Н.Б. в $L^2(X \times Y)$} 
+        \int_X \int_Y \varphi_n(x)  \psi_m(y) \overline{\varphi_k(x)} \overline{\psi_j(y)} dxdy = \begin{cases}
+            1 & n = k, m = j \\
+            0 & (n,m) \ne (k, j)
+        \end{cases} \\
+        \seq{\varphi_n \psi_m} \text{ --- полная в } L^2(X \times Y), \text{ пусть } f(x,y) \in L^2(X \times Y), f \perp \seq{\varphi_n \psi_m} \: \forall n, m \\
+        \int_X \int_Y f(x,y) \overline{\varphi_n(x)} \overline{\psi_m(y)} dxdy = 0 \: \forall n, m \\
+        \text{ пусть } n \text{ --- фиксированное } \\
+        \int_Y \left( \int_X f(x,y) \overline{\varphi_n(x)} dx \right) \overline{\psi_m}(y) dy = 0 \\
+        \Rightarrow \int_X f(x,y) \overline{\psi_n(x)} dx = 0 \text{ п.в. } y \in Y \\
+        \text{ для п.в. } y \text{ для } \forall n \in \bN \quad \int_X f(x,y) \overline{\varphi_n}(x) dx = 0 \Rightarrow  \\
+        f(x,y) = 0 \text{ п.в. } x \in X \Rightarrow f = \bZero text{ в } L^(X \times Y) \Rightarrow \\
+        \seq{\varphi_n(x) \psi(m)y} \text{ --- базис в } L^2(X \times Y) \\
+        K(x,y) \in L^2(X \times Y) \Rightarrow \\
+        K(x,y) = \sum_{1 \leq i, j < +\infty} \alpha_{ij} \varphi_i(x) \psi_j(y) \\
+        K_n(x,y) = \sum_{1 \leq i, j \leq n} \alpha_{ij} \varphi_i(x) \psi_j(y), \norm{K(x,y) = K_n(x,y)}_{L^2} \underset{n \to \infty}{\longrightarrow} 0  
+    \end{gather*}
+    идея такая: рассмотрим интегральный оператор с ядром $K_n$
+    \begin{multline*}
+        f \in L^2(Y), (\K_n f)(x) = \int_Y K_n(x,y) f(y)dy = \int_Y \sum_{1 \leq i, j \leq n} \alpha_{ij} \varphi_i(x) \psi_j(y) f(y) dy = \\
+        = \sum_{1 \leq i, j \leq n} \alpha_{ij} \varphi_i(x) \int_Y \psi_j(y) f(y) dy \in \calL(\varphi_i(x))^n_{i=1}
+    \end{multline*}
+    \begin{gather*}
+        \dim \K_n(L^2(Y)) = n < +\infty \\
+        \Rightarrow \K_n \text{ --- оператор конечного ранга } \\
+        \Rightarrow \K_n \in \Com(L^2(Y), L^2(X))
+    \end{gather*}
+    мы учились оценивать норму интегрального оператора с помощью нормы его ядра
+    \begin{gather*}
+        \norm{\K - \K_n}_{\b(L^2(Y), L^2(X))} \leq \norm{K(x,y)- K_n(x,y)}_{L^2(X,Y)} \underset{n \to \infty}{\longrightarrow} 0 \\
+        \Rightarrow \K \in \Com(L^2(Y), L^2(X))
+    \end{gather*}
+\end{proof}
+
+Отметим такое следствие, главный пример, к которому применяются теоремы Гильберта-Шмидта
+\begin{corollary}
+    $X \subset \bR^n, X$ --- измеримое, $K(x,y) \in L^2(X \times X)$
+    \[ K(y,x) = \overline{K(x,y)} \quad (\K f)(x) = \int_X K(x,y) f(y) dy \: f \in L^2(X) \] 
+    \[ \Rightarrow \K = \K^*, \K \in \Com(L^2(X)) \] 
+    к оператору $\K$ применили теорему Гильберта-Шмидта. Верно не только для меры Лебега
+\end{corollary}
+
+\section{Каноническое представление компактного оператора}
+
+\begin{definition}
+    $H$ --- гильбертово, $T \in \B(H), T = T^*, T \geq 0 \text{ если } (Tx, x) \geq 0 \: \forall x \in H$
+\end{definition}
+$S = S^*, S \geq T$ если $S - T \geq 0$
+
+\begin{example}
+    \[ T = T^*, m = \inf_{\seq{x: \norm{x} = 1}} (Tx, x), M = \inf_{\seq{x: \norm{x} = 1}}(Tx, x) \]
+    $Ix = x, mI \leq T \leq MI$
+\end{example}
+
+\begin{theorem}
+    $H$ --- гильбертово, $T \in \B(H) \Rightarrow$ 
+    \begin{enumerate}
+        \item $TT^* \geq 0$ 
+        \item $\norm{TT^*} = \norm{T}^2$
+        \item $\Ker(T^*T) = \Ker T$
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}[1]
+    \begin{gather*}
+        (TT^*)^* = TT^* \Rightarrow TT^* \text{ --- самосопряжённый} \\
+        (TT^*x, x) = (T^*x, T^*x) = \norm{T^*x}^2 \geq 0
+    \end{gather*}
+\end{proof}
+
+\begin{proof}[2]
+       \[ \norm{x} = 1 \quad \norm{TT^*} = \sup_{\seq{x: \norm{x} = 1}} \abs{(TT^*x, x)} = \sup_{\seq{x: \norm{x} = 1}} \norm{T^*x}^2 = \norm{T}^2 \]
+\end{proof}
+
+\begin{proof}[3]
+    \begin{gather*}
+        Tx = 0 \Rightarrow T^*Tx = 0 \\
+        \text{пусть } T^*Tx = 0 \Rightarrow (T^* Tx, x) = 0 \Rightarrow \underbrace{(Tx, Tx)}_{=\norm{Tx}^2} = 0 \Rightarrow Tx = 0
+    \end{gather*}
+\end{proof}
+
+\begin{remark}
+    $\mu_n \geq 0$ 
+    \[ (Tx, x) \geq 0 \: \forall x \in  H, Tx = \lambda x \Rightarrow \lambda = \frac{(Tx,x)}{\norm{x}^2} \geq 0 \] 
+\end{remark}
+
+\begin{definition}[сингулярное число оператора]
+    $T \in \Com(H), H$ --- гильбертово $\Rightarrow T^* T \in \Com(H), (T^*T)^* = (TT^*) \Rightarrow \sigma_p(T^*T) \setminus \{0\} = \seq{\mu_n}^N_{n=1}$,
+    $\mu_n \geq 0, \mu_1 > \mu_2 > \ldots$, если $N=+\infty$, то $\liml_{n \to \infty} \mu_n = 0$
+    \[ s_n = \sqrt{\mu_n} \] 
+    $s_n$ --- сингулярное число оператора $T$
+\end{definition}
+
+$m_n = \dim(\mu_n I - T^* T), m_n$ --- кратность сингулярного числа $s_n$
+
+\begin{theorem}[каноническое разложение компактного оператора]
+    $H$ ---гильбертово, $T \in \Com(H), \seq{s_n}^N_{n=1}$ --- сингулярные числа, $\seq{m_n}^N_{n=1}$ --- кратности $\Rightarrow$ 
+    \[ \seq{e_{n,j}}^N_{n=1, 1 \leq j \leq m_n} \text{ --- О.Н.С., } \seq{f_{n,j}}^N_{n=1, 1 \leq j \leq m_n} \text{ --- О.Н.С., } \] 
+    \[ Tx = \sum^N_{n=1} s_n \sum_{j=1}^{m_n} (x, e_{n,j}) f_{n,j} \] 
+\end{theorem}
+Наибольший интерес теорема представляет в случае бесконечных рядов $1 \leq N \leq +\infty$
+
+\begin{proof}
+    \begin{gather*}
+        H_{\mu_n} = \Ker(\mu_n I - T^* T), m_n = \dim H_{\mu_n} \\
+        \seq{e_{n,j}}^{m_n}_{j=1} \text{ --- О.Н.Б. в } H_{\lambda_n} \\
+        f_{n,j} = \frac{1}{s_n}Te_{n,j} 
+        \intertext{проверим, что они ортогональны друг другу}
+        (f_{n,j}, f_{m,k}) = \frac{1}{s_n s_m} ( T e_{m,j}, Te_{m,k}) = \frac{1}{s_n s_m}(T^*T e_{n,j}, e_{m,k}) = \frac{\mu_n}{s_ns_m}(e_{n,j}, e_{m,k}) = \\ =
+        \begin{cases}
+            1 & n = m, j = k \\
+            0 & (n, j) \ne (m, k)
+        \end{cases} \\
+        x = \underbrace{x_0}_{\in H_0} + \sum^N_{n=1} \sum_{j=1}^{m_n} (x, e_{n,j}) e_{n,j} \quad x_0 \in \Ker(T^*T) = \Ker(T) \\
+        Tx = \sum^N_{n=1} s_n \sum^{m_n}_{j=1}(x, e_{n,j}) f_{n,j}
+    \end{gather*}
+\end{proof}
+
+\begin{corollary}
+    $T \in \Com(H), H$ --- гильбертово $\Rightarrow$ $\exists \seq{T_n}^\infty_{n=1}, T_n$ --- конечного ранга $\liml_{n \to \infty} \norm{T_n - T} = 0$
+\end{corollary}
+
+\begin{proof}
+    Пусть $N= +\infty$, иначе оператор и так конечного ранга.
+    \begin{gather*}
+        T_nx = \sum^n_{k=1} s_k \sum^{m_k}_{j=1} (x, e_{k,j}) f_{k,j} \\
+        \norm{(T-T_n)x}^2 = \sum^\infty_{k=n+1} |s_k|^2 \left( \sum^{m_k}_{j=1} \abs{(x,e_{k,j})}^2 \right) \leq \abs{s_{n+1}}^2 \cdot \norm{x}^2 \leq \abs{s_{n+1}}^2 \underset{n \to \infty}{\longrightarrow} 0 
+    \end{gather*}
+\end{proof}
+
+\href{https://www.youtube.com/watch?v=J9RP-KfvdKc}{Конец}
+
 
 \end{document}

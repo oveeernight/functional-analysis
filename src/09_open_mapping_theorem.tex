@@ -5,7 +5,7 @@
 \section{Обратные операторы}
 
 $X,Y$ --- нормированные пространства, $A \in \Lin(X,Y)$. Уравнение $Ax = y$, где $y$ --- дано, $A$ --- дан, $x$ --- неизвестное.
-Когда для $\forall y \in Y \: \exists! x \in X$ т.ч. $Ax = y \Rightarrow A$ --- биекция, то есть $\exists A^{-1}$. 
+Когда для $\forall y \in Y \: \exists! x \in X$ т.ч. $Ax = y \Leftrightarrow A$ --- биекция, то есть $\exists A^{-1}$. 
 
 \[ \seq{y_n}^\infty_{n=1} \quad \liml_{n \to \infty} y_n = y \quad \exists! x_n : Ax_n = y_n \] 
 
@@ -21,7 +21,7 @@ $X,Y$ --- нормированные пространства, $A \in \Lin(X,Y)$
         X \text{ --- банахово }, Ix = x, \: \forall x \in X \\
         \text{пусть } A \in \B(X), \norm{A} < 1 \Rightarrow \\
         \exists (I-A)^{-1} \in \B(X), \text{ при этом} \\
-        (I-A)^{-1} = \sum^{+\infty}_{k=0} A^k (A^0 = i) \\
+        (I-A)^{-1} = \sum^{+\infty}_{k=0} A^k (A^0 = I) \\
         \norm{(I-A)^{-1}} \leq \frac{1}{1 - \norm{A}}
     \end{gather*}
 \end{theoremwobox}
@@ -75,8 +75,8 @@ $X,Y$ --- нормированные пространства, $A \in \Lin(X,Y)$
         \item \begin{gather*}
             A \in \In(X,Y) \\
             B \in \B(X,Y) \quad \norm{A-B} < \frac{1}{\norm{A^{-1}}} \Rightarrow B \in \In(X,Y) \text{ и при этом} \\
-            \norm{B^{-1}} \leq \frac{\norm{A^{-1}}}{1 - \norm{AB} \cdot \norm{A^{-1}}} \tag{1} \\
-            \norm{A^{-1} - \norm{B^{-1}}} \leq \frac{\norm{A-B} \cdot \norm{A^{-1}}^2}{1-\norm{AB}\cdot{A^{-1}}} \tag{2}
+            \norm{B^{-1}} \leq \frac{\norm{A^{-1}}}{1 - \norm{A-B} \cdot \norm{A^{-1}}} \tag{1} \\
+            \norm{A^{-1} - B^{-1}   } \leq \frac{\norm{A-B} \cdot \norm{A^{-1}}^2}{1-\norm{A-B}\cdot{A^{-1}}} \tag{2}
         \end{gather*}
         \item $\varphi: \In(X,Y) \rightarrow \In(Y,X) \quad \varphi(A) \coloneqq A^{-1} \Rightarrow \varphi \text{ непрерывное}$
     \end{enumerate}
@@ -86,7 +86,7 @@ $X,Y$ --- нормированные пространства, $A \in \Lin(X,Y)$
     \begin{gather*}
         \norm{A^{-1}(A-B)} \leq \norm {A^{-1}} \cdot \norm{A-B} < 1 \\
         \norm{W} < 1 \text{ по теореме об обратимости оператора, близкого к тождественному} \\
-        \Rightarrow \: \exists (I-W)^{-1}, \norm{(I-W)^{-1}} \leq \frac{1}{1-\norm{W}} \leq \frac{1}{1-\norm{A^{-1}\cdot \norm{A-B}}} \\
+        \Rightarrow \: \exists (I-W)^{-1}, \norm{(I-W)^{-1}} \leq \frac{1}{1-\norm{W}} \leq \frac{1}{1-\norm{A^{-1}}\cdot \norm{A-B}} \\
         W = A^{-1}(A-B) = I - A^{-1}B \Rightarrow I - W = A^{-1} B \\
         B = A \cdot (A^{-1}B), \: \exists A^{-1}, \: \exists (A^{-1}B)^{-1} \Rightarrow \: \exists B^{-1} \\
         B^{-1} = (A^{-1}B)^{-1} \cdot A^{-1} \Rightarrow \\
@@ -105,7 +105,7 @@ $X,Y$ --- нормированные пространства, $A \in \Lin(X,Y)$
 \begin{remark}
     Как мы можем истолковать первое утверждение?
     \[ B_{\frac{1}{\norm{A^{-1}}}}(A) \subset \In(X,Y) \]
-    Как только есть обратимый, оператор, тогда шарик с центром в этом операторе и таким радиусом будет лежать в в множестве непрерывных операторов
+    Как только есть обратимый оператор, тогда шарик с центром в этом операторе и таким радиусом будет лежать в в множестве непрерывных операторов
 \end{remark}
 
 \begin{remark}
@@ -134,7 +134,7 @@ $X,Y$ --- нормированные пространства, $A \in \Lin(X,Y)$
 \end{remark}
 
 \begin{example}
-    $f: \bR \rightarrow \bR, f(x) = \sin x \Rightarrow f(-\pi,\pi) = [-1,1]$, $f$ не лькоыьле
+    $f: \bR \rightarrow \bR, f(x) = \sin x \Rightarrow f(-\pi,\pi) = [-1,1]$, $f$ не открытое
 \end{example}
 
 \begin{example}
@@ -207,7 +207,7 @@ $X,Y$ --- нормированные пространства, $A \in \Lin(X,Y)$
 
 Доказательсвто будет в 2 этапа. Сначала докажем лемму
 \begin{lemma}[Редукция]
-    $X$ --- банахово, $Y$ --- нормированное. Пусть $\exists r > 0, B_r^Y \subset \overline{U(B_1^X(0))}$ (замыкание) 
+    $X$ --- банахово, $Y$ --- нормированное. Пусть $\exists r > 0, B_r^Y(0) \subset \overline{U(B_1^X(0))}$ (замыкание) 
     \[ \Rightarrow B^Y_{\frac{r}{2}}(0) \subset U(B_1^X(0)) \]
 \end{lemma}
 
@@ -220,7 +220,7 @@ $X,Y$ --- нормированные пространства, $A \in \Lin(X,Y)$
         y \in B^Y_{\frac{r}{2}}(0) \subset \overline{U(B^x_{\frac{1}{2}}(0))} \Rightarrow \: \exists x_1, \norm{x_1} < \frac{1}{2} \\
         \norm{y-U(x_1)} \text{ может быть меньше, чем всё, что угодно, мы возьмум } \frac{r}{4} \\
         \norm{y-U(x_1)} < \frac{r}{4}, y - Ux_1 \in B^Y_{\frac{r}{4}}(0) \subset \overline{U(B^x_{\frac{1}{4}}(0))} \\
-        \Rightarrow \: \exists x_2, \norm{x_2} < \frac{1}{4}, \norm{y-Ux_1-Ux_2} < 2 \frac{r}{2^3} \text{ и так далее} \\
+        \Rightarrow \: \exists x_2, \norm{x_2} < \frac{1}{4}, \norm{y-Ux_1-Ux_2} < \frac{r}{2^3} \text{ и так далее} \\
         \seq{x_k}^\infty_{k=1}, \norm{x_k} < \frac{1}{2^k}, \norm{y-Ux_1- \ldots - Ux_k} < \frac{r}{2^{k+1}}\\
         \underbrace{\sum^\infty_{k=1} \norm{x_k}}_{\text{сходится}} < 1, [[\text{ банаховость X}]] \Rightarrow \\
         \exists x = \sum^\infty_{k=1} x_k, x \in X, \norm{x} < 1 \\
@@ -239,7 +239,7 @@ $X,Y$ --- нормированные пространства, $A \in \Lin(X,Y)$
         \text{пусть } z \in Y, \norm{z} < r, y_0 + z \in \overline{U(B)} \\
         B \text{ --- симметричное множество, т.е. } x \in B \Rightarrow -x \in B \Rightarrow \\
         \overline{U(B)} \text{ --- симметричное, т.е. } y_0 \in \overline{U(B)} \Rightarrow -y_0 \in \overline{U(B)} \\
-        z = (y_0 + z) + (-y_0) = \overline{U(B)} + \overline{U(B)} \subset \overline{U(2B)} \\
+        z = (y_0 + z) + (-y_0) \in \overline{U(B)} + \overline{U(B)} \subset \overline{U(2B)} \\
         \Rightarrow B_r^Y(0) \subset \overline{U(2B)} \Rightarrow B^Y_{\frac{r}{2}} \subset \overline{U(B)}  \\
         [[\text{ лемма о редукции }]] \Rightarrow B^Y_{\frac{r}{4}}(0) \subset U(B) [[\text{ критерий открытости }]] \Rightarrow \\
         U \text{ открыт}
@@ -258,9 +258,9 @@ $X,Y$ --- нормированные пространства, $A \in \Lin(X,Y)$
 
 Когда мы говорили о нормах, нам обещалась некоторая сногсшибательная теорема, которую мы сейчас и докажем. 
 
-\begin{theorem}
-    $X$ --- линейное пространство, $\exists$ две нормы на $X$, т.ч. $(X, \norm{\cdot}_1), (Y, \norm{\cdot}_2)$ --- банаховы. 
-    Пусть $\exists C > 0 : \norm{x}_2 \leq C \norm{X}_1 \forall x \in X$.
+\begin{theorem} 
+    $X$ --- линейное пространство, $\exists$ две нормы на $X$, т.ч. $(X, \norm{\cdot}_1), (X, \norm{\cdot}_2)$ --- банаховы. 
+    Пусть $\exists C > 0 : \norm{x}_2 \leq C \norm{x}_1 \forall x \in X$.
     Как бы это не могло показаться чудовищно странным, но существует и оценка в другую сторону
     \[ \Rightarrow \exists c_1 > 0 : \norm{x}_1 \leq c_1 \norm{x}_2 \: \forall x \in X \]
 \end{theorem}
@@ -311,7 +311,7 @@ $X,Y$ --- нормированные пространства, $A \in \Lin(X,Y)$
 \end{theorem*}
 
 \begin{proof}
-    $(X, \norm{\cdot}_X), (Y, \norm{\cdot}_X)$. Новая  норма на $X$ : $\norm{x_1} = \norm{x}_X \norm{Ux}_Y$. Аксиомы нормы очевидны.
+    $(X, \norm{\cdot}_X), (Y, \norm{\cdot}_Y)$. Новая норма на $X$ : $\norm{x_1} = \norm{x}_X + \norm{Ux}_Y$. Аксиомы нормы очевидны.
 
     Проверим, что $(X, \norm{\cdot}_1)$ --- банахово по определению
     \begin{gather*}
@@ -328,13 +328,13 @@ $X,Y$ --- нормированные пространства, $A \in \Lin(X,Y)$
         \Rightarrow (X, \norm{\cdot}_1) \text{ --- банахово} \\
         \Rightarrow \norm{x}_X \leq \norm{x}_X + \norm{Ux}_Y = \norm{x}_1 \\
         [[\text{ теорема об эквивалентных нормах}]] \Rightarrow \\
-        \exists c_0 \quad \norm{x}_X + \norm{Ux}_Y \leq C \norm{x}_X \Rightarrow \norm{Ux}_Y \leq C \norm{x}_X \Rightarrow U \in \B(X,Y)
+        \exists C > 0 \quad \norm{x}_X + \norm{Ux}_Y \leq C \norm{x}_X \Rightarrow \norm{Ux}_Y \leq C \norm{x}_X \Rightarrow U \in \B(X,Y)
     \end{gather*}
 \end{proof}
 
-Естественно, требются примеры, когда есть замкнутость, но нет непрерывности.
+Естественно, требуются примеры, когда есть замкнутость, но нет непрерывности.
 \begin{remark}
-    $X,Y$ --- нормированные, $U \in \Lin(X,Y)$, $U \not \Rightarrow U$ --- непрерывный. 
+    $X,Y$ --- нормированные, $U \in \Lin(X,Y)$, $U$ --- замкнутый $\not \Rightarrow U$ --- непрерывный. 
 \end{remark}
 
 У нас было не так много не непрерывных операторов: например, оператор дифференцирования, им и воспользуемся.
@@ -374,7 +374,7 @@ $X,Y$ --- нормированные пространства, $A \in \Lin(X,Y)$
     План такой: мы возьмём максимальное линейно-независимое множество и назовём его максимальным элементом, потом применим лемму Цорна. 
     Когда мы говорим о линейной независимости, речь идёт только о конечных комбинациях
     \begin{gather*}
-        \Rho = \seq{Y: Y \subset x, Y \text{ --- линейно независимое }} \\
+        \Rho = \seq{Y: Y \subset X, Y \text{ --- линейно независимое }} \\
         \text{порядок } Y \leq Z, \text{ если } Y \subset Z, \: Y,Z \in \Rho
         \intertext{для того, чтобы применить лемму Цорна, нужно установить, что в любом линейно упорядоченном множестве есть верхняя грань}
         \seq{Y_\alpha}_{\alpha \in A} \text{ --- линейно упорядоченное множество, то есть} \\
@@ -396,7 +396,7 @@ $X,Y$ --- нормированные пространства, $A \in \Lin(X,Y)$
         U: X \rightarrow X, U(x_\alpha) = \lambda_\alpha \cdot x_\alpha
         \intertext{по линейности продолжим}
         x \in X \Rightarrow x = \sum^n_{j=1} c_j x_{\alpha_j} \quad U(x) = \sum^n_{j=1} c_j \lambda_{\alpha_j} x_{\alpha_j} \\
-        U \in \Lin(X), \sup_{\alpha \in A} \frac{\norm{U(x_\alpha)}}{\norm{x_\alpha}} = \sup_{\alpha \in A} \abs{\lambda_\alpha} = +\infty \Rightarrow U \notin \B(x)
+        U \in \Lin(X), \sup_{\alpha \in A} \frac{\norm{U(x_\alpha)}}{\norm{x_\alpha}} = \sup_{\alpha \in A} \abs{\lambda_\alpha} = +\infty \Rightarrow U \notin \B(X)
     \end{gather*}
 \end{example}
 
@@ -414,12 +414,12 @@ $X,Y$ --- нормированные пространства, $A \in \Lin(X,Y)$
 \begin{example}
     \begin{gather*}
         l^2, \seq{e_n}^\infty_{n=1}, e_n = (0, \ldots, 0, \underbrace{1}_n, 0, \ldots) \\
-        \Rho 9 \seq{Y \subset l^2, E = \seq{e_n}^\infty_{n=1}}, E \subset Y, Y \text{ --- линейно независимое} \\
+        \Rho = \seq{Y \subset l^2, E = \seq{e_n}^\infty_{n=1}}, E \subset Y, Y \text{ --- линейно независимое} \\
         \exists \text{ максимальный элемент} \\
         \seq{e_\alpha}_{\alpha \in A} \text{ --- базис Гамеля} \\
         \bN \subset A, \lambda_n = n, \text{ то есть } \\
         f(e_n) = n, f(e_\alpha) = \lambda_\alpha, \lambda_\alpha \in \bC, \lambda_{\alpha} \text{ --- любое} \\
-        \sup_n \abs{f(e_n)} = +\infty \Rightarrow f \notin (l^2)^\infty \text{ при } \alpha \ne n
+        \sup_n \abs{f(e_n)} = +\infty \Rightarrow f \notin (l^2)^* \text{ при } \alpha \ne n
     \end{gather*}
 \end{example}
 

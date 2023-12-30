@@ -9,14 +9,14 @@
 Напоминание о том, что мы думаем о мерах: $(X, U, \mu)$ --- пространство с мерой, $\mu$ --- $\sigma$-конечная, то есть $X = \bigcup^\infty_{j=1} X_j, \mu(X_j) < +\infty$.
 $\mu$ --- полная мера, то есть если $A \subset U, \mu A = 0$, то  $\forall B \subset A \Rightarrow B \in U, \mu(B) = 0$
 
-\begin{theorem}[сопряжение к $L^p(X, U, \mu)$]
+\begin{theorem}[сопряженное к $L^p(X, U, \mu)$]
     2 случая, во втором очень важно, что бесконечность не включается!
     \begin{enumerate}
         \item $1 \leq p \leq +\infty$
          \begin{gather*}
             g \in L^q(X,\mu) \quad \frac{1}{p} + \frac{1}{q} = 1 \\
             g \text{ --- фиксирована}, h \in L^p, F_g(h) \coloneqq \int_X h(x) g(x) d\mu \Rightarrow F_g \in (L^p)^* \\
-            \norm{Fg} = \norm{g}_{L^q}
+            \norm{F_g} = \norm{g}_{L^q}
         \end{gather*}
         \item $1 \leq p < +\infty$, $F \in (L^p)^* \Rightarrow \: \exists! g \in L^q \text{ т.ч. } F = F_g$
     \end{enumerate}
@@ -47,7 +47,7 @@ $\mu$ --- полная мера, то есть если $A \subset U, \mu A = 0$
         \text{пусть } \norm{g}_\infty > 0, \text{ пусть } c > 0 \: \norm{g}_\infty > c > 0 \\
         A = \seq{x \in X: \abs{g(x)} \geq c} \Rightarrow \mu(A) > 0
         \intertext{Вот, наконец, где нам потребуется $\sigma$-конечность. Почему вообще существует такое множество $A$?}
-        \text{пусть } e \subset A, 0 < \mu e < +\infty \text{ т.к. } X = \bigcup^\infty_{j=1}, \mu(X_j) < +\infty \\
+        \text{пусть } e \subset A, 0 < \mu e < +\infty \text{ т.к. } X = \bigcup^\infty_{j=1} X_j, \mu(X_j) < +\infty \\
         \Rightarrow A = \bigcup^\infty_{j=1} (A \cap X_j), e_j = A \cap X_j \Rightarrow \mu e_j < +\infty, \text{ если бы } \mu e_j = 0 \forall j, \text{ то } \mu A = 0 \\
         \Rightarrow \: \exists e = e_j \quad 0 < \mu e < +\infty, e \subset A \\
         U(x) = \frac{\overline{g(x)}}{\abs{g(x)}} \chi_e(x)\\
@@ -100,7 +100,7 @@ $\mu$ --- полная мера, то есть если $A \subset U, \mu A = 0$
         \norm{x^{(n)}}_p = \left( \sum^n_{k=1} \abs{y_k}^{(q-1)p}\right)^{\frac{1}{p}} = \left( \sum^n_{k=1} \abs{y_k}^q \right)^{\frac{1}{p}} \\
         F(x^{(n)}) = \sum^n_{k=1} y_k \cdot \frac{\overline{y_k}}{\abs{y_k}} \cdot \abs{y_k}^{q-1} = \sum^n_{k=1} \abs{y_k}^q
         \intertext{как обычно, когда вычисляем норму линейного функционала}
-        \norm{f} \geq \frac{\abs{f(x^{(n)})}}{\norm{x^(n)}_p} = \frac{\sum^n_{k=1} \abs{y_k}^q}{\left( \sum^n_{k=1} \abs{y_k}^q\right)^{\frac{1}{p}}} = \left( \sum^n_{k=1} \abs{y_k}^q \right)^{\frac{1}{q}} \: \forall n \in \bN \\
+        \norm{F} \geq \frac{\abs{F(x^{(n)})}}{\norm{x^(n)}_p} = \frac{\sum^n_{k=1} \abs{y_k}^q}{\left( \sum^n_{k=1} \abs{y_k}^q\right)^{\frac{1}{p}}} = \left( \sum^n_{k=1} \abs{y_k}^q \right)^{\frac{1}{q}} \: \forall n \in \bN \\
         \Rightarrow y \in l^q,  \norm{F} \geq \norm{y}_q \\
         \text{если } p = 1, q = \infty, \norm{F} \geq \abs{F(e_n)} = \abs{y_n} \: \forall n \Rightarrow y \in l^\infty \\
         \norm{F} \geq \norm{y}_\infty\\
