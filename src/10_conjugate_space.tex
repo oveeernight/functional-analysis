@@ -511,7 +511,7 @@ $f \in E \Rightarrow \liml_{n \to \infty} f(x_n) = f(x_0)$
 \end{proof}
 
 \begin{remark}
-    Если $X$ --- рефлексивное, то есть $\pi(X) = X^**$, то $f = \wlim f_n \Leftrightarrow f = \wstarlim f_n$
+    Если $X$ --- рефлексивное, то есть $\pi(X) = X^{**}$, то $f = \wlim f_n \Leftrightarrow f = \wstarlim f_n$
 \end{remark}
 
 Теперь воспользуемся теоремой Банаха-Штейнгауза, чтобы сформулировать критерий. Когда был критерий слабой сходимости, чтобы применять эту теорему 
@@ -535,8 +535,8 @@ $f \in E \Rightarrow \liml_{n \to \infty} f(x_n) = f(x_0)$
 
 Обсудим сейчас, что означает $\wstarlim$ в $l^1$. Чем хорошо $l^1$? Тем, что мы знаем сопряжённое к нему.
 
-\begin{theoremwobox}[слабая и слабая со * сходиомсть в $l^1$]
-    $x^{(m)} \in l^1, x^(m) = \seq{x^{(m)}_j}^\infty_{j=1}, x \in l^1$
+\begin{theoremwobox}[слабая и слабая со * сходимость в $l^1$]
+    $x^{(m)} \in l^1, x^{(m)} = \seq{x^{(m)}_j}^\infty_{j=1}, x \in l^1$
     \[ x = \wstarlim x^{(m)} \Leftrightarrow \begin{cases}
         \sup \norm{x^{(m)}}_1 < +\infty \\
         \liml_{m \to \infty} x^{(m)}_j = x_j, j \in \bN
@@ -600,7 +600,7 @@ $f \in E \Rightarrow \liml_{n \to \infty} f(x_n) = f(x_0)$
 
 \begin{theoremwobox}[аппроксимативная единица]
     \begin{gather*}
-        X = C[-1, 1], \mu \text{ на } [-1, 1], A \subset E[-1, 1], \mu(A) = \begin{cases}
+        X = C[-1, 1], \mu \text{ на } [-1, 1], A \subset [-1, 1], \mu(A) = \begin{cases}
             1 & 0 \in A \\
             0 & 0 \notin A
         \end{cases} \\
@@ -645,10 +645,10 @@ $f \in E \Rightarrow \liml_{n \to \infty} f(x_n) = f(x_0)$
         \seq{f_n(x_1)}^\infty_{n=1}, \abs{f_n(x_1)} \leq \norm{f_n} \cdot \norm {x_1} = \norm{x_1} \\ 
         \Rightarrow \seq{f_n(x_1)}^\infty_{n=1} \text{ --- ограниченная последоватеьность в } \bC 
         \intertext{а из анализа известно, что из ограниченной последовательности можно выбрать сходящуюся подпоследовательность} 
-        \Rightarrow \exists \text{ подпоследовательность } \seq{f_1,n}^\infty_{n=1} : \: \exists \liml_{n \to \infty} f_{1,n}(x_1) = z_1 \\
+        \Rightarrow \exists \text{ подпоследовательность } \seq{f_{1,n}}^\infty_{n=1} : \: \exists \liml_{n \to \infty} f_{1,n}(x_1) = z_1 \\
         \seq{f_{1,n}(x_2)}^\infty_{n=1}, \abs{f_{1,n}(x_2)} \leq \norm{x_2} \Rightarrow \: \exists \liml_{n \to \infty} f_{2,n}(x_2) = z_2
-        \intertext{отметим, что первое условие мы не потеряли, потому что $f_{2,n}$ --- подпоследовательность $f_{1,n}$ и $\liml_{n \to \infty} f_{2,m} (x_1 = z_1)$. И так далее, формально говоря, по индукции}
-        \seq{f_{j,n}}^\infty_{n=1} \: \liml_{n \to \infty} f_{j,m} (x_k) = z_k, k = 1, 2, \ldots, j \\
+        \intertext{отметим, что первое условие мы не потеряли, потому что $f_{2,n}$ --- подпоследовательность $f_{1,n}$ и $\liml_{n \to \infty} f_{2,m} (x_1) = z_1$. И так далее, формально говоря, по индукции}
+        \seq{f_{j,n}}^\infty_{n=1} \: \liml_{n \to \infty} f_{j,n} (x_k) = z_k, k = 1, 2, \ldots, j \\
         \Rightarrow \liml_{n \to \infty} f_{n,n} (x_j) = z_j \: \forall j \in \bN
     \end{gather*}
     \[ \begin{matrix}

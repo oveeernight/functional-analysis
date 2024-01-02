@@ -163,7 +163,7 @@ $A = \left( \int_X |f|^p d \mu \right)^{\frac{1}{p}}, B = \left( \int_X |g|^q d 
     \[ C^p <  \left( \int_X |f|^p d\mu \right)^{\frac{1}{p}} \cdot \left( \int_X |f+g|^{p} d\mu \right)^{1 - \frac{1}{p}} + \left( \int_X |g|^p d\mu \right)^{\frac{1}{p}} \cdot \left( \int_X |f+g|^{p} d\mu \right)^{1 - \frac{1}{p}} \]
     так как доказали, что $C < +\infty$, делим на $C^{p\left(1-\frac{1}{p}\right)} = \left( \int_X |f+g|^{p} d\mu \right)^{1 - \frac{1}{p}}$
     \[ C^{p-p\left(1-\frac{1}{p}\right)} \leq A + B \] 
-    а это и есть $C < A + B$
+    а это и есть $C \leq A + B$
 \end{proof}
 
 \section{Пространство Лебега}
@@ -174,7 +174,7 @@ $A = \left( \int_X |f|^p d \mu \right)^{\frac{1}{p}}, B = \left( \int_X |g|^q d 
 
 \[f \in L^p(X, \mu), ||f||_p = \left( \int_X |f(x)|^p d \mu \right)^{\frac{1}{p}} \]
 
-Проверим, что $||f||_p$~--- это полунорма на $L^p(X,\mu)$. $c \in \bR$ (или $\bC$). $||cf||_p = |c| ||f||_p$
+Проверим, что $||f||_p$~--- это полунорма на $L^p(X,\mu)$. $c \in \bR$ (или $\bC$). $||cf||_p = |c| \cdot ||f||_p$
 
 \[ ||f+g||_p \leq ||f||_p + ||g||_p \text{~--- неравенство Минковского} \]
 $||f|| = 0 \Leftrightarrow \int_X |f(x)|^p d\mu = 0 \Leftrightarrow f(x) = 0$ почти всюду по мере $\mu$ на $X$.
@@ -182,47 +182,48 @@ $||f|| = 0 \Leftrightarrow \int_X |f(x)|^p d\mu = 0 \Leftrightarrow f(x) = 0$ п
 \begin{example}
     $L[0,1], \lambda$~--- мера Лебега на $[0,1]$. \\
      функция Дирихле $\varphi(x) = \begin{cases}
-        1, x \in \bQ \\
-        0, x \notin \bQ
+        1 &x \in \bQ \\
+        0 & x \notin \bQ
     \end{cases}$
     $\int^1_0 |\varphi(x)|d\lambda = 0$.
 \end{example}
 
-$N = \{ f \text{~--- измерима} \, \wedge \, f(x) = 0 \text{ почти всюду на } X \text {по } \mu \}.$
+$N = \{ f \text{~--- измерима и } f(x) = 0 \text{ п.в. на } X \text { по } \mu \}.$
 $||f||_p = 0 \Leftrightarrow f \in N$ (не зависит от $p$).
-Рецепт приготовления пространства с нормой из полуфбриката. пространство с полунормой.
+
+Рецепт приготовления  пространства с нормой из полуфабриката (с полунормой): 
 $N$~--- подпространство в $L^p$, $L^p = L^p / N$~--- факторпространство. \\
 
-$g,f \in L^p, f ~ g \Leftrightarrow f - g \in N \Leftrightarrow f(x) = g(x)$ почти всюду по $\mu$. $\overline{f}$~--- класс эквивалентности, $\overline{f} = \{g: f ~ g \}.$ \\
+$g,f \in L^p, f \sim g \Leftrightarrow f - g \in N \Leftrightarrow f(x) = g(x)$ почти всюду по $\mu$. $\overline{f}$~--- класс эквивалентности, $\overline{f} = \{g: f \sim g \}.$ \\
 
-$||\overline{f}||_p := ||f||$, то есть можно взять любую функцию из класса эквивалнентности.
+$||\overline{f}||_p := ||f||$, то есть можно взять любую функцию из класса эквивалентности.
 
 \[ ||\overline{f}||_p = 0 \Leftrightarrow \int_X |f|^p d\mu = 0 \Leftrightarrow f \in N \Rightarrow \overline{f} = N = \overline{0} \Rightarrow \]
 $||\overline{f}||_p $~--- норма на $L^p$.
-Говорят, что $f \in L^p$, возьмём функцию из $L^p$, но имеют в виду, что возьмут класс экивалентности, а из него возьмут функцию
+Говорят, что $f \in L^p$, возьмём функцию из $L^p$, но имеют в виду, что возьмут класс экивалентности, а из него возьмут функцию.
 
 Одна из главных целей~--- доказать, что эти пространства Банаховы. Сначала определим $L^\infty(X, \mu)$ (существенно ограниченные функции).
 
 \begin{definition}[$L^\infty(X, \mu)$]
     $f \in L^\infty(X, \mu)$, если 
-    \[\exists c > 0 |f(x)| \leq c \text{ почти всюду на } X \text{ по } \mu (\mu \{ x: |f(x)| > c\} = 0)\]
+    \[\exists c > 0 : |f(x)| \leq c \text{ п.в. на } X \text{ по } \mu \]
 \end{definition}
 
 Возьмём точную нижнюю грань этой константы. $||f||_\infty = \inf \{c \geq 0: \mu \{x: ||f(x)|| > c \}   = 0 \}$ (существуенный $\sup$, или на подлом англосаксонском
 ess $\sup_X f$) 
 
 \begin{property}
-$f \in \calL^\infty(X, \mu) \Rightarrow \mu \{ f(x) > ||f||_\infty \} = 0$
+$f \in \calL^\infty(X, \mu) \Rightarrow \mu \{ x: f(x) > ||f||_\infty \} = 0$
 \end{property}
 
 \begin{proof}
-    $e = \{ x: |f(x) > ||f||_\infty \}, m \in \bN$. \\
+    $e = \{ x: |f(x)| > ||f||_\infty \}, m \in \bN$. \\
     $e_m = \{ x: |f(x)| > ||f||_\infty + \frac{1}{m} \} \Rightarrow \mu e_m = 0$ по определеннию  ess $\sup_X f$ $\Rightarrow e = \cup^\infty_{m=1} e_m \Rightarrow \mu e = 0$ 
 \end{proof}
 
+Покажем, что  $||f||_\infty \text{~--- полунорма на } \calL^\infty$
 \begin{gather*}
-    ||f||_\infty \text{~--- полунорма на } \calL^\infty \\
-    \lambda \ne 0 \quad |\lambda f(x)| \leq | \lambda| \cdot c \Leftrightarrow |f(x) \leq c \Rightarrow ||\lambda f||_\infty = |\lambda| ||f||_\infty, \\
+    \lambda \ne 0 \quad |\lambda f(x)| \leq | \lambda| \cdot c \Leftrightarrow |f(x)| \leq c \Rightarrow ||\lambda f||_\infty = |\lambda| \cdot ||f||_\infty, \\
     f,g \in \calL^\infty, x \in X \Rightarrow |f(x) + g(x)| \leq |f(x)| + |g(x)| \leq ||f||_\infty + ||g||_\infty \text{ для п.в. } x \text { на } X \\
     \Rightarrow ||f+g||_\infty < ||f||_\infty + ||g||_\infty
 \end{gather*}
@@ -235,7 +236,7 @@ $||f||_\infty = 0 \Leftrightarrow \mu \{ x: |f(x)| > 0 \} = 0 \Leftrightarrow f(
 \begin{theorem}[Фату]
     $(X, U, \mu)$, $\{ g_n \}^\infty_{n=1}, g_n$~--- измеримые, $g_n(x) \geq 0$
     \begin{gather*}
-        g_n(x) \underset{\text{ п.в. }}{\longrightarrow} g(x) \quad \int_X g_n(x) d\mu \leq C \text{ не зависит от n } \\
+        g_n(x) \underset{\text{ п.в. }}{\longrightarrow} g(x) \quad \int_X g_n(x) d\mu \leq C, C \text{ не зависит от n } \\
         \Rightarrow \int_X g(x) d\mu \leq C
     \end{gather*}
 \end{theorem}
@@ -255,8 +256,8 @@ $||f||_\infty = 0 \Leftrightarrow \mu \{ x: |f(x)| > 0 \} = 0 \Leftrightarrow f(
     Рассмотрим $\sigma_n(x) = \sum^n_{k=1} |f_k(x)| \Rightarrow \sigma_n(x)$ возрастает $ \Rightarrow \exists \sigma(x) = \liml_{n \to \infty} \sigma_n(x)$.
     Возможно, $\sigma(x) = + \infty$ для некоторых $x$.
     \[ ||\sigma_n||_p \leq \sum^n_{k=1} ||f_k||_p \leq C \]
-    \[ \int_X |\sigma_n(x)|^p d\mu \leq C^p \, \wedge \, \sigma_n(x)^p \underset{n \to \infty}{\longrightarrow} \sigma_(x)^p  \, \forall x \in X \stackrel{\text{т. Фату}}{\Rightarrow} \]
-    $\int_X \sigma(x)^p d\mu \leq c^p$
+    \[ \int_X |\sigma_n(x)|^p d\mu \leq C^p \text{ и } \sigma_n(x)^p \underset{n \to \infty}{\longrightarrow} \sigma(x)^p  \, \forall x \in X \stackrel{\text{т. Фату}}{\Rightarrow} \]
+    $\int_X \sigma(x)^p d\mu \leq C^p$.
     Самое главное, что мы из этого заключаем: $\sigma(x) < + \infty$ п.в. на $X$ по $\mu$.
     
     \begin{gather*}
@@ -267,14 +268,14 @@ $||f||_\infty = 0 \Leftrightarrow \mu \{ x: |f(x)| > 0 \} = 0 \Leftrightarrow f(
     Применим критерий Коши: $\exists N \in \bN \quad m > n > N \Rightarrow \sum^m_{k=n+1} ||f_k||_p < \varepsilon \Rightarrow ||S_m(x) - S_n(x)||_p \leq \sum^m_{k=n+1} ||f_k||_p < \varepsilon$
 
     \begin{multline*}
-        \int_x |S_m(x) - S_n(x)|^p d\mu < \varepsilon^p  (n \text{ фиксировано}) \, \wedge \, |S_m(x) - S_n(x)|^m \underset{m \to \infty}{\longrightarrow} |f(x) - S_n(x)|  \\ \stackrel{\text{Фату}}{\Rightarrow}
-        \int_X |f-S_n|^p d\mu \leq \varepsilon^p \Rightarrow ||f-S_n|| \leq \varepsilon        
+        \int_X |S_m(x) - S_n(x)|^p d\mu < \varepsilon^p  (n \text{ фиксировано}) \text{ и } |S_m(x) - S_n(x)|^m \underset{m \to \infty}{\longrightarrow} |f(x) - S_n(x)|  \\ \stackrel{\text{Фату}}{\Rightarrow}
+        \int_X |f-S_n|^p d\mu \leq \varepsilon^p \Rightarrow ||f-S_n||_p \leq \varepsilon        
     \end{multline*}
 
-    $f - S_n \in L_p$, $S+n \in L^p \Rightarrow f = (f - S_n) + S_n \Rightarrow f \in L_p$ и $ ||f - S_n||_p \underset{n \to \infty}{\longrightarrow} 0$ \\
+    $f - S_n \in L_p$, $S_n \in L^p \Rightarrow f = (f - S_n) + S_n \Rightarrow f \in L_p$ и $ ||f - S_n||_p \underset{n \to \infty}{\longrightarrow} 0$ \\
     Теперь осталось рассмотреть случай $p = \infty$. $\{ f_n \}^\infty_{n=1}$ фундаментальная, $f_n \in L^\infty$, 
     \[ |f_n(x)| \leq ||f_n||_\infty \quad x \in X \setminus e_n, \mu e_n = 0 \quad n \in \bN \]
-    $ e = \cup^\infty_{n=1}, X_1 = X \setminus e \Rightarrow f_n \in m(X_1)$~--- ограниченная функция. $m(X_1)$~--- полное $\Rightarrow \{f_n\}$~--- фундаментальна в 
+    $ e = \bigcup^\infty_{n=1} e_n, X_1 = X \setminus e \Rightarrow f_n \in m(X_1)$~--- ограниченная функция. $m(X_1)$~--- полное $\Rightarrow \{f_n\}$~--- фундаментальна в 
     $m(X_1) \Rightarrow \exists \, f \in m(X_1) \quad \sup_{x \in X_1} |f(x) - f_n(x)| \underset{n \to \infty}{\longrightarrow} 0$. Положим
     $f(x) = 0$ если $x \in e \Rightarrow \liml_{n \to \infty} ||f_n - f||_{L\infty} = 0 $
  \end{proof}
@@ -283,8 +284,9 @@ $||f||_\infty = 0 \Leftrightarrow \mu \{ x: |f(x)| > 0 \} = 0 \Leftrightarrow f(
 
  $n \in \bN, 1 \leq p < +\infty$.
  \begin{definition}
-    \[ l^p_n = \left\{ \bR^n, x = (x_1, \ldots, x_n), x_j \in \bR, ||x||_p = \left( \sum^n_{j=1} |x_j|^p\right)^{\frac{1}{p}} \right\} \]
+    \[ l^p_n = \left\{ \bR^n, x = (x_1, \ldots, x_n), x_j \in \bR \right\} \]
  \end{definition}
+ \[ ||x||_p = \left( \sum^n_{j=1} |x_j|^p\right)^{\frac{1}{p}} \]
 Рассмотрим $X = \{ 1,2, \ldots, n\}$. Возьмём дискретную меру $\mu(j) = 1$ при $1 \leq j \leq n$, $l^p_n = L^p(X, \mu)$.
 $f \in L^p(X, \mu), f(j) = x_j \Rightarrow l^p_n$~--- полное.
 
@@ -298,28 +300,28 @@ $f \in L^p(X, \mu), f(j) = x_j \Rightarrow l^p_n$~--- полное.
 \begin{proof}
     $\Rightarrow$ \\
     Пусть $j$~--- фиксировано, $\liml_{m \to \infty} x^{(m)} = x$ в $l^p_n$.\\
-    При $p < + \infty$ $||x-x^{(m)}||_p= \left( \sum_{i=1}^n |x_i - x_i^{(m)}|^p \right)^{\frac{1}{p}}  \geq |x_j - x_j^{(m)}$.
+    При $p < + \infty$ $||x-x^{(m)}||_p= \left( \sum_{i=1}^n |x_i - x_i^{(m)}|^p \right)^{\frac{1}{p}}  \geq |x_j - x_j^{(m)}|$.
     Так как $||x - x^{(m)}||_p \underset{m \to \infty}{\longrightarrow} 0 \Rightarrow \liml_{m \to \infty} |x_j - x_j^{(m)}| = 0$. \\
     При $p = \infty \quad ||x - x^{(m)}||_\infty = \max_{1 \leq i \leq m} \{ |x_i - x_i^{(m)}| \} \geq |x_j - x_j^{(m)}|$. Так как
      $ ||x - x^{(m)}||_\infty \underset{m \to \infty}{\longrightarrow} 0 \Rightarrow \liml_{m \to \infty} |x_j - x_j^{(m)}| = 0$ \\
     Теперь $\Leftarrow$ \\
     \begin{multline*}
-        1 \leq j \leq n \quad \liml_{m \to \infty} |x_j - x_j^{(m)}| = 0 \Rightarrow \left( \sum^n_{j=1}| |x_j - x_j^{(m)}|^p \right)^{\frac{1}{p}} \underset{m \to \infty}{\longrightarrow} 0 \\
+        1 \leq j \leq n \quad \liml_{m \to \infty} |x_j - x_j^{(m)}| = 0 \Rightarrow \left( \sum^n_{j=1} |x_j - x_j^{(m)}|^p \right)^{\frac{1}{p}} \underset{m \to \infty}{\longrightarrow} 0 \\
         \text { и } \Rightarrow \max_{1 \leq j \leq n} |x_j - x_j^{(m)}| \underset{m \to \infty}{\longrightarrow} 0 
     \end{multline*}
 \end{proof}
 
     \begin{definition}
-        $l_p = 
-            \{ x : \{ x_j \}^\infty_{j=1}, x_j \in \bR (\bC) \, \wedge \, 
-            \sum^\infty_{j=1} |x_j|^p < + \infty \}$
-            \[ ||x||_p = \left( \sum^\infty_{j=1} |x_j|^p \right)^{\frac{1}{p}} \]
+        \[l_p = 
+            \{ x : \{ x_j \}^\infty_{j=1}, x_j \in \bR (\bC) \text{ и }
+            \sum^\infty_{j=1} |x_j|^p < + \infty \} \]
     \end{definition}
+    \[ ||x||_p = \left( \sum^\infty_{j=1} |x_j|^p \right)^{\frac{1}{p}} \]
 
     $X = \bN$, $\mu(j) = 1$, $\mu = \sum^\infty_{n=1} \sigma_n$
     \[ l^p = L^p(\bN, \mu) \Rightarrow \text{ полное } \quad 1 \leq p < + \infty \]
     \begin{remark}
-        $\{x^{(m)} \}^\infty_{m=1}, x^{(m)} \in l^p, \liml_{m \to \infty} ||x^{(m)}-x||_p = 0 \Rightarrow \forall j \liml_{m \to \infty} x_j^{(m)} = x_j$
+        $\{x^{(m)} \}^\infty_{m=1}, x^{(m)} \in l^p, \liml_{m \to \infty} ||x^{(m)}-x||_p = 0 \Rightarrow \forall j \liml_{m \to \infty} x_j^{(m)} = x_j$.
         Например, $ \not \Leftarrow$ при $e_m = (0, 0, \ldots, 0, 1, 0, 0, \ldots )$
     \end{remark}
     Пусть $j$ фиксировано. $\liml_{m \to \infty} (e_m)_j = 0 \quad ||e_m - \mathbb{0} ||_p = 1 \quad \forall p, 1 \leq p \leq +\infty$.
@@ -385,7 +387,7 @@ $(F, || \cdot ||_p) $~--- не полное, $F$~--- не замкнуто.
 Будем брать геометрическую прогрессию и обрывать ее на некотором члене.
 \begin{gather*}
     x^{(m)} = \left\{ \frac{1}{2}, \frac{1}{4}, \ldots, \frac{1}{2^m}, 0, 0, 0, \ldots \right\} \in F \\
-    X = \left\{ \frac{1}{2^k}^\infty_{k=1} \right\} \in l^p \\
+    x = \left\{ \frac{1}{2^k}\right\}^\infty_{k=1} \in l^p \\
     1 \leq p < + \infty \quad ||x - x^{(m)}||_p = \left( \sum^\infty_{k=m+1} \frac{1}{2^{kp}} \right)^{\frac{1}{p}} \underset{m \to \infty}{\longrightarrow} 0
 \end{gather*}
 Следовательно, $F$~--- не замкнуто.
@@ -438,8 +440,10 @@ $(F, || \cdot ||_p) $~--- не полное, $F$~--- не замкнуто.
     \[ \Rho = \left\{ p(x) = \sum^n_{k=0}a_k x^k, a_k \in \bR, n \geq 0 \right\} \]
 \end{definition}
 $\Rho$ (подпространство в алгебраическом смысле) $ \subset C[a,b], \, ||p||_\infty = \max_{x \in [a,b]} |p(x)|$
+
 $e^x \notin \Rho$, $p_n(x) = \sum^n_{k=0} \frac{x^k}{k!}, \Rightarrow p_n \darrow{[a,b], n \to \infty} e^x$
-это не многочлен, потому что если сколько-то раз продифференцировать многочлен, он станте тождественным 0
+это не многочлен, потому что если сколько-то раз продифференцировать многочлен, он станет тождественным 0.
+
 $\Rightarrow \overline{\Rho} \setminus \Rho \ni e^x \Rightarrow \Rho$~--- не замкнуто $\Rightarrow \Rho$~--- не полное.
 
 \[ \overline{\Rho} = C[a,b] \]
