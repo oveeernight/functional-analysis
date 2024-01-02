@@ -147,7 +147,7 @@ $A = \left( \int_X |f|^p d \mu \right)^{\frac{1}{p}}, B = \left( \int_X |g|^q d 
     Сначала разберём простые случаи. $p = 1, x$~--- фиксирован. $|f(x) + g(x)| \leq |f(x)| + |g(x)|$ проинтегрируем по $X$ $\Rightarrow (*)$ при $p = 1$.
     Теперь пусть $p > 1$. Если $A = +\infty$, или $B = +\infty$, или $C = 0$, то (*). \\
     Теперь же пусть $A < +\infty, B < +\infty, C > 0$. 
-    Доказателсьвто будет в два этапа. На первом этапе получим гораздо более слабое утверждение, вообще не то, что требуется в теореме, но оно нам понадобится.
+    Доказательство будет в два этапа. На первом этапе получим гораздо более слабое утверждение, вообще не то, что требуется в теореме, но оно нам понадобится.
     Докажем, что $C < + \infty$.
     
     $a,b \in \bR \Rightarrow |a+b| \leq |a| + |b| \leq 2 \max(|a|, |b|) \Rightarrow |a+b|^p \leq 2^p \max(|a|^p, |b|^p) \leq 2^p(|a|^p + |b|^p) \Rightarrow$
@@ -157,13 +157,13 @@ $A = \left( \int_X |f|^p d \mu \right)^{\frac{1}{p}}, B = \left( \int_X |g|^q d 
     Первая часть доказательства закончена. \\
     \[ C^p = \int_X |f+g|^p d \mu = \int_X |f+g| \cdot |f + g|^{p-1} d \mu \leq \int_X |f| \cdot |f+g|^{p-1} d\mu + \int_X |g| \cdot |f+g|^{p-1} d \mu \]
 
-    \[ \int_X |f| \cdot |f+g|^{p-1} d\mu \stackrel{\text{ н. Гельдера}}{\leq} \left( \int_X |f+g| d\mu \right)^{\frac{1}{p}} \cdot \left( \underbrace{\int_X |f+g| d\mu}_{A} \right)^{(p-1)q} %тут снизу А
-    = AC \]
-    \begin{gather*}
-        \int_X |g| \cdot |f+g|^{p-1} d \mu \stackrel{\text{аналогично}}{\leq} BC^{\frac{p}{q}} \Rightarrow \\
-        C^p \leq (A+B) C^{\frac{p}{q}}, \quad 0 < C < + \infty \Rightarrow \\
-        C^{p - \frac{p}{q}} = C \Rightarrow C \leq A + B \text{( это (*))}
-    \end{gather*}
+    \[ \int_X |f| \cdot |f+g|^{p-1} d\mu \stackrel{\text{ н. Гельдера}}{\leq} \left( \int_X |f|^p d\mu \right)^{\frac{1}{p}} \cdot \left( \int_X |f+g|^{(p-1)q} d\mu \right)^{\frac{1}{q}} \]
+    \[ \int_X |g| \cdot |f+g|^{p-1} d\mu \stackrel{\text{ н. Гельдера}}{\leq} \left( \int_X |g|^p d\mu \right)^{\frac{1}{p}} \cdot \left( \int_X |f+g|^{(p-1)q} d\mu \right)^{\frac{1}{q}} \]
+    $(p-1) \cdot q = (p-1) \cdot \frac{p}{p-1} = p$ и $\frac{1}{q} = 1 - \frac{1}{p}$
+    \[ C^p <  \left( \int_X |f|^p d\mu \right)^{\frac{1}{p}} \cdot \left( \int_X |f+g|^{p} d\mu \right)^{1 - \frac{1}{p}} + \left( \int_X |g|^p d\mu \right)^{\frac{1}{p}} \cdot \left( \int_X |f+g|^{p} d\mu \right)^{1 - \frac{1}{p}} \]
+    так как доказали, что $C < +\infty$, делим на $C^{p\left(1-\frac{1}{p}\right)} = \left( \int_X |f+g|^{p} d\mu \right)^{1 - \frac{1}{p}}$
+    \[ C^{p-p\left(1-\frac{1}{p}\right)} \leq A + B \] 
+    а это и есть $C < A + B$
 \end{proof}
 
 \section{Пространство Лебега}
