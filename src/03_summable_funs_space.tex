@@ -9,52 +9,51 @@
     \begin{enumerate}
         \item $\varnothing \in U$
         \item $A \in U \Rightarrow X - A \in U$
-        \item $\{ A_n\}^\infty_{n=1}, A_n \in U, A\infty_{n=1} A_n \Rightarrow A \in U$
+        \item $\{ A_n\}^\infty_{n=1}, A_n \in U, A = \cup^\infty_{n=1} A_n \Rightarrow A \in U$
     \end{enumerate}
     \[ \mu : U \rightarrow [0, +\infty] \]~--- мера, если
     \begin{enumerate}
         \item $\mu(\varnothing) = 0$
-        \item $ A = U^\infty_{n=1} \{A_n\}, A_n \cap A_m = \varnothing, n \ne m, A_n \in U \Rightarrow \mu(A) = \sum^\infty_{n=1} \mu A_n$ (счетная аддитивность)
+        \item $ A = \cup^\infty_{n=1} A_n, A_n \cap A_m = \varnothing, n \ne m, A_n \in U \Rightarrow \mu(A) = \sum^\infty_{n=1} \mu A_n$ (счетная аддитивность)
     \end{enumerate}
 \end{definition}
 
 Предположения: 
 \begin{enumerate}
-    \item $\mu$~--- полная мера, то есть $A \in U, \mu(A) = 0 \Rightarrow (\forall B \subset A \Rightarrow B \in U, (\Rightarrow \mu B) =0)$
-    \item $\mu$~--- $\sigma$-конечна, то есть $X = \cup^\infty_{j=1} X_j, \mu(X_j) < + \infty$
+    \item $\mu$~--- полная мера, то есть $A \in U, \mu(A) = 0 \Rightarrow (\forall B \subset A \Rightarrow B \in U, \Rightarrow \mu B = 0)$
+    \item $\mu$~--- $\sigma$-конечна, то есть $X = \bigcup^\infty_{j=1} X_j, \mu(X_j) < + \infty$
 \end{enumerate}
 Пока можем думать, что речь идет о мере Лебега. Потом приведём другие примеры.
 В теории пространств будем считать, что функция действует из $X$ в $\bR$ или в $\bC$ (не особо важно).
 
 \begin{definition}[Измеримая функция]
     $f: X \rightarrow \overline{\bR}$. $f$~--- измерима, если
-    \begin{gather*}
-        \forall c \in \bR, x \underbrace{\{x: c < f(x) \}}_{\text{измеримое множество}} \in U \\
-        f: X \rightarrow \bC \Rightarrow f = u + iv, u, v: X \rightarrow \bR 
-    \end{gather*} 
-    $f$~--- измерима, если $u,v$~--- измеримы
+      \[  \forall c \in \bR, x \underbrace{\{x: c < f(x) \}}_{\text{измеримое множество}} \in U \]
 \end{definition}
+В комплексном случае $ f: X \rightarrow \bC \Rightarrow f = u + iv, u, v: X \rightarrow \bR$, $f$~--- измерима, если $u,v$~--- измеримы.
+
 Как же определяется интеграл?
 Пусть есть какой-то элемент $\sigma$-алгебры $e \in U$, $\chi_e(x) = \begin{cases} 
-    1, x \in E \\
-    0, x \notin e
+    1 & x \in e \\
+    0 & x \notin e
 \end{cases}.$
 Множество простых функций определяется как
-\[S = \{ g(x) = \sum^n_{k=1} c_k \chi_{e_k}, c_k \in \bC, e_k \in U \} \]
+\[S =  \seq{g : g(x) = \sum^n_{k=1} c_k \chi_{e_k}, c_k \in \bC, e_k \in U} \]
 $g \in S, \int_X g(x) d\mu = \sum^n_{k=1} c_k \mu e_k$. 
 
 $f(x)$~--- измеримая, если $f(x) \geq e, x \in X$
 
 \begin{definition}[Произвольно измеримая функция]
     \[ \int_X f d\mu
- = \sup \left\{ \int_X g(x) d\mu : 0 \leq g(x) \leq g(x), x \in X, c_k \in \bR, c_k > 0 \right\} \]    
+ = \sup \left\{ \int_X g(x) d\mu : 0 \leq g(x) \leq f(x), x \in X, c_k \in \bR, c_k > 0 \right\} \]    
 \end{definition}
 
 \begin{definition}[Измеримая функция]
     $f$~--- измерима, если 
-    \[f_+(x) = \max_(f(x), 0) \, \wedge \, f_-(x) = \max(-f(x), 0) \Rightarrow f = f_+ - f_- \]
+    \[f_+(x) = \max (f(x), 0), f_-(x) = \max(-f(x), 0) \Rightarrow f = f_+ - f_- \]
 \end{definition}
-Если $\int_X f_+ d\mu$~--- конечен или $\int_X f_- d\mu$~--- конечен, то $\int_X f d\mu = \int_X f_+ d\mu - \int_X f_- d\mu$
+Если $\int_X f_+ d\mu$~--- конечен или $\int_X f_- d\mu$~--- конечен, то $\int_X f d\mu = \int_X f_+ d\mu - \int_X f_- d\mu$.
+
 Если $f$~--- измеримая, $f: X \rightarrow \bC \Rightarrow f = u + iv$
 \[ \int_X f d\mu = \int_X u d\mu + i \int_X v d\mu \]
 \begin{definition}[Множество суммируемых функций]
@@ -62,19 +61,19 @@ $f(x)$~--- измеримая, если $f(x) \geq e, x \in X$
     \[ \left\{ f_i : \int_X |f| d\mu < + \infty \right\}, |f| = f_+ + f_- \]
 \end{definition}
 
-Прежде чем двигаться дальше, приведем примры других мер (кроме мер Лебега)
+Прежде чем двигаться дальше, приведем примеры других мер (кроме мер Лебега)
 \begin{example}
-    $E \subset \bR^n$, $E$~--- измерима по Лебегу, $\lambda$~--- мера Лебега, $w(x) \geq 0, x \in E$, $w$~--- измерима по Лебегу. \\
+    $E \subset \bR^n$, $E$~--- измеримо по Лебегу, $\lambda$~--- мера Лебега, $w(x) \geq 0, x \in E$, $w$~--- измерима по Лебегу. \\
     
     $e \subset E, e$~--- измеримо по Лебегу.
-    $ \mu e = \int_e w(x) d \lambda, w(x)$~--- плотность меры $\mu$, $w(x)$~--- её вес.
+    $ \mu e = \int_e w(x) d \lambda, w(x)$~--- плотность меры $\mu$
 \end{example}
 Вторая мера в каком-то смысле противоположная. Она сосредоточна на наборе точек и называется дискретной.
 \begin{example}
     $X$~--- множество ($X \ne \varnothing$), $a \in X$
     \[ \sigma_n, e \subset X, \sigma_a(e) = \begin{cases}
-        1, a \in E \\
-        0, a \notin e 
+        1 & a \in e \\
+        0 & a \notin e 
     \end{cases} \] 
     $\forall e, e \subset  X, e$~--- измеримо
 \end{example}
@@ -91,19 +90,18 @@ $f(x)$~--- измеримая, если $f(x) \geq e, x \in X$
 
 \begin{theorem}[Неравенство Юнга]
     $p > 1, \frac{1}{p} + \frac{1}{q} = 1$ ($q$~--- сопряженный показатель)
-    \[ \Rightarrow ab \leq \frac{a^p}{p} + \frac{b^p}{q} \]
+    \[ \Rightarrow ab \leq \frac{a^p}{p} + \frac{b^q}{q} \]
 \end{theorem}
 
 \begin{proof}
     Пусть $b$~--- фиксировано, $\varphi(x) = \frac{x^p}{p} - xb, x \in [0, + \infty)$. Хотим найти $\min_{x \in [0, +\infty)} \varphi(x)$. Для этого посмотрим, где производная обращается в 0.
-    $\varphi^\prime(x) = x^{p-1} - b$, $\varphi^\prime(x_0) = 0 \Leftrightarrow x_0 = b^{\frac{1}{p-1}} \Rightarrow \varphi(x) > \varphi(x) > \varphi(x_0) \, \forall x \ne x_0, x \geq 0$.
+    $\varphi^\prime(x) = x^{p-1} - b$, $\varphi^\prime(x_0) = 0 \Leftrightarrow x_0 = b^{\frac{1}{p-1}} \Rightarrow \varphi(x) > \varphi(x_0) \, \forall x \ne x_0, x \geq 0$.
     Таким образом, $x_0$~--- строгий локальный минимум.
     \begin{gather*}
-        \varphi(x_0) = \frac{1}{p} b^{\frac{p}{p-1}} - b^{\frac{p}{p-1}} = b^{\frac{p}{p-1}}\left( \frac{1}{p} -1 \right)  = \frac{b^q}{q}  \\
-        -\frac{1}{q} = \frac{1}{p} - 1 = \frac{1-p}{p} \Rightarrow q = \frac{p}{p-1} \\
+        \varphi(x_0) = \frac{1}{p} b^{\frac{p}{p-1}} - b^{\frac{p}{p-1}} = b^{\frac{p}{p-1}}\left( \frac{1}{p} -1 \right)  = -\frac{b^q}{q}  \\
+       \left[ \left[ -\frac{1}{q} = \frac{1}{p} - 1 = \frac{1-p}{p} \Rightarrow q = \frac{p}{p-1} \right] \right]\\
         \varphi(x) \geq - \frac{b^q}{q} \, \forall x \in [0, + \infty) \text { то есть ОК} 
     \end{gather*}
-    \[ \varphi(x_0) = \frac{1}{p} b^{\frac{p}{p-1}} - b^{\frac{p}{p-1}} = b^{\frac{p}{p-1}}\left( \frac{1}{p} -1 \right)  = \frac{b^q}{q} \]
 \end{proof}
 
 \begin{remark}
@@ -111,18 +109,18 @@ $f(x)$~--- измеримая, если $f(x) \geq e, x \in X$
 \end{remark}
 
 \begin{theorem}[Неравенство Гельдера]
-    $(X, U, \mu)$~---- пространство с мерой. $f, g$~--- измеримые, $p > 1, \frac{1}{p} + \frac{1}{q} = 1 \Rightarrow$
+    $(X, U, \mu)$~--- пространство с мерой. $f, g$~--- измеримые, $p > 1, \frac{1}{p} + \frac{1}{q} = 1 \Rightarrow$
     \[ \int_X |fg| d\mu \leq \left( \int_X |f|^p d\mu \right)^{\frac{1}{p}} \cdot \left( \int_X |g|^q d\mu \right)^{\frac{1}{q}} \tag{*} \]
 \end{theorem}
-Если $p=q=2$, то это <<Неравенство Коши-Бунаковского-Шварца>>, или на молодёжном математическом сленге неравенство КБШ 
+Если $p=q=2$, то это <<Неравенство Коши-Бунаковского-Шварца>>, или на молодёжном математическом сленге неравенство КБШ.
 
 \begin{proof}
 Для начала отбросим какие-то простые случаи. \\
 $A = \left( \int_X |f|^p d \mu \right)^{\frac{1}{p}}, B = \left( \int_X |g|^q d \mu \right)^{\frac{1}{q}}$.
-Если $A = 0 \Leftrightarrow |f| = 0$ почти всюду по $\mu$ $\Leftrightarrow f(x) = 0$ почти всюду по $\mu$ (то есть $\mu \{x: f(x) \ne 0 \} = 0)$
+Если $A = 0 \Leftrightarrow |f| = 0$ почти всюду по $\mu$ $\Leftrightarrow f(x) = 0$ почти всюду по $\mu$ (то есть $\mu \{x: f(x) \ne 0 \} = 0)$.
 На всякий случай поясним, почему функция равна 0 почти всюду по мере $\mu$
 \[ \int_X |f| d \mu = 0 \Rightarrow e = \{x: f(x) = 0 \}, m \in \bN, e_m = \{x: |f(x)| > \frac{1}{m} \} \]
-\[e = \cup^\infty_{m=1} e_m \quad \int_X |f| d \mu \geq \int_{e_m} |f| d\mu \geq \frac{1}{m} \mu e_m \Rightarrow \mu e_m = 0 \Rightarrow \mu E = 0 \]
+\[e = \bigcup^\infty_{m=1} e_m \quad \int_X |f| d \mu \geq \int_{e_m} |f| d\mu \geq \frac{1}{m} \mu e_m \Rightarrow \mu e_m = 0 \Rightarrow \mu E = 0 \]
 
 \[ \Rightarrow f(x) \cdot g(x) = 0 \text { п.в. } \quad 0 \leq 0 \tag{*} \]
 Если $A = +\infty$, то (*) 
@@ -134,7 +132,7 @@ $A = \left( \int_X |f|^p d \mu \right)^{\frac{1}{p}}, B = \left( \int_X |g|^q d 
 Пусть $x$~--- фиксирован, $a = |f(x)|$, $b = |g(x)| \stackrel{\text{н.Юнга}}{\Rightarrow}$ 
 \begin{multline*}
     |f_1(x)| \cdot |g_1(x)| \leq \frac{|f_1(x)|^p}{p} + \frac{|g_1(x)|^q}{q} \text{ проинтегрируем } X \text { по } \mu \\
-    \Rightarrow \int_x |f_1| \cdot |g_1| d \mu \leq \frac{1}{p} \int_X |f_1|^p d\mu + \frac{1}{q} \int_X |g_1|^q d\mu = \frac{1}{p} + \frac{1}{q} = 1
+    \Rightarrow \int_X |f_1| \cdot |g_1| d \mu \leq \frac{1}{p} \int_X |f_1|^p d\mu + \frac{1}{q} \int_X |g_1|^q d\mu = \frac{1}{p} + \frac{1}{q} = 1
 \end{multline*}
 Умножаем на $AB \Rightarrow \int_X |fg| d \mu \leq AB $
 \end{proof}

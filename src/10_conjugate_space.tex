@@ -111,7 +111,7 @@ $\mu$ --- полная мера, то есть если $A \subset U, \mu A = 0$
 \begin{remark}
     \begin{gather*}
         1 \leq p \leq +\infty \\
-        T: l_q \rightarrow (l^p)^* \quad y \in l^q \\
+        T: l^q \rightarrow (l^p)^* \quad y \in l^q \\
         T(y) = F_y
     \end{gather*}
     Если $1 \leq p < + \infty$, то $T$ --- линейный изометрический изоморфизм. Говорят $(l^p)^* = l^q$, а имеют в виду $T(l^q) = (l^p)^*$
@@ -131,7 +131,7 @@ $\mu$ --- полная мера, то есть если $A \subset U, \mu A = 0$
 \begin{theorem}[сопряжённое к $c_0$]
     \begin{enumerate}
         \item $F_y(x) = \sum^\infty_{n=1} x_n y_n \Rightarrow F_y \in (c_0)^*, \norm{F_y} = \norm{y}_1$
-        \item $F \subset (c_0)^* \Rightarrow \: \exists! y \in l^1 \text{ т.e. } F = F_y $
+        \item $F \in (c_0)^* \Rightarrow \: \exists! y \in l^1 \text{ т.e. } F = F_y $
     \end{enumerate}
 \end{theorem}
 
@@ -193,7 +193,7 @@ $\mu$ --- полная мера, то есть если $A \subset U, \mu A = 0$
 
 \begin{theorem}[каноническое вложение $X$ во второе сопряженное]
     $(X, \norm{\cdot}), \pi: X \rightarrow X^{**} \Rightarrow$
-    \[ \pi \in \B(X, X^**), \norm{\pi(x)}_{X^{**}} = \norm{x}_X (\Rightarrow \norm{\pi} = 1) \]
+    \[ \pi \in \B(X, X^{**}), \norm{\pi(x)}_{X^{**}} = \norm{x}_X (\Rightarrow \norm{\pi} = 1) \]
 \end{theorem}
 \begin{proof}
     Проверим, что при фиксированном $x, \pi(x) \in X^{**}$ есть линейность:
@@ -203,7 +203,7 @@ $\mu$ --- полная мера, то есть если $A \subset U, \mu A = 0$
         \Rightarrow \pi(x) \in \Lin(X^*, \bC) \\
         f \in X^* \quad \abs{(\pi(x))(f)} = \abs{f(x)} \leq \norm{f} \cdot \norm{x} \: \forall f \Rightarrow \pi(x) \in (X^*)^* \\
         \norm{\pi(x)} \leq \norm{x}
-        \intertext{вспомним следствие из теоремы Хана-Банаха о достаточном числе линейныйх функционалов}
+        \intertext{вспомним следствие из теоремы Хана-Банаха о достаточном числе линейных функционалов}
         \exists g \in X^*, \norm{g} = 1, g(x) = \norm{x} \\
         \norm{\pi(x)} \geq \abs{(\pi(x))(g)} = \abs{g(x)} = \norm{x} \\
         \Rightarrow \norm{\pi(x)} = \norm{x}_X \Rightarrow \norm{\pi} = 1
@@ -279,14 +279,14 @@ $\mu$ --- полная мера, то есть если $A \subset U, \mu A = 0$
 \begin{proof}[1]
     \begin{gather*}
         \text{пусть } x_0 = \wlim x_n, y_0 = \wlim x_n \Rightarrow \: \forall f \in X^* \liml_{n \to \infty} f(x_n) = f(x_0), \liml_{n \to \infty} f(x_n) = f(y_0) \\
-        [[\text{ по следствию о достаточном числе линейныйх функционалов}]] \\
+        [[\text{ по следствию о достаточном числе линейных функционалов}]] \\
         \exists g \in X^*, \norm{g} = 1 \quad g(x_0 - y_0) = \norm{x_0-y_0} \\
         g(x_0) = g(y_0) \Rightarrow \norm{x_0 - y_0} = 0 \Rightarrow x_0 = y_0
     \end{gather*}
 \end{proof}
 
 \begin{proof}[2]
-    Пусть $f \in X^*, \abs{f(x_0) - f(x_n)} \leq \norm{f} \cdot \underbrace{\norm{x_0 - x_n}}_{\underset{n \to \infty}{\longrightarrow}} 0 \ Rightarrow \liml_{n \to \infty} f(x_n) = f(x_0)$
+    Пусть $f \in X^*, \abs{f(x_0) - f(x_n)} \leq \norm{f} \cdot \underbrace{\norm{x_0 - x_n}}_{\underset{n \to \infty}{\longrightarrow} 0} \Rightarrow \liml_{n \to \infty} f(x_n) = f(x_0)$
 \end{proof}
 
 Воспользуемся теоремой Банаха-Штейнгауза чтобы получить критерий слабой сходимости.
@@ -312,10 +312,10 @@ $f \in E \Rightarrow \liml_{n \to \infty} f(x_n) = f(x_0)$
         [[\pi(x) : X^* \rightarrow \bC \quad X^*, \bC \text{ --- банаховы, теорема Банаха-Штейнгауза}]] \\
         \begin{cases}
             \sup_n \norm{\pi(x_n)} < +\infty \\
-            E \subset X^*, \overline{\calL{E}} = X^*, \forall f \in E \liml_{n \to \infty} (\pi(x_n))(f) = (\pi(x_0))(f)
+            E \subset X^*, \overline{\calL(E)} = X^*, \forall f \in E \liml_{n \to \infty} (\pi(x_n))(f) = (\pi(x_0))(f)
         \end{cases} \Leftrightarrow \\
         \begin{cases}
-            \sup_n \norm{\pi(x_n)} < +\infty \\
+            \sup_n \norm{x_n} < +\infty \\
             \forall f \in E, \overline{\calL(E)} = X^*, \liml_{n \to \infty} f(x_n) = f(x_0)
         \end{cases}
     \end{gather*}
@@ -341,15 +341,15 @@ $f \in E \Rightarrow \liml_{n \to \infty} f(x_n) = f(x_0)$
 Теперь, господа, какое-то странное определение-обозначение для того, чтобы обозначать действие линейного функционала на элемент и забыть про $\pi(x)$ и писать $x$. Есть $X, X^*$.
 \begin{gather*}
     x \in X, f \in X^* \\
-    <f,x> \coloneqq f(x) \\
-    <x,f> \coloneqq f(x)
+    \langle f,x \rangle \coloneqq f(x) \\
+    \langle x,f \rangle \coloneqq f(x)
 \end{gather*}
-Например, $1 < p < +\infty, f \in L^p, y \in L^q, <f,g> = \int_X fg d\mu$. Одна компонента --- функция, другая --- линейный функционал, и может быть наоборот.
+Например, $1 < p < +\infty, f \in L^p, g \in L^q, \langle f,g \rangle = \int_X fg d\mu$. Одна компонента --- функция, другая --- линейный функционал, и может быть наоборот.
 
 
 \begin{theorem}[слабая сходимость в $l^p, 1 < p < + \infty$]
     \[ x^{(n)} \in l^p, x = \wlim x^{(n)} \Leftrightarrow \begin{cases}
-        \sup_n \norm{x^{(n)}} < _\infty \\
+        \sup_n \norm{x^{(n)}} < +\infty \\
         \liml_{n \to \infty} x^{(n)}_j = x_j \: j \in \bN
     \end{cases} \]
 \end{theorem}
@@ -360,13 +360,13 @@ $f \in E \Rightarrow \liml_{n \to \infty} f(x_n) = f(x_0)$
         \overline{\calL(E)} = l^q
         \intertext{В $l^q$ мы выберем базис. Рассмотрим действие $f$ на произвольном элементе} 
         x \in l^p \quad e_n \in l^q \Rightarrow e_n \in (l^p)^* \\
-        <e_n, x> = \sum^\infty_{j=1} (e_n)_j x_j = x_n, <e_m, x> = x_m
+        \langle e_n, x \rangle = \sum^\infty_{j=1} (e_n)_j x_j = x_n, \langle e_m, x \rangle = x_m
         \intertext{применим критерий}
         x = \wlim_{n \to \infty} x^{(n)} \Leftrightarrow \begin{cases}
             \sup_n {\norm{x^{(n)}}}_p < +\infty \\
-            \liml_{n \to \infty} <e_j, x^{(n)}> =  <e_j,x> \: \forall j \\
+            \liml_{n \to \infty} \langle e_j, x^{(n)} \rangle =  \langle e_j,x \rangle \: \forall j \\
         \end{cases}
-        2 \Leftrightarrow \liml_{n \to \infty} x_j^{(n)} =
+        2 \Leftrightarrow \liml_{n \to \infty} x_j^{(n)} = x_j
     \end{gather*}
 \end{proof}
 
@@ -381,10 +381,10 @@ $f \in E \Rightarrow \liml_{n \to \infty} f(x_n) = f(x_0)$
 \begin{example}
     \begin{gather*}
         e_m = (0, 0, \ldots, 0, 1, 0, \ldots) \\
-        \sigma^m = \begin{cases}
+        \sigma^m_j = \begin{cases}
             1 &  m = j \\
             0 & m \ne j
-        \end{cases}, e_m = \seq{\sigma_j^m}^\infty_{j=1}
+        \end{cases}, \quad e_m = \seq{\sigma_j^m}^\infty_{j=1}
         \intertext{Давайте убедимся, что слабый предел последовательностей $m$ равен 0}
         \left. \begin{matrix}
             \liml_{m \to \infty} \sigma_j^m = 0 \forall j \\
@@ -404,24 +404,24 @@ $f \in E \Rightarrow \liml_{n \to \infty} f(x_n) = f(x_0)$
         \sup_n \norm {f_n}_p < +\infty \\
         \liml_{n \to \infty} \int_A f_n d\mu = \int_A f d\mu \: A \in U, 1 < p < +\infty, \mu A < +\infty \tag{2}
     \end{cases} \]
-    \[ \liml_{n \to \infty} \int_A f_n d\mu = \int_A f d\mu \: \forall A \in U, p = 1, \mu A < +\infty  \tag{2\prime}\]
+    \[ \liml_{n \to \infty} \int_A f_n d\mu = \int_A f d\mu \: \forall A \in U, p = 1  \tag{2\prime}\]
 \end{theoremwobox}
 
 \begin{proof}
-    Мы помним, что $(L^p)^* = L^q$ \footnote{пишем равно, но имеем в виду изометрический изоморфизм}
+    Мы помним, что $(L^p)^* = L^q$\footnote{пишем равно, но имеем в виду изометрический изоморфизм}
     \begin{gather*}
         g \in L^q, f \in L^p \\
-        <g,f> = \int_x g(x) f(x) d \mu
+        \langle g,f \rangle = \int_X g(x) f(x) d \mu
         \intertext{В $L^q$ мы хотим предъявить подмножество, которое будет полным семейством. Мы когда-то обсуждали, что у нас будет полным семейством в $L^q$}
         \text{пусть } p > 1 \Rightarrow q < +\infty \Rightarrow E = \seq{\chi_A}_{A \in U, \mu(A) < +\infty} \text{ --- полное семейство в } L^q, \text{ т.е.} \\
         \overline{\calL(E)} = L^q \\
-        g = \chi_A, f \in L^p \Rightarrow <\chi_A, f> = \int_A f(x) d\mu
+        g = \chi_A, f \in L^p \Rightarrow \langle\chi_A, f \rangle = \int_A f(x) d\mu
     \end{gather*}
         теперь воспользуемся критерием слабой сходимости
         \begin{gather*}
         f = \wlim f_n \Leftrightarrow [[\text{ критерий }]] \begin{cases}
             \sup_n \norm{f_n}_p < +\infty \\
-            \forall \chi_A \in E \liml_{n \to \infty} <\chi_A, f_n> = <\chi_A, f>
+            \forall \chi_A \in E \liml_{n \to \infty} \langle \chi_A, f_n \rangle = \langle \chi_A, f \rangle
         \end{cases} \\
         2 \Leftrightarrow \liml_{n \to \infty} \int_A f_n d\mu = \int_A f d\mu \: \forall A \in U, \mu(A) < +\infty \\
     \end{gather*}
@@ -464,9 +464,9 @@ $f \in E \Rightarrow \liml_{n \to \infty} f(x_n) = f(x_0)$
     Теперь $1 \Leftrightarrow 3$. По критерию слабой сходимости 
     \begin{gather*}
         1 \Leftrightarrow \begin{cases}
-            \sup_n \norm{x_n} < _\infty \\
-            \exists E \subset H^*, \forall f \in E
-        \end{cases}, \liml_{n \to \infty} f(x_n) = f(x) \\
+            \sup_n \norm{x_n} < +\infty \\
+            \exists E \subset H^*, \forall f \in E, \liml_{n \to \infty} f(x_n) = f(x)
+        \end{cases}\\
         \forall f \in E \: \exists y \in E_1, E_1 \subset H \\
         f(x) = (x,y), \overline{\calL(E)} = H^* \Leftrightarrow \overline{\calL(E_1)}^H = H \\
         \Leftrightarrow \liml_{n \to \infty} (x_n, y) = (x,y) \: \forall y \in E_1
@@ -551,19 +551,19 @@ $f \in E \Rightarrow \liml_{n \to \infty} f(x_n) = f(x_0)$
 \begin{proof}
     \begin{gather*}
         (c_0)^* = l^1, (l^1)^* = l^\infty, e_m = (0, \ldots, 0, 1, 0, \ldots) \\
-        x \in c_0, y \in l_1, <y,x> = \sum^\infty_{n=1} x_n y_n, E = \seq{e_m}^\infty_{m=1}, e_m \in c_0 \\
+        x \in c_0, y \in l_1, \langle y,x\rangle = \sum^\infty_{n=1} x_n y_n, E = \seq{e_m}^\infty_{m=1}, e_m \in c_0 \\
         E \text{ --- полное семейство в } c_0 
         \intertext{применим критерий слабой со * сходимости} 
         x = \wstarlim x^{(m)} \Leftrightarrow \begin{cases}
             \sup \norm{x^{(m)}}_1 < +\infty \\
-            \liml <x^{(m)}, e_j > = <x, e_j> \: \forall j \in \bN \tag{2}
+            \liml \langle x^{(m)}, e_j\rangle = \langle x, e_j \rangle \: \forall j \in \bN \tag{2}
         \end{cases} \\
-        <x^{(m)}, e_j> = x^{(m)}_j, 2 \Leftrightarrow \liml_{m \to \infty} x^{(m)}_j = x_j \: \forall j \in \bN
+        \langle x^{(m)}, e_j \rangle = x^{(m)}_j, 2 \Leftrightarrow \liml_{m \to \infty} x^{(m)}_j = x_j \: \forall j \in \bN
     \end{gather*}
     Разобрались с первой половиной теоремы. Во второй же нам надо использовать $(l^1)^* = l^\infty$
     \begin{gather*}
         x \in l^1, y \in l^\infty \\
-        <y,x> = \sum^\infty_{n=1} x_n y_n 
+        \langle y,x\rangle = \sum^\infty_{n=1} x_n y_n 
         \intertext{В огромном пространстве $l^\infty$ нет никакой надежды предъявить счётное семейство, которое будет полным, его там нет. Что же будем делать?}
         A \subset \bN,  X^A_j = \begin{cases}
             1 & j \in A \\
@@ -572,11 +572,11 @@ $f \in E \Rightarrow \liml_{n \to \infty} f(x_n) = f(x_0)$
         \text{ если есть } L^\infty(X,\mu), \text{ то } \seq{\chi_A}_{A \in U} \text{ --- полное семейство в } L^\infty(X, U,\mu) \\
         l^\infty = L^\infty(\bN, \mu), \mu(n) = 1 \Rightarrow \seq{\chi^A}_{A \subset N} \text{ --- полное семейство в } l^\infty \\
         E = \seq{X^A}_{A \subset \bN} \\
-        <X^A, x^{(m)}> = \sum_{j \in A} x^{(m)}_j
+        \langle X^A, x^{(m)}\rangle = \sum_{j \in A} x^{(m)}_j
         \intertext{воспользуемся критерием слабой сходиости} 
         x = \wlim x^{(m)} \Leftrightarrow \begin{cases}
             \sup \norm{x^{(m)}}_1 < +\infty \\
-            \forall A \subset \bN \: \liml_{m \to \infty} <X^A, x^{(m)}> = <X^A, x> (2)
+            \forall A \subset \bN \: \liml_{m \to \infty} \langle X^A, x^{(m)}\rangle = \langle X^A, x\rangle (2)
         \end{cases} \\
         (2) \Leftrightarrow \liml_{m \to \infty} \sum_{j \in A} x^{(m)}_j  = \sum_{j \in A} x_j
     \end{gather*}
@@ -761,12 +761,12 @@ $f \in E \Rightarrow \liml_{n \to \infty} f(x_n) = f(x_0)$
         K^*, (L^p(\bR^n))^* = L^q(\bR^n), (L^q(\bR^m))^* = L^p(\bR^m) \\
         \Rightarrow K^* \in \B(L^q(\bR^n), L^p(\bR^m)) \\
         T \in \B(X,Y), T^* \in \B(Y^*, X^*) \\
-        f \in Y^*, x \in X \quad <f,Tx> = <T^*f, x> \Leftrightarrow (T^*f)(x) = f(Tx)
+        f \in Y^*, x \in X \quad \langle f,Tx\rangle = \langle T^*f, x\rangle \Leftrightarrow (T^*f)(x) = f(Tx)
     \end{gather*}
-    $f \in L^p, g \in L^q, <f,g> = \int_X fg d\mu, f \in (L^q)^*, f$ действует на $g$ или $g \in (L^p)^*, g$ действует на $f$
+    $f \in L^p, g \in L^q, \langle f,g\rangle = \int_X fg d\mu, f \in (L^q)^*, f$ действует на $g$ или $g \in (L^p)^*, g$ действует на $f$
     \begin{gather*}
-        <g, \K f> = <\K^*g, f> \quad f \in L^q(\bR^m), g \in L^q(\bR^n) \\
-        <g, \K f> = \int_{\bR^n} g(x) \left( \int_{\bR^m} K(x,y) f(y) dy \right) dx = \int_{\bR^m} f(y) \left( \int_{\bR^n} K(x,y) g(x) dx \right) dy \\
+        \langle g, \K f \rangle = \langle \K^*g, f\rangle \quad f \in L^q(\bR^m), g \in L^q(\bR^n) \\
+        \langle g, \K f\rangle = \int_{\bR^n} g(x) \left( \int_{\bR^m} K(x,y) f(y) dy \right) dx = \int_{\bR^m} f(y) \left( \int_{\bR^n} K(x,y) g(x) dx \right) dy \\
         \Rightarrow (\K^*g)(y) = \int_{\bR^n} K(x,y) g(x) dx, g \in L^q(\bR^n) \\
         K^* \text{ --- ядро оператора } \K^* \\
         (\K^* g)(y) = \int_{\bR^n} K^*(y,x) g(x) dx \Rightarrow K^*(y,x) = K(x,y)
@@ -940,39 +940,3 @@ $\norm{T^* y} = \norm{G_y} \leq \norm{T} \cdot \norm{y}, T^*$ --- эрмитов
 \end{proof}
 
 \end{document}
-
-
-
-
-
-
-
-
-
-
-
-a[i..j]
-a[1..k]
-
-k = 10000
-i, j = 1, 5
-
-intersection : i <= 1 <= j || i <= j <= k
-
-{i [1.....j}..........k]
-
-if ()
-
-
-( &  &
- &  &
-   | | t |  
-| | , 0)
-
-(t,0)
-T V b
-
-
-a & !a | b
-
-!a & !b | a | b | c
