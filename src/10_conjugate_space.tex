@@ -706,7 +706,7 @@ $f \in E \Rightarrow \liml_{n \to \infty} f(x_n) = f(x_0)$
         \intertext{линейность проверили. Теперь посчитаем норму $T^*$}
         \norm{T^*} = \sup_{\{f \in Y^*, \norm{f} \leq 1\}} \norm{T^* f} =
         \intertext{но при фиксированном $f$ у нас получается линейный функционал, поэтому} 
-        = \sup_{\seq{\norm{f}_{Y^*} \leq}} (\sup_{\seq{\norm{x} \leq 1}}) \abs{(T^*f)(x)} =
+        = \sup_{\seq{\norm{f}_{Y^*} \leq}} \left(\sup_{\seq{\norm{x} \leq 1}} \abs{(T^*f)(x)} \right) =
         \intertext{нам ничего не стоит поменять $\sup$ местами. По следствию из теоремы Хана-Банаха получаем}
         = \sup_{\seq{\norm{x} \leq 1}} (\sup_{\seq{\norm{f} \leq 1}} \abs{f(Tx)}) = \sup_{\seq{\norm{x} \leq 1}} \norm{Tx} = \norm{T}
     \end{gather*}
@@ -724,7 +724,7 @@ $f \in E \Rightarrow \liml_{n \to \infty} f(x_n) = f(x_0)$
 \begin{proof}[4]
     \begin{gather*}
         (ST)^*: Z^* \rightarrow X^*, f \in Z^*, x \in X \\
-        (((ST)^*)(f))(x) = f((ST)(x)) = F(S(Tx)) = (S^*f)(Tx) = (T^*(S^*f))(x) \\
+        (((ST)^*)(f))(x) = f((ST)(x)) = f(S(Tx)) = (S^*f)(Tx) = (T^*(S^*f))(x) \\
         \forall x \in X, \forall f \in Z^* \Rightarrow (ST)^* = T^* S^*
     \end{gather*}
 \end{proof}
@@ -732,14 +732,14 @@ $f \in E \Rightarrow \liml_{n \to \infty} f(x_n) = f(x_0)$
 Посмотрим, как выглядит сопряжённый оператор для интегрального оператора. Будем думать, что речь идёт о мере Лебега, чтобы не пугаться каких-то абстрактных мер, хотя Лебег тут совершенно ни при чём.
 \begin{theoremwobox}
     \begin{gather*}
-        x \in \bR^n, y \in \bR^n, K(x,y)  \in L^p(\bR^{n+m}), 1 \leq p < + \infty \\
+        x \in \bR^n, y \in \bR^n, K(x,y)  \in L^p(\bR^{n+m}), 1 < p < + \infty \\
         M = \norm{K}_{L^p} = \left(\int_{\bR^n} \int_{\bR^m} \abs{K(x,y)}^p dx dy\right)^{\frac{1}{p}} \\
         (\K (f))(x) = \int_{\bR^m} K(x,y) f(y) dy, f \in L^q(\bR^m)
     \end{gather*}
     $dx$ в $\bR^n$, $dy$ в $\bR^m$, $dx dy$ --- в $\bR^{n+m}$. Тогда 
     \begin{enumerate}
         \item $\K \in \B(L^q(\bR^m), L^p(\bR^n))$
-        \item $(\k^* g)(y) = \int_{\bR^n} K(x,y) g(x) dx $
+        \item $(\K^* g)(y) = \int_{\bR^n} K(x,y) g(x) dx $
     \end{enumerate}
 \end{theoremwobox}
 
@@ -749,7 +749,7 @@ $f \in E \Rightarrow \liml_{n \to \infty} f(x_n) = f(x_0)$
         \int_{\bR^m} \left( \int_{\bR^n} \abs{K(x,y)}^p dx \right) dy < +\infty \Rightarrow \\
         \int_{\bR^n} \abs{K(x,y)}^p dx < +\infty \text{ для п.в. } y \text{ по мере Лебега } dy \text{ в } \bR^m \\ 
         x \in \bR^n, f \in L^q \\
-        \abs{(Kf)(x)} = \abs{ \int_{\bR^m} K(x,y) f(y)dy} \leq [[\text{Гёльдер}]] \left( \int_{\bR^m} \abs{K(x,y)}^pdy \right) \cdot \norm{f}_q
+        \abs{(\K f)(x)} = \abs{ \int_{\bR^m} K(x,y) f(y)dy} \leq [[\text{Гёльдер}]] \left( \int_{\bR^m} \abs{K(x,y)}^pdy \right)^{\frac{1}{p}} \cdot \norm{f}_q
         \intertext{последний интеграл конечен для п.в. $x$. Теперь хотим оценить норму этой штуки в $L^p$} 
         \left( \int_{\bR^n} \abs{\K f(x)}^p dx \right)^{\frac{1}{p}} \leq \norm{f}_q \underbrace{\left(\int_{\bR^n} \left( \int_{\bR^m} \abs{K(x,y)}^p dy \right)dx\right)^{\frac{1}{p}}}_{M} = M \norm{f}_q \\ %attention
         \Rightarrow \K \in \B(L^q(\bR^n), L^p(\bR^n)), \norm{K} \leq M
@@ -807,14 +807,14 @@ $\norm{T^* y} = \norm{G_y} \leq \norm{T} \cdot \norm{y}, T^*$ --- эрмитов
 \begin{proof}[1]
     \begin{multline*}
         (Tx,y) = (x, T^*y) = \overline{(T^*y, x)} = \overline{(y, T^{**}x)} = (T^{**}x, y) \: \forall y \in H \\ 
-        \Rightarrow Tx = T^{**}x \: \forall x \in X
+        \Rightarrow Tx = T^{**}x \: \forall x \in H
     \end{multline*}
 \end{proof}
 
 \begin{proof}[2]
     $T^* \in \Lin(H)$ --- очевидно. При определении $T^*$ доказали $\norm{T^*y} \leq \norm{T} \cdot \norm{y} \Rightarrow 
     T^* \in \B(H), \norm{T^*} \leq \norm{T}$. Теперь вот такой трюк мы будем часто использовать
-      \[  \Rightarrow \norm{T^**} \leq \norm {T^*}, \text{ но } T^{**} = T \Rightarrow \norm{T} = \norm{T^*} \]
+      \[  \Rightarrow \norm{T^{**}} \leq \norm {T^*}, \text{ но } T^{**} = T \Rightarrow \norm{T} = \norm{T^*} \]
 \end{proof}
 
 \begin{proof}[3]
@@ -829,9 +829,10 @@ $\norm{T^* y} = \norm{G_y} \leq \norm{T} \cdot \norm{y}, T^*$ --- эрмитов
 \begin{proof}[6]
     \begin{gather*}
         \text{пусть } \exists T^{-1} \Rightarrow TT^{-1} = I, T^{-1}T = I, I^* = I \stackrel{5}{\Rightarrow} \\
-        (T^{-1})^* T^* = I \\ cases
+        (T^{-1})^* T^* = I \\ \begin{cases}
         T^* (T^{-1})^* = I \Rightarrow \: \exists (T^*)^{-1} = (T^{-1})^* \\
         \text{пусть } \exists (T^*)^{-1} \Rightarrow \: \exists (T^{**})^{-1}, \text{ но } T^{**} = T
+        \end{cases}
     \end{gather*}
     
 \end{proof}
@@ -855,7 +856,7 @@ $\norm{T^* y} = \norm{G_y} \leq \norm{T} \cdot \norm{y}, T^*$ --- эрмитов
     \begin{enumerate}
         \item $K \in \B(L^2(\bR^n))$
         \item $\K^*$ --- эрмитово-сопряженный 
-        \item $(K^*g)(y) = \int_{\bR^n} \overline{K(x,y)} g(x) dx, \K^* \in \B(\L^2(\bR^n))$
+        \item $(K^*g)(y) = \int_{\bR^n} \overline{K(x,y)} g(x) dx, \K^* \in \B(L^2(\bR^n))$
     \end{enumerate}
     \[ (\K^* g)(y) = \int_{\bR^n} K^*(y,x) g(x) dx \Rightarrow K^*(y,x) = \overline{K(x,y)} \] 
 \end{corollary}
@@ -896,13 +897,13 @@ $\norm{T^* y} = \norm{G_y} \leq \norm{T} \cdot \norm{y}, T^*$ --- эрмитов
 \begin{proof}
     Просто по определению. Возьмём $x \in Y^\perp, y \in Y$
     \begin{gather*}
-        (Tx, y) = (x, Ty) = 0 \text{ так как } x \in Y^\perp, Ty \in Y \\
+        (T^*x, y) = (x, Ty) = 0 \text{ так как } x \in Y^\perp, Ty \in Y \\
         \Rightarrow T^* x \in Y^\perp \Rightarrow T^*(Y^\perp) \subset Y^\perp
     \end{gather*}
 \end{proof}
 
-\begin{definition}[саомсопряжённый оператор]
-    $H$ --- гильбертово пространство. $T \in \B(H), T$ --- \textbf{саомсопряжённый}, если $T = T^*$
+\begin{definition}[самосопряжённый оператор]
+    $H$ --- гильбертово пространство. $T \in \B(H), T$ --- \textbf{самосопряжённый}, если $T = T^*$
 \end{definition} 
 \[ \Leftrightarrow (Tx, y) = (x, Ty) \: \forall x, y \in H \]
 
