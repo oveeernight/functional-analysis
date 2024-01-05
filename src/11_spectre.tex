@@ -10,8 +10,8 @@
     Теперь множество комплексных чисел разбивается на 2 подмножества. $\lambda$ --- \textbf{регулярное значение}, если $V(\lambda)$ --- биекция [[ теорема Банаха ]] $\Rightarrow
     \: \exists (V(\lambda))^{-1} \in \B(X)$. 
 
-    $\rho(T) = \{ \lambda \text{ --- регулярная } \}$ --- \textbf{резвольвентное множество}
-    \[ R(\lambda) : \rho(T) \rightarrow \B(X) \quad \R(\lambda, T) = R(\lambda) = (V(\lambda))^{-1} \]
+    $\rho(T) = \{ \lambda \text{ --- регулярная } \}$ --- \textbf{резольвентное множество}
+    \[ R(\lambda) : \rho(T) \rightarrow \B(X) \quad R(\lambda, T) = R(\lambda) = (V(\lambda))^{-1} \]
     $R$ --- \textbf{резольвента}
 \end{definition}
 
@@ -35,11 +35,11 @@
     \item $\sigma_c(T)$ --- непрерывный спектр (c = continuous) 
     \begin{gather*}
         \sigma_c(T) = \seq{\lambda \in \bC, \Ker(\lambda I - T) = \seq{0}} \\
-        V(\lambda) \text{ --- всюду плотен в } X, \text{ то есть } \overline{(\lambda I - T)(X)} = X
+        (V(\lambda)(X)) \text{ --- всюду плотен в } X, \text{ то есть } \overline{(\lambda I - T)(X)} = X
     \end{gather*}
     хоть и не биекция, но почти --- на всюду плотном множестве существует решение уравнения
-    \item $\sigma_r(T)$ --- остаточный спектр (r = reminder)
-           \[ \sigma_r = \seq{\lambda \in \bC: \Ker(\lambda I - T) = \seq{0}, \overline{\lambda I - T}(X) \subsetneq X } \] 
+    \item $\sigma_r(T)$ --- остаточный спектр (r = remainder)
+           \[ \sigma_r = \seq{\lambda \in \bC: \Ker(\lambda I - T) = \seq{0}, \overline{\lambda I - T(X)} \subsetneq X } \] 
            образ $(V(\lambda))(X)$ не плотен в $X$
 \end{enumerate}
 
@@ -55,7 +55,7 @@
     \begin{enumerate}
         \item $R(\lambda) R(\mu) = R(\mu) R(\lambda)$
         \item $R(\lambda)-R(\mu)=(\mu-\lambda)R(\lambda)R(\mu)$ (тождество Гильберта) 
-        \item $\lambda \in \bC. \abs{\lambda} \geq \norm{T} \Rightarrow \lambda \in \rho(T)$
+        \item $\lambda \in \bC, \abs{\lambda} > \norm{T} \Rightarrow \lambda \in \rho(T)$
         \item $\rho(T)$ --- открытое множество, $\mu \in \rho(T), \seq{\lambda \in \bC: \abs{\lambda - \mu} < \frac{1}{\norm{R(\mu)}}} \subset \rho(T)$
         \item $R(\lambda)$ --- непрерывная функция, то есть $\liml_{\lambda \to \mu} \norm{R(\lambda) - R(\mu)} = 0, \liml_{\lambda \to \infty} R(\lambda) = 0$
         \item $F \in (\B(X))^*, g(\lambda) = F(R(\lambda)), \lambda \in \rho(T) \Rightarrow g(\lambda)$ --- аналитическая в $\rho(T)$ (то есть $\exists g^\prime(\lambda))$
@@ -84,7 +84,7 @@
 \begin{proof}[3]
     \begin{gather*}
         \lambda \in \bC, \abs{\lambda} > \norm{T} \\
-        V(\lambda) = \lambda I - T = \lambda \left(I - \frac{1}{\lambda} T \right)
+        V(\lambda) = \lambda I - T = \lambda \left(I - \frac{1}{\lambda} T \right), 
         \norm{\frac{1}{\lambda} T} < 1 \\
          [[\text{ теорема об обратимости оператора, близкого к тождественному }]] \Rightarrow \\
         \exists \left( I - \frac{1}{\lambda}T \right)^{-1} \Rightarrow R(\lambda) = \frac{1}{\lambda} \left(I - \frac{1}{\lambda}T \right)^{-1}
@@ -116,7 +116,7 @@
 
 \begin{proof}[6]
     \begin{gather*}
-        \frac{R(\lambda)-R(\mu)}{\lambda - \mu} \stackrel{2}{=} \frac{(\mu-\lambda)R(\lambda)R(\mu)}{\lambda - \mu} = -R(\lambda) R(\mu) \underset{\lambda \to \mu}{\longrightarrow} - R(\mu)^2
+        \frac{R(\lambda)-R(\mu)}{\lambda - \mu} \stackrel{2}{=} \frac{(\mu-\lambda)R(\lambda)R(\mu)}{\lambda - \mu} = -R(\lambda) R(\mu) \underset{\lambda \to \mu}{\longrightarrow} - R(\mu)^2 \\
         %\intertext{можно было бы сказать, ура, есть аналитическая функция со значениями в банаховом пространстве, но у нас пока его нет}
         F \in (\B(X))^* \quad g(\lambda) = F(R(\lambda)) \\
         \frac{g(\lambda) - g(\mu)}{\lambda - \mu} = \frac{F(R(\lambda)) - F(R(\mu))}{\lambda - \mu} = F \left( \frac{R(\lambda) - R(\mu)}{\lambda - \mu} \right) \underset{\lambda \to \mu}{\longrightarrow} \\
@@ -154,14 +154,13 @@
     $\rho(T)$ --- открыто, $\rho(T) \subset \bC \Rightarrow \sigma(T) = \bC \setminus \rho(T)$ --- замкнутое. 
     \[ \abs{\lambda} > \norm{T} \Rightarrow \lambda \subset \rho(T) \Rightarrow \sigma(T) = \seq{\lambda \in \bC: \abs{\lambda} \leq \norm{T}} \text{ --- ограниченное} \]
     $\Rightarrow \sigma(T)$ --- компакт.
-
     \begin{gather*}
         \text{пусть } \sigma(T) \ne \varnothing \Rightarrow \rho(T) = \bC \Rightarrow 0 \in \rho(T) \\
         V(0) = 0 \cdot I - T = -T, 0 \in \rho(T) \Rightarrow \: \exists T^{-1} \\
         \exists F \in (\B(X))^* : F(T^{-1}) = \norm{T^{-1}}, F(T^{-1}) \ne 0 \\
         g(\lambda) = F(R(\lambda)) \quad g(0) \ne 0, 6 \text{ свойство } \Rightarrow g(\lambda) \text{ аналитическая в } \bC  \\ 
         \liml_{\lambda \to \infty} R(\lambda) = 0 \Rightarrow \liml_{\lambda \to \infty} g(\lambda) = \liml_{\lambda \to \infty} F(R(\lambda)) = 0 \\
-        [[\exists R > 0: \abs{g(\lambda)} \leq 1 \text{ при } \lambda \geq R, \exists M = \max_{|\lambda| \leq \bR} \abs{g(\lambda)} \Rightarrow \abs{g(\lambda)} \leq \max \{1, \mu \}]]
+        [[\exists R > 0: \abs{g(\lambda)} \leq 1 \text{ при } \lambda \geq R, \exists M = \max_{|\lambda| \leq R} \abs{g(\lambda)} \Rightarrow \abs{g(\lambda)} \leq \max \{1, M \}]]
         \intertext{применяем теорему Лиувилля}
         g(\lambda) = const, \liml_{\lambda \to \infty} g(\lambda) = 0  \Rightarrow g(\lambda) \equiv 0 \Rightarrow g(0) = 0\\
         \text{противоречие } \Rightarrow \sigma(T) \ne \varnothing
@@ -169,7 +168,7 @@
 \end{proof}
 
 \begin{definition}[Спектральный радиус оператора $T$]
-    $r(t) = \max_{\lambda \in \sigma(T)} \abs{\lambda}$. Из теоремы $\Rightarrow r(T) \leq \norm{T}$
+    $r(T) = \max_{\lambda \in \sigma(T)} \abs{\lambda}$. Из теоремы $\Rightarrow r(T) \leq \norm{T}$
 \end{definition}
 Примем без доказательства формулу
 \[ r(T) = \liml_{n \to \infty} \sqrt[n]{\norm{T^n}} \] 
