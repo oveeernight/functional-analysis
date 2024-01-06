@@ -44,8 +44,8 @@
     $(X, \rho)$ -- метрическое пространство. $A \subset X, \varepsilon > 0$ \\
     $F$ -- $\varepsilon$-сеть для $A$, если 
     \begin{multline*}
-        \forall a \in A \, \exists f \in F: \rho(a,f) < \varepsilon \\
-        (\Leftrightarrow \, \forall a \in A B_\varepsilon(a) \cap F \ne \varnothing) \Leftrightarrow (A \subset \bigcup_{f \in F} B_{\varepsilon}(f))
+        \forall a \in A \: \exists f \in F: \rho(a,f) < \varepsilon \\
+        (\Leftrightarrow \: \forall a \in A \: B_\varepsilon(a) \cap F \ne \varnothing) \Leftrightarrow (A \subset \bigcup_{f \in F} B_{\varepsilon}(f))
     \end{multline*}
 \end{definition}
 
@@ -66,14 +66,14 @@
 \end{example}
 
 \begin{proof}
-    $A$ -- ограниченное $\Leftrightarrow$ $\exists M > 0, \, \forall x - (x_1, \ldots, x_n) \in A \Rightarrow |x_j| \leq M$ \\
-    $A \subset \bQ = \seq{ |x_j| \leq M, 1 \leq j \leq n}$
+    $A$ -- ограниченное $\Leftrightarrow$ $\exists M > 0, \, \forall x = (x_1, \ldots, x_n) \in A \Rightarrow |x_j| \leq M$ \\
+    $A \subset Q = \seq{ |x_j| \leq M, 1 \leq j \leq n}$
     Как же построить $\varepsilon$--сеть? \\ %рисунок с решеткой
     Пусть $\varepsilon > 0$, $Q = \bigcup Q_j, l$ -- cторона $Q_j$
     \begin{gather*}
         \diam Q_j = \sup_{x,y \in Q_j} \rho(x,y) = \sqrt{n} \cdot l < \varepsilon \Rightarrow l < \frac{\varepsilon}{\sqrt{n}} \\
         l = \frac{M}{N}, N \in \bN, \, \exists N: \frac{M}{N} < \frac{\varepsilon}{\sqrt{n}} \Rightarrow \\
-        F \text{ -- вершины } Q_j \text{ -- } \varepsilon\text{-сеть}
+        F \text{ -- вершины } Q_j \text{ --- } \varepsilon\text{-сеть}
     \end{gather*}
     EC = equicontinuous
     \begin{figure}

@@ -122,7 +122,7 @@ $A = \left( \int_X |f|^p d \mu \right)^{\frac{1}{p}}, B = \left( \int_X |g|^q d 
 Если $A = 0 \Leftrightarrow |f| = 0$ почти всюду по $\mu$ $\Leftrightarrow f(x) = 0$ почти всюду по $\mu$ (то есть $\mu \{x: f(x) \ne 0 \} = 0)$.
 На всякий случай поясним, почему функция равна 0 почти всюду по мере $\mu$
 \[ \int_X |f| d \mu = 0 \Rightarrow e = \{x: f(x) \ne 0 \}, m \in \bN, e_m = \{x: |f(x)| > \frac{1}{m} \} \]
-\[e = \bigcup^\infty_{m=1} e_m \quad \int_X |f| d \mu \geq \int_{e_m} |f| d\mu \geq \frac{1}{m} \mu e_m \Rightarrow \mu e_m = 0 \Rightarrow \mu E = 0 \]
+\[e = \bigcup^\infty_{m=1} e_m \quad \int_X |f| d \mu \geq \int_{e_m} |f| d\mu \geq \frac{1}{m} \mu e_m \Rightarrow \mu e_m = 0 \Rightarrow \mu e = 0 \]
 
 \[ \Rightarrow f(x) \cdot g(x) = 0 \text { п.в. } \quad 0 \leq 0 \tag{*} \]
 Если $A = +\infty$, то (*) 
@@ -392,7 +392,7 @@ $(F, || \cdot ||_p) $~--- не полное, $F$~--- не замкнуто.
 \begin{gather*}
     x^{(m)} = \left\{ \frac{1}{2}, \frac{1}{4}, \ldots, \frac{1}{2^m}, 0, 0, 0, \ldots \right\} \in F \\
     x = \left\{ \frac{1}{2^k}\right\}^\infty_{k=1} \in l^p \\
-    1 \leq p < + \infty \quad ||x - x^{(m)}||_p = \left( \sum^\infty_{k=m+1} \frac{1}{2^{k+p}} \right)^{\frac{1}{p}} \underset{m \to \infty}{\longrightarrow} 0
+    1 \leq p < + \infty \quad ||x - x^{(m)}||_p = \left( \sum^\infty_{k=m+1} \frac{1}{2^{kp}} \right)^{\frac{1}{p}} \underset{m \to \infty}{\longrightarrow} 0
 \end{gather*}
 Следовательно, $F$~--- не замкнуто.
 
@@ -461,6 +461,7 @@ $\Rightarrow \overline{\Rho} \setminus \Rho \ni e^x \Rightarrow \Rho$~--- не �
 
 Несколько простых свойств метрики, и все следуют из неравенства треугольника
 \begin{theorem}[Свойства метрики]
+    \label{chap3:metric-props}
     $(X, \rho)$~--- метрическое
     \begin{enumerate}
         \item $x,y,z,u \in X \quad \Rightarrow |\rho(x, u) - \rho(y, z)| \leq \rho(x,y) + \rho(u,z)$
@@ -687,7 +688,7 @@ $(X, \rho)$~--- метрическое пространство, $r > 0, x \in X
         \Rightarrow  \, \exists \liml_{n \to \infty} x_n = X_N \Rightarrow (X, \rho) \text{~--- полное}
     \end{gather*}
     Полноту проверили. \\
-    $r_n = 1 + \frac{1}{2n}, x_n = n; D_n = D_{r_n}(n), h \in D_n$. Пусть $x \ne n, x \in D_n \Rightarrow \rho(x, x_n) = 1 + \frac{1}{x+n} \leq 1 + \frac{1}{2n}$
+    $r_n = 1 + \frac{1}{2n}, x_n = n; D_n = D_{r_n}(n), n \in D_n$. Пусть $x \ne n, x \in D_n \Rightarrow \rho(x, x_n) = 1 + \frac{1}{x+n} \leq 1 + \frac{1}{2n}$
 \end{example}
 
 \begin{remark}[Домашнее задание]
@@ -716,7 +717,7 @@ $(X, \rho)$~--- метрическое пространство,
 \end{definition}
 
 \begin{theorem}
-    $n \in \bN, q \leq p \leq +\infty$, 
+    $n \in \bN, 1 \leq p \leq +\infty$, 
     \[l^p_n \text{~--- сепарабельное} \]
 \end{theorem}
 
@@ -750,7 +751,7 @@ $(X, \rho)$~--- метрическое пространство,
              F \text{~--- всюду плотное в } l^p \end{cases} \Rightarrow  \\
              E \text{ всюду плотно в } l^p, 1 \leq p < + \infty 
     \end{gather*}
-    Почему любой элемент из $l^p$ может быть приближен финитной последоватностью? Мы ее просто отрезаем.
+    Почему любой элемент из $l^p$ может быть приближен финитной последоватностью? Мы ее просто отрезаем (\textit{как я понимаю, когда у финитной последовательности набирается норма, достаточно близкая к норме элемента} $l^p$).
 \end{proof}
 
 Ответ на упражнение для читателя, которое было на прошлой лекции: 
@@ -810,6 +811,8 @@ $F$~--- подпространство в алгебраическом смыс�
     Мы предъявили несчётный набор дизъюнктных шариков. Пусть $E$~--- всюду плотно в $l^\infty \Rightarrow \, \forall A \subset \bN \, \exists e_A \in B_{\frac{1}{2}}(x^A)$
 
     \[ A \ne C \Rightarrow e_A \ne e_C, \qquad \underbrace{\seq{e_A}_{A \subset \bN}}_{\text{ несчётно }} \subset E \Rightarrow E \text{ несчётно } \]
+    На пальцах: $x^A \in l^\infty$. Если есть какое-то всюду плотное множество, то его элемент должен лежать в любой окрестности (пусть $\varepsilon = \frac{1}{2}$) $x^A$. Все $x^A$ для $\forall A \subset N$ отделены друг от друга единицей. Это значит, что $x^A, x^C, A \ne C$ не может обслуживать
+    один $e_I$. Иначе $\rho(x^A, x^C) \leq \rho(x^A, e_A) + \rho(x^C, e_C) < 1$. То есть для каждого $x^A$ он свой, а их несчётное количество.  
 \end{proof}
 То, что у всех шариков одинаковый радиус~--- это просто приятный бонус.
 
@@ -874,7 +877,7 @@ $F$~--- подпространство в алгебраическом смыс�
 \begin{proof}[2 часть]
     по т. Вейерштрасса замыкание многочленов~--- тоже пространство непрерывных функций.
     \begin{gather*}
-        \Rho = \{ p(x) = \sum^n_{k=0} a_k x^k \} \quad \overline{\Rho} - C[a,b] \\
+        \Rho = \{ p(x) = \sum^n_{k=0} a_k x^k \} \quad \overline{\Rho} = C[a,b] \\
         E = \{ p(x) = \sum^n_{k=0} a_k x^k, \, a_k \in \bQ \} \\
         \begin{cases}
             \Rho \subset \overline{E} \\
@@ -893,8 +896,8 @@ $F$~--- подпространство в алгебраическом смыс�
 Если мы рассмотрим замыкание, никакого шарика там не будет. Иначе: если мы рассмотрим внутренность замыкания, она будет пустой.
 
 \begin{multline*}
-    \forall r > 0, x \in X \quad B_r(x) \, \exists B_{r_1}(x_1) \subset B_r(x), B_{r_1}(x_1) \cap A = \varnothing \\
-    \Leftrightarrow \forall r > 0, x \in X D_r(x) \, \exists D_{r_1}(x_1) \subset D_r(X), D_{r_1}(x_1) \cap A = \varnothing
+    \forall r > 0, x \in X \quad B_r(x) \: \exists B_{r_1}(x_1) \subset B_r(x), B_{r_1}(x_1) \cap A = \varnothing \\
+    \Leftrightarrow \forall r > 0, x \in X, D_r(x) \: \exists D_{r_1}(x_1) \subset D_r(X), D_{r_1}(x_1) \cap A = \varnothing
 \end{multline*}
 
 Скоро докажем связь между нигде не плотными множествами и полными пространствами.
@@ -912,7 +915,7 @@ $M$~--- \textbf{ множество второй категории}, если $
 \end{theorem}
 
 \begin{proof}
-    Можно было бы даже от противного. Но мы возьмём семейство $\seq{M_j}^\infty_{j=1}$, $M_j$~--- нигде не плотно в $X$, $\, E - \bigcup^\infty_{j=1} M_j$.
+    Можно было бы даже от противного. Но мы возьмём семейство $\seq{M_j}^\infty_{j=1}$, $M_j$~--- нигде не плотно в $X$, $\, E = \bigcup^\infty_{j=1} M_j$.
       Мы докажем, 
     что найдётся хоть одна точка, которая принадлежит $X$ и не принадлежит $E$. Это и будет обозначать, что $X$ невозможно представить
     в виде такого объединения.
@@ -929,7 +932,7 @@ $M$~--- \textbf{ множество второй категории}, если $
     и так далее $\begin{cases}
          \seq{D_n}^\infty_{n=1}, D_n = D_{r_n} (x_n), D_{n+1} \subset D_n \\
          D_n \cap M_n = \varnothing, r_n < \frac{1}{n} \end{cases}$ по теореме о вложенных шарах
-         $\Rightarrow \, \exists x \in \cap^\infty_{n=1}D_n, (x \in D_n \, \wedge \, x \in X \setminus E) \Rightarrow x \notin M_n \, \forall n \Rightarrow x \notin E$
+         $\Rightarrow \, \exists x \in \bigcap^\infty_{n=1}D_n, (x \in D_n \, \wedge \, x \in X \setminus E) \Rightarrow x \notin M_n \, \forall n \Rightarrow x \notin E$
 \end{proof}
 
 
@@ -964,13 +967,14 @@ $M$~--- \textbf{ множество второй категории}, если $
 Упражнение: $C$~--- что будет полным семейством?
 
 \begin{statement}
+    \label{chap3:statement}
     $(X, || \cdot ||)$ - нормированное пространство. В нём существует $\seq{x_n}^\infty_{n=1}$~--- полное семейство 
     \[ X \text{~--- сепарабельное} \]
 \end{statement}
 \begin{proof}
     Рассмотрим линейную оболочку $L = \calL \seq{x_n}^\infty_{n=1} = \seq{x = \sum^n_{j=1} c_j x_j, c_j \in \bR (\bC)}$. $\overline{L} = X$.
     \begin{gather*}
-        E = \{ x = \sum^n_{j=1} c_j x_j, c_j \in \bQ \} \text{~--- счётное всюду плотное} \\
+        E = \left\{ x = \sum^n_{j=1} c_j x_j, c_j \in \bQ \right\} \text{~--- счётное всюду плотное} \\
         (L \subset \overline{E} \, \wedge \, \overline{L} = X) \Rightarrow \overline{E} = X
     \end{gather*}
 \end{proof}
@@ -992,7 +996,7 @@ $\chi_e(x) = \begin{cases}
     $(X,U, \mu )$~--- пространство с мерой $\Rightarrow$ 
     \begin{gather*}
         \seq{\chi_e}_{e \in U} \text {~--- полное семейство в } L^\infty(X, \mu) \\
-        \seq{\chi_e}_{e \in U, \mu E < + \infty} \text{~--- полное семйество в } L^p(X, \mu), 1 \leq p < + \infty 
+        \seq{\chi_e}_{e \in U, \mu e < + \infty} \text{~--- полное семйество в } L^p(X, \mu), 1 \leq p < + \infty 
     \end{gather*}
 \end{theorem}
 
@@ -1008,11 +1012,11 @@ $\chi_e(x) = \begin{cases}
     Рассмотрим разбиение множества $X$, а по нему построим соотвествующую простую функцию
     \begin{gather*}
         n \in \bN \quad e_k = \seq{x \in X: \frac{k}{n} \leq f(x) < \frac{k+1}{n}}, k = 0, 1, \ldots, n^2 - 1 \\
-        e_{n^2} - \seq{x: f(x) \geq n} \Rightarrow X = \bigcup^{n^2}_{k=0} e_k, e_k \cap e_j = \varnothing (k \ne j)
+        e_{n^2} = \seq{x: f(x) \geq n} \Rightarrow X = \bigcup^{n^2}_{k=0} e_k, e_k \cap e_j = \varnothing (k \ne j)
     \end{gather*}
 
     Теперь построим измеримые функции, потом они будут простыми.
-    \[g_n(x) = \sum^{n^2}_{k=1} \frac{k}{n} \chi_{e_k} \quad 0 \leq g_n(x) \leq f(x), x \in X \]
+    \[g_n(x) = \sum^{n^2}_{k=1} \frac{k}{n} \chi_{e_k}(x) \quad 0 \leq g_n(x) \leq f(x), x \in X \]
     $f(x) \leq g_n(x) + \frac{1}{n}, x \in \bigcup^{n^2-1}_{k=0} e_k$ \\
 
     Теперь все готово, чтобы обсудить случай $L^\infty$. Пусть $f \in L^\infty(X,\mu) \Rightarrow n \geq ||f||_\infty \Rightarrow \mu(e_{n^2}) = 0 $.
@@ -1024,15 +1028,15 @@ $\chi_e(x) = \begin{cases}
     \begin{gather*}
         \begin{cases}
             f(x) \in L^p(X, \mu), 1 \leq p < + \infty \quad |f(x) - g_n(x)|^p \leq |f(x)|^p \\
-            g_n(x) \underset{\text{п.в.}}{f(x)} \quad \Rightarrow |f(x) - g_n(x)|^p \underset{n \to \infty}{\longrightarrow} 0
+            g_n(x) \underset{\text{п.в.}}{\longrightarrow} f(x) \quad \Rightarrow |f(x) - g_n(x)|^p \underset{n \to \infty}{\longrightarrow} 0
         \end{cases} \stackrel{\text{Лебег}}{\Rightarrow} \\
-        \text{ все, что надо~--- убедиться, что мера конечная}
-        \liml_{n \to \infty} \left( \int_X |f-g_n|^p d \mu \right)^\frac{1}{p} = 0 \\
-        f \in L^p \Rightarrow \mu e_k < + \infty \quad f(x) \geq \frac{k}{n}, x \in e_k \Rightarrow \left( \int_X |f|^p d\mu \right)^\frac{1}{p} \geq \left( \int_{e_k} \left( \frac{k}{n} \right)^p d\mu \right)^\frac{1}{p} = \\
+        \liml_{n \to \infty} \left( \int_X |f-g_n|^p d \mu \right)^\frac{1}{p} = 0
+        \intertext{все, что надо~--- убедиться, что мера конечная. Покажем, что $f \in L^p \Rightarrow \mu e_k < + \infty $}
+        f(x) \geq \frac{k}{n}, x \in e_k \Rightarrow \left( \int_X |f|^p d\mu \right)^\frac{1}{p} \geq \left( \int_{e_k} \left( \frac{k}{n} \right)^p d\mu \right)^\frac{1}{p} = \\
         \frac{k}{n} (\mu e_k)^\frac{1}{p} \Rightarrow \mu e_k < + \infty \\
         \Rightarrow f \in \overline{\calL \seq{\chi_e}_{e \in U, \mu e < + \infty}}
     \end{gather*}
-    Теперь покажем, что для произвольных $f$ рассуждение тоже верно.  Рассмотрим замыкание линейное оболчоки
+    Теперь покажем, что для произвольных $f$ рассуждение тоже верно.  Рассмотрим замыкание линейное оболочки
     \begin{gather*}
         \begin{cases}
             f: X \rightarrow \bR, \Rightarrow f = f_+ - f_-, f_+(x) \geq 0, f_-(x) \geq 0 \\
@@ -1046,16 +1050,16 @@ $\chi_e(x) = \begin{cases}
 Теперь, зная эту теорему, посмотрим, какое множество будет полным в пространстве $l^\infty$
 
 \begin{corollary}
-    $l^\infty, A \subset \bN$, $X^A = \seq{x^A_n}^\infty_{n=1}, X^A_n = \begin{cases}
-        1, & n \in A \\
-        0, & n \notin A
+    $l^\infty, A \subset \bN$, $x^A = \seq{x^A_n}^\infty_{n=1}, x^A_n = \begin{cases}
+        1 & n \in A \\
+        0 & n \notin A
     \end{cases} \Rightarrow$
-    \[ \seq{X^A}_{A \subset \bN} \text{~--- полное семейство в } l^\infty \]
+    \[ \seq{x^A}_{A \subset \bN} \text{~--- полное семейство в } l^\infty \]
 \end{corollary}
 
 \begin{proof}
     $l^\infty = L^\infty(\bN, \mu), \mu(n) = 1 \, \forall n \in \bN \quad \forall A \subset \bN, A $~--- измеримо 
-    \[\chi_A = X^A \Rightarrow \seq{X^A}_{A \subset \bN} \text{~--- полное семейство } \] 
+    \[\chi_A = x^A \Rightarrow \seq{x^A}_{A \subset \bN} \text{~--- полное семейство } \] 
 \end{proof}
 
 
@@ -1067,26 +1071,26 @@ $\chi_e(x) = \begin{cases}
 Достаточно рассмотреть характеристические множества ячеек.
 
 \begin{proof}
-    Собираемся приблизить множество линейной комбинацеий характеристических функций ячеек. Вспомним определение внешней меры.
+    Собираемся приблизить элемент $\chi_e$ линейной комбинацией характеристических функций ячеек. Вспомним определение внешней меры.
     \begin{gather*}
         e \in U, \lambda(e) < + \infty \\
         \lambda(e) = \inf \left\{ \sum^\infty_{k=1} \lambda(\Delta_k), e \subset \bigcup^\infty_{k=1} \Delta_k, \Delta_k \in \R, \Delta_k \cap \Delta_j = \varnothing \right\}
     \end{gather*}
-    Сначала просто по определению нижней грани. $\forall \varepsilon > 0 \Rightarrow \, \exists \seq{\Delta_k}^n_{k=1}$.
+    Сначала просто по определению нижней грани. $\forall \varepsilon > 0 \Rightarrow \, \exists \seq{\Delta_k}^\infty_{k=1}$.
     $\lambda(e) \leq \sum^\infty_{k=1} \lambda(\Delta_k) < \lambda(e) + \varepsilon$. \\
-    $e \subset \cup^\infty_{k=1} \Delta_k, \Delta_k \in \R, \Delta_k \cap \Delta_j = \varnothing$ при $k \ne j$. \\
+    $e \subset \bigcup^\infty_{k=1} \Delta_k, \Delta_k \in \R, \Delta_k \cap \Delta_j = \varnothing$ при $k \ne j$. \\
     \begin{gather*}
         A = \bigcup^\infty_{k=1} \Delta_k, e \subset A, \lambda(A \setminus e) < \varepsilon \\
         \exists N \in \bN \quad \sum^\infty_{k=N+1} \lambda(\Delta_k) < \varepsilon, B = \bigcup^n_{k=1} \Delta_k \\
         \Rightarrow \lambda(A \setminus B) < \varepsilon 
     \end{gather*}
     \begin{multline*}
-        || \chi_e - \chi_b ||_p \leq ||\chi_e - \chi||_p - ||\chi_A - \chi_B||_p \leq \\
+        || \chi_e - \chi_B ||_p \leq ||\chi_e - \chi_A||_p + ||\chi_A - \chi_B||_p \leq \\
         \left( \int_{A \setminus e} \mathbb{1} d\mu \right)^{\frac{1}{p}} + \left( \int_{A \setminus B} \mathbb{1} d\mu \right)^{\frac{1}{p}} < \varepsilon^{\frac{1}{p}} + \varepsilon^{\frac{1}{p}} = 2 \varepsilon^{\frac{1}{p}} 
     \end{multline*}
 
     \begin{gather*}
-        \chi_b = \sum^N_{k=1} \chi_{\Delta_k} \in \calL \seq{\chi_\Delta}_{\Delta \in \R} \\
+        \chi_B = \sum^N_{k=1} \chi_{\Delta_k} \in \calL \seq{\chi_\Delta}_{\Delta \in \R} \\
         \begin{cases}
             \overline{\calL \seq{\chi_e}_{e \in U}} = L^p \\
             \chi_e \in \overline{\calL \seq{\chi_\Delta}_{\Delta \in \R}}
@@ -1104,19 +1108,19 @@ $\chi_e(x) = \begin{cases}
 \begin{proof}
     Докажем, что $L^p(\bR^n, \lambda)$~--- сепарабельное.
     \[ \R = \left\{ \Delta = \prod^n_{j=1} [a_j, b_j), a_j < b_j, \, a_j, b_j \in \bR \right\} \text{~--- полные семейства в } L^p \]
-    Теперь мы возьмём только такие ячейки, полуинтервалы которых мы перемножаем, имеют рациональные концы. Пока что можем
+    Теперь мы возьмём только такие ячейки, координаты которых рациональны. Пока что можем
     сказать, что это счётное множество.
     \[  R_0= \left\{ \Delta = \prod^n_{j=1} [a_j, b_j), a_j < b_j, \, a_j, b_j \in \bQ \right\} \text{~--- счётное множество} \]
 
     \begin{gather*}
-        \Delta \in \R \quad \let \varepsilon > 0 \\
+        \Delta \in \R \quad \text{пусть } \varepsilon > 0 \\
         \Rightarrow \, \exists \Delta_0 \in R_0, \Delta \subset \Delta_0, \lambda(\Delta_0 \setminus \Delta) < \varepsilon \\
         \Rightarrow || \chi_{\Delta_0} - \chi_{\Delta} ||_p = || \chi_{\Delta_0 \setminus \Delta} ||_p = \left( \int_{\Delta_0 \setminus \Delta}\mathbb{1} dx \right)^{\frac{1}{p}} = 
         \left( \lambda (\Delta_0 \setminus \Delta)\right)^{\frac{1}{p}} < \varepsilon^{\frac{1}{p}} \\
-        \Rightarrow \, \forall \Delta \in \R \, \chi_\Delta \in \overline{\calL \seq{\chi_\Delta}_{\Delta \in R_0}}
+        \Rightarrow \, \forall \Delta \in \R \quad \chi_\Delta \in \overline{\calL \seq{\chi_\Delta}_{\Delta \in R_0}}
      \end{gather*}
 
-     $R_0$~--- полное счётное семейство $\stackrel{\text{утверждение}}{\Rightarrow} L^p(\bR^n, \lambda)$~--- сепарабельное.
+     $R_0$~--- полное счётное семейство ${\Rightarrow}$ [[утверждение \hyperref[chap3:statement]{3.1}]] $L^p(\bR^n, \lambda)$~--- сепарабельное.
      \begin{gather*}
         E \subset \bR^n, E \text{~--- измеримое }, f \in L^p(E, \lambda) \\
         \text{ пусть } f(x) = 0, x \in \bR^n \setminus E \Rightarrow f \in L^p(\bR^n, \lambda) \\
@@ -1135,7 +1139,7 @@ $\beta$~--- минимальная $\sigma$-алгебра,  содержаща�
 Чем же хороши борелевские меры? Оказывается, они безумно связаны с непрерывными функциями
 
 \begin{remark}
-    Пусть $f: X \rightarrow \bR, f$~--- непрерывная $\Rightarrow f^{-1}((c,+\infty)), c \in \bR, (c, _\infty)$~--- открытое в $\bR$.
+    Пусть $f: X \rightarrow \bR, f$~--- непрерывная $\Rightarrow f^{-1}((c,+\infty)), c \in \bR, (c, +\infty)$~--- открытое в $\bR$.
     Определение непрерывной функции из топологии: прообраз любого открытого множества открыт.
     Так как прообраз $f$ открыт в $X$ $\Rightarrow f$~--- измеримая по $\mu$, если $\mu$~--- борелевская.
 
@@ -1155,12 +1159,12 @@ $\beta$~--- минимальная $\sigma$-алгебра,  содержаща�
     $\lambda$-мера Лебега~--- регулярная.
 \end{remark}
 
-На самом деле эти 2 свойство друг из друга следуют, но мы это доказывать не будем.
+На самом деле эти 2 свойства друг из друга следуют, но мы это доказывать не будем.
 
 \begin{theorem}
-    $(X, U, \mu)$, $(X, \rho)$, $\mu$~--- регулярная мера $\Rightarrow$  непрерывная функция плотна В
+    $(X, U, \mu)$, $(X, \rho)$, $\mu$~--- регулярная мера $\Rightarrow$  непрерывные функции плотны в
     $L^p(X, \mu), 1 \leq p < + \infty$.
-    \[ \overline{C(X) \cap L^p(X\mu)}^{|| \cdot ||_p} = L^p(X, \mu) \]
+    \[ \overline{C(X) \cap L^p(X,\mu)}^{|| \cdot ||_p} = L^p(X, \mu) \]
 \end{theorem}
 \begin{proof}
     Мы уже знаем, что полное семейство~--- это семейство характеристических функций всех
@@ -1169,20 +1173,19 @@ $\beta$~--- минимальная $\sigma$-алгебра,  содержаща�
     $\seq{ \chi_e}_{e \in U, \mu e < + \infty }$~--- полное семейство. \\
     пусть $ e \in U, \mu e < + \infty, \, \let \varepsilon > 0, \mu$ ~--- регулярная $\Rightarrow 
     \, \exists F \subset e \subset G, F$~--- замкнутое, $G$~--- открытое. $\mu(G \setminus F) < \varepsilon$
-    
     %символическая картинка
-    Когда мы попадем в $X \setminus G$ она будет равна нулю.
     \[ \varphi(x) = \frac{\rho(x, X \setminus G)}{\rho(x, X \setminus G) + \rho(x, F)} \]
+    Когда мы попадем в $X \setminus G$, она будет равна нулю.
     Нужно позаботиться о том, чтобы знаменатель не был равен нулю. \\
-    $\rho(x,A)$~--- непрерывная функция $\forall A \subset X$. $X \setminus G$~--- замкнутое, $F$~--- замкнутое.
+    $\rho(x,A)$~--- непрерывная функция $\forall A \subset X$ (теорема \ref{chap3:metric-props}). $X \setminus G$~--- замкнутое, $F$~--- замкнутое.
     Если $\rho(x, F) = 0 \Rightarrow x \in F \Rightarrow x \notin X \setminus G \Rightarrow \rho(x, X \setminus G) > 0$ 
-    \[ \Rightarrow \rho(x, X \setminus G) + \rho(x, F) > 0 \, \forall x \in X \Rightarrow \varphi \in C(X) \]
+    \[ \Rightarrow \rho(x, X \setminus G) + \rho(x, F) > 0 \: \forall x \in X \Rightarrow \varphi \in C(X) \]
 
     $\varphi(x) = 0, x \in X \setminus G, \varphi(x) = 1, x \in F \quad \forall x \in X \: 0 \leq \varphi(x) \leq 1$
 
     Понятно, что модуль $\varphi(x)$ совпадает с характеристической функцией множества $e$.
     \begin{gather*}
-        \chi_e(x) - \varphi(x)| \leq 1 \quad \forall x \in X \\
+        |\chi_e(x) - \varphi(x)| \leq 1 \quad \forall x \in X \\
         \chi_e(x) - \varphi(x) = 0 \quad x \in F \text{ или } x \in X \setminus G \\
         \Rightarrow ||\chi_e - \varphi||_p = \left( \int_X |\chi_e(x) - \varphi(x) |^p d\mu \right)^{\frac{1}{p}} = 
         \left( \int_{G \setminus F} |\chi_e(x) - \varphi(x) |^p d \mu \right)^{\frac{1}{p}} \leq \\
