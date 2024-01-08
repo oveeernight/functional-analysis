@@ -63,7 +63,7 @@ $\Lin(X,Y)$ ~--- множество линейных операторов из $
 \begin{proof}[1]
     $L$ ~--- подпространство, $y,v \in A(L), \alpha \in k$. Наша мечта ~--- проверить $(\stackrel{?}{\Rightarrow} \alpha y + v \in A(L))$, не обязательно писать $\alpha$ и $\beta$.
     \begin{gather*}
-        \Rightarrow \, \exists x,u \in L : (Ax = y \land Au = v) \Rightarrow A(\alpha x + u) = \alpha A x + A u = \alpha y + v \\
+        \Rightarrow \: \exists x,u \in L : (Ax = y \land Au = v) \Rightarrow A(\alpha x + u) = \alpha A x + A u = \alpha y + v \\
         \alpha x + u \in L \Rightarrow A(\alpha x + u) \in A(L) \Rightarrow \alpha y + v \in A(L)
     \end{gather*}
 \end{proof}
@@ -91,7 +91,7 @@ $\Lin(X,Y)$ ~--- множество линейных операторов из $
 \begin{definition}[Ядро линейного оператора]
     $A \in \Lin(X,Y)$
     \[ \Ker A = \{ x \in X: Ax = 0 \} \text{ ~--- ядро } A \] 
-    \[ \Imm A = \{ y \in Y: \, \exists x: Ax = y \} = A(X) \text{ ~--- образ } A \] 
+    \[ \Imm A = \{ y \in Y: \: \exists x: Ax = y \} = A(X) \text{ ~--- образ } A \] 
 \end{definition}
  
 \begin{corollary}
@@ -120,7 +120,7 @@ $\Lin(X,Y)$ ~--- множество линейных операторов из $
     \begin{enumerate}
         \item $A$ непрерывен в точке $0$ 
         \item $A$ непрерывен $\forall x \in X$  % (.) точка 
-        \item $\exists C > 0 : ||Ax|| \leq C||x|| \, \forall x \in X $
+        \item $\exists C > 0 : ||Ax|| \leq C||x|| \: \forall x \in X $
         \item $A$ ограниченный
         \item $\exists r > 0 \: A(B_r(0))$ ~--- ограниченное множество в $Y$.
     \end{enumerate}
@@ -129,7 +129,7 @@ $\Lin(X,Y)$ ~--- множество линейных операторов из $
 Доказательство очень простое, и, конечно, строится на линейности
 \begin{proof}[$1 \Rightarrow 2$]
     $A$ непрерывен в точке $0$.
-    Пусть $\varepsilon > 0 \, \exists \delta > 0, \, ||x|| < \delta \Rightarrow ||Ax|| < \varepsilon \: (A(\bZero)) = \bZero$.
+    Пусть $\varepsilon > 0 \: \exists \delta > 0, \: ||x|| < \delta \Rightarrow ||Ax|| < \varepsilon \: (A(\bZero)) = \bZero$.
     утверждается, что те же самые $\varepsilon$ и $\delta$ подходят.
     \begin{gather*}
         \text{пусть } x_0 \in X, \text{проверим, что } A \text{ непрерывен в } x_0 \\
@@ -138,7 +138,7 @@ $\Lin(X,Y)$ ~--- множество линейных операторов из $
 \end{proof}
 $2 \Rightarrow 1$ очевидно 
 \begin{proof}[$1 \Rightarrow 3$]
-    Пусть $\varepsilon > 0 \, \exists \delta > 0 : ||x|| < \delta \Rightarrow ||Ax|| < \varepsilon$.
+    Пусть $\varepsilon > 0 \: \exists \delta > 0 : ||x|| < \delta \Rightarrow ||Ax|| < \varepsilon$.
     \begin{gather*}
         z \in X, z \ne 0 \quad x = \frac{z}{||z||} \cdot \delta \Rightarrow ||x|| = \delta \Rightarrow ||Ax|| < \varepsilon \\
         \Rightarrow ||A\left( \frac{z}{||z||} \cdot \delta\right)|| < \varepsilon \Rightarrow ||Az|| < \frac{\varepsilon}{\delta} ||z|| \text{т.е.} C = \frac{\varepsilon}{\delta}
@@ -176,13 +176,13 @@ $(X, ||\cdot||), (Y, ||\cdot||)$
 \begin{statement}
     $(X, || \cdot||), (Y, ||\cdot||), A \in \B(X,Y)$
     \begin{enumerate}
-        \item $\forall x \in X \, ||Ax|| \leq ||A||  \cdot ||x||$ (то есть $\inf$ в определении нормы $=\min)$
+        \item $\forall x \in X \: ||Ax|| \leq ||A||  \cdot ||x||$ (то есть $\inf$ в определении нормы $=\min)$
         \item $||A||$ удовлетворяет аксиомам нормы
     \end{enumerate}
 \end{statement}
  
 \begin{proof}
-    $x$ - фиксирован,  по $\inf$ $\Rightarrow \, \forall C > ||A||, ||Ax|| \leq C ||x|| \Rightarrow ||Ax|| \leq ||A|| \cdot ||x||$. Был фиксирован, теперь любой,
+    $x$ - фиксирован,  по $\inf$ $\Rightarrow \: \forall C > ||A||, ||Ax|| \leq C ||x|| \Rightarrow ||Ax|| \leq ||A|| \cdot ||x||$. Был фиксирован, теперь любой,
      первое утверждение доказано. Теперь второе. 
      \begin{gather*}
         \alpha \in k, \alpha \ne 0, x \in X, x \text{ ~--- фиксирован } \\
@@ -191,7 +191,7 @@ $(X, ||\cdot||), (Y, ||\cdot||)$
         \Rightarrow ||\alpha A|| \leq |\alpha|\cdot ||A|| \tag{*}
      \end{gather*}
      Очевидное замечание по слёзной просьбе двух студенток, которые ничего не понимали.
-     Если мы докажем $||Ax|| \leq M||x|| \, \forall x \in X$, то $||A|| \leq M$. Применим (*) к оператору $\alpha A$ и константе $\frac{1}{\alpha}$
+     Если мы докажем $||Ax|| \leq M||x|| \: \forall x \in X$, то $||A|| \leq M$. Применим (*) к оператору $\alpha A$ и константе $\frac{1}{\alpha}$
      \begin{gather*}
         \Rightarrow \norm{\frac{1}{\alpha}(\alpha A)} \leq \frac{1}{|\alpha|} ||\alpha A|| \Rightarrow |\alpha| \cdot || A|| \leq ||\alpha A|| \\
         \Rightarrow ||\alpha A || = |\alpha|\cdot ||A|| \\
@@ -202,8 +202,8 @@ $(X, ||\cdot||), (Y, ||\cdot||)$
         = (||A|| + ||B||) ||x|| \quad \forall x \in X \\
         \Rightarrow ||A+B|| \leq ||A||+ ||B||
      \end{multline*}
-     Как только есть какая-то константа, то настоящая норма меньше или равна этой константы. $||A|| = 0 \Rightarrow \, \forall x \in X \, ||Ax|| \leq ||A|| \cdot ||x|| = 0$.
-     $\Rightarrow Ax = 0 \, \forall x \in X \Rightarrow A = \bZero \Rightarrow ||A||$ ~--- настоящая норма
+     Как только есть какая-то константа, то настоящая норма меньше или равна этой константы. $||A|| = 0 \Rightarrow \: \forall x \in X \: ||Ax|| \leq ||A|| \cdot ||x|| = 0$.
+     $\Rightarrow Ax = 0 \: \forall x \in X \Rightarrow A = \bZero \Rightarrow ||A||$ ~--- настоящая норма
 \end{proof}
  
 \begin{theorem}[вычисление нормы непрерывного оператора]
@@ -216,17 +216,18 @@ $(X, ||\cdot||), (Y, ||\cdot||)$
     Докажем $||A|| \geq a \geq b \geq ||A||, \quad ||A|| \geq d \geq c \geq ||A||$.
        \[ ||Ax|| \leq ||A|| \cdot ||x|| \leq ||A|| \quad \forall x, ||x|| \leq 1 \Rightarrow \sup_{\{||x|| \leq 1 \}} ||Ax|| \leq ||A|| \Rightarrow a \leq ||A|| \]
     Доказали $||A|| \geq a$. \\
-    Пусть $\varepsilon > 0 \, z \in X, z \ne 0 \Rightarrow \left| \left| \frac{z}{||z||(1+\varepsilon)} \right| \right| = \frac{1}{1+\varepsilon} < 1$
+    Пусть $\varepsilon > 0 \: z \in X, z \ne 0 \Rightarrow \left| \left| \frac{z}{||z||(1+\varepsilon)} \right| \right| = \frac{1}{1+\varepsilon} < 1$
     \begin{gather*}
         \left| \left| A\left(\frac{z}{||z||(1+\varepsilon)}\right) \right| \right| \leq b \Rightarrow ||Az|| \leq b(1+\varepsilon) ||z|| \quad \forall z \in X \\
-        \Rightarrow ||A|| \leq b(1 + \varepsilon) \, \forall \varepsilon > 0 \Rightarrow ||A|| \leq b
+        \Rightarrow ||A|| \leq b(1 + \varepsilon) \: \forall \varepsilon > 0 \Rightarrow ||A|| \leq b
     \end{gather*}
-    Получаем $b \geq \norm{A} \geq a$, а $a \geq b$  $\Rightarrow b = a$ и закончили с первой цепочкой неравенств. \\
+    Получаем $\norm{A} \geq a \geq b \geq \norm{A}$, закончили с первой цепочкой неравенств. \\
     Пусть $x \ne 0 \Rightarrow ||Ax|| \leq ||A|| \cdot ||x|| \Rightarrow \frac{||Ax||}{||x||} \leq ||A|| \Rightarrow d = \sup_{\{x \ne 0 \}} \frac{||Ax||}{||x||} \leq ||A||$.
     \begin{gather*}
-        \text{пусть } z \in X, z \ne 0, \, \left| \left| \frac{z}{||z||} \right|\right| = 1 \Rightarrow ||A\left(\frac{z}{||z||}\right)|| \leq c \Rightarrow ||Az|| \leq C||z|| \forall z \in X
+        \text{пусть } z \in X, z \ne 0, \: \left| \left| \frac{z}{||z||} \right|\right| = 1 \Rightarrow \norm{A\left(\frac{z}{||z||}\right)} \leq c \Rightarrow ||Az|| \leq c||z|| \:\forall z \in X
         \intertext{c ~--- супремум по единичной сфере}
-        \Rightarrow ||A|| \leq C
+        \norm{A} \leq c \\
+        \norm{A} \geq d \geq c \geq \norm{A}
     \end{gather*}
 \end{proof}
  
@@ -243,15 +244,15 @@ $(X, ||\cdot||), (Y, ||\cdot||)$
     \end{multline*}
     получили непрерывность; раз есть общая константа, не зависящая от $f$, то мы получаем и оценку для нормы
     \begin{gather*}
-        \chi_{[a,b]}(x) = 1 \, \forall x \in [a,b], \chi_{[a,b]} \in C[a,b], ||\chi_{[a,b]} ||_\infty = 1 \\
-        ||M_h|| \geq ||M_h(f)|| \forall f, ||f|| = 1 \Rightarrow ||M_h|| \geq || M_h(\chi_{[a,b]}) ||_\infty = ||h||_\infty \\
+        \chi_{[a,b]}(x) = 1 \: \forall x \in [a,b], \chi_{[a,b]} \in C[a,b], ||\chi_{[a,b]} ||_\infty = 1 \\
+        ||M_h|| \geq ||M_h(f)|| \: \forall f, ||f|| = 1 \Rightarrow ||M_h|| \geq || M_h(\chi_{[a,b]}) ||_\infty = ||h||_\infty \\
         \Rightarrow ||M_h||_{\B(C[a,b])} = ||h||_\infty
     \end{gather*}
 \end{proof}
  
 Теперь посмотрим на оператор дифференцирования, это очень важный пример.
 \begin{example}
-    $Y = C[a,b], X = \{f: \, \exists f^\prime \in C[a,b] \}$, $0 \leq a \leq b$
+    $Y = C[a,b], X = \{f: \: \exists f^\prime \in C[a,b] \}$, $0 \leq a \leq b$
     \begin{gather*}
         X \subset Y, X \text{ ~--- подпространство } Y, \text{ то есть } \\
         ||f||_X = ||f||_Y = \max_{x \in [a,b]} |f(x)| \\
@@ -265,10 +266,12 @@ $(X, ||\cdot||), (Y, ||\cdot||)$
     $Y = C[a,b], X = C^{(1)}[a,b]$
     \begin{gather*}
         ||f||_X = \max \{ ||f||_\infty, ||f^\prime||_\infty \} \\
-        D(f) = f^\prime \quad ||D(f)|| = ||f^\prime||_\infty = \max_{x \in [a,b]} |f^\prime(x)| \leq \underbrace{\max \{ ||f||_\infty, ||f||_\infty \}}_{||f||_X} \\ 
+        D(f) = f^\prime \quad ||D(f)|| = ||f^\prime||_\infty = \max_{x \in [a,b]} |f^\prime(x)| \leq \max \{ ||f||_\infty, ||f^\prime||_\infty \} = 1 \cdot \norm{f}_X \\ 
         \Rightarrow D \in \B(X, Y), ||D|| \leq 1
     \end{gather*}
 \end{example}
+
+В зависимости от того, как мы определим норму в пространстве, один и тот же оператор может оказаться как непрерывным, так и не непрерывным.
  
  
 \begin{theorem}[вложение пространств в $l^p$]
@@ -283,8 +286,10 @@ $(X, ||\cdot||), (Y, ||\cdot||)$
         \Rightarrow |x_n| \leq 1 \Rightarrow (|x_n|^{p_2}) < |x_n|^{p_1} \\
         \norm{Ax}_{p_2} = \left( \sum^\infty_{n=1} |x_n|^{p_2} \right)^{\frac{1}{p_2}} \leq \left( \sum^\infty_{n=1} |x_n|^{p_1} \right)^{\frac{1}{p_2}} = 1 \Rightarrow A \in \B(l^{p_1}, l^{p_2}) \\
         \norm{A} = \sup_{ \{ \norm{x}_{p_1} = 1 \}} \norm{Ax}_{p_2} \leq 1 \Rightarrow \norm{A}_{\B(l^{p_1}, l^{p_2})} \leq 1 \quad \text{ при } p_2 < + \infty \\
-        \text{ теперь } p_2 = +\infty \norm{x}_{p_1} = 1 \Rightarrow \sup_{n \in \bN} |x_n| \leq \norm{x}_{p_1} \Rightarrow \norm{x}_\infty \leq \norm{x}_{p_1} \Rightarrow  \\
-        A \in \B(l^{p_1}, l^{p_2}) \norm{A} \leq 1 \\
+        \text{ теперь } p_2 = +\infty \norm{x}_{p_1} = 1 \Rightarrow
+        \intertext{потому что сумма в какой-то степени $\geq$ супремума }
+         \sup_{n \in \bN} |x_n| \leq \norm{x}_{p_1} \Rightarrow \norm{x}_\infty \leq \norm{x}_{p_1} \Rightarrow  \\
+        A \in \B(l^{p_1}, l^{p_2}) \norm{A} \leq 1
     \end{gather*}
     если $e_1 = (1, 0, \ldots)$, $\norm{e_1}_p = 1 \: \forall p : 1 \leq p \leq + \infty$
     \[ \norm{A} = \sup_{\{\norm{x}_{p_1} = 1\}} \norm{Ax}_{p_2} \geq \norm{Ae_1}_{p_2} = 1 \Rightarrow \norm{A}_{\B(l^{p_1}, l^{p_2})} = 1 \quad \forall p_1 < p_2 \]
@@ -305,7 +310,7 @@ $(X, ||\cdot||), (Y, ||\cdot||)$
         \intertext{ Вот у нас получилась константа, которая обслуживает все функции $f$. Тогда, во-первых, оператор непрерывен, а во-вторых, это и есть оценка для нормы}
         \Rightarrow A \in \B(L^\infty, L^{p_1}), \norm{A} \leq (\mu(X))^{\frac{1}{p_1}} \\
         \text{ пусть } p_2 < + \infty, f \in L^{p_2}, \left( \int_X |f|^{p_2} d\mu \right)^{\frac{1}{p_2}} = \norm{f}_{p_2} \\
-        \norm{Af}_{p_1} = \norm{f}_{p_1} = \left( \int_X |f|^{p_1} d\mu \right)^{\frac{1}{p_1}} \stackrel{\text{н. Гёльдера}}{\leq} \left[ \left( \int_X |f|^{p_2} d\mu\right)^{\frac{1}{p_2}} \left( \int_X \mathbb{1}^q d\mu \right)^{\frac{1}{q}} \right]^{\frac{1}{p_1}} = \\ %цвет нужен
+        \norm{Af}_{p_1} = \norm{f}_{p_1} = \left( \int_X |f|^{p_1} d\mu \right)^{\frac{1}{p_1}} \stackrel{\text{н. Гёльдера}}{\leq} \left[ \left( \int_X |f|^{p_2} d\mu\right)^{\frac{1}{p}} \left( \int_X \mathbb{1}^q d\mu \right)^{\frac{1}{q}} \right]^{\frac{1}{p_1}} = \\ %цвет нужен
         p = \frac{p_2}{p_1}, \frac{1}{q} = 1 - \frac{1}{p} = 1 - \frac{p_1}{p_2} \\
         = \left( \int_X |f|^{p_2} d\mu \right)^{\frac{1}{p_2}} \cdot (\mu(X))^{\left(1 - \frac{p_1}{p_2}\right) \frac{1}{p_1}} = \norm{f}_{p_2} (\mu(X))^{\frac{1}{p_1} - \frac{1}{p_2}} \\
         \Rightarrow A \in \B(L^{p_2}, L^{p_1}), \norm{A} \leq (\mu(X))^{\frac{1}{p_1} - \frac{1}{p_2}}
@@ -370,21 +375,22 @@ $(X, ||\cdot||), (Y, ||\cdot||)$
     $X = l^p, (1 \leq p \leq + \infty), i \in \bN$ --- фиксированное число 
     \begin{gather*}
         x \in l^p \Rightarrow x = \seq{x_n}^\infty_{n=1}, x_n \in \bC, f(x) := x_i \Rightarrow f \in X^*, \norm{f} = 1 \\
-        |f(x)|  = |x_i| \leq \left(\sum^\infty_{n=1} |x_n|^p \right)^{\frac{1}{p}}  \text{ при } 1 \leq p < +\infty \text{ и } \\
-         \leq \sup_n \norm{x_n} = \norm{x}_\infty \text{ при } p = +\infty\\
+        |f(x)|  = |x_i| \leq \left(\sum^\infty_{n=1} |x_n|^p \right)^{\frac{1}{p}} = 1 \cdot \norm{x}_p  \text{ при } 1 \leq p < +\infty \text{ и } \\
+         \leq \sup_n \norm{x_n} = 1 \cdot \norm{x}_\infty \text{ при } p = +\infty\\
         \Rightarrow f \in \B(X, \bC) = X^*, ||f|| \leq 1 \\
         \norm{f} = \sup_{\seq{\norm{x} = 1}} |f(x)| \geq |f(e_i)| = 1
     \end{gather*}
 \end{example}
 Со временем мы сосчитаем, что такое сопряженное пространство к $l^p$ для конечных $p$. По секрету, это $l^q$, где $p$ и $q$ --- сопряжены.
  
-Почему всегда рассматривается компакт? Потому что на компакте функция достигает свой максимум, и иначе непонятно, как норму вводить.
 \begin{example}
-    $C(K) = \{ f: K \rightarrow \bC \land f \text{ непрерывные } \}, x_0 \in K, K$ --- компакт. \\
-    $f \in C(K), G(f) := f(x_0) \Rightarrow G \in X^*, \norm{G} = 1$ (функционал значения в точке,подлые англосаксы говорят point evaluation).
+    $C(K) = \{ f: K \rightarrow \bC \text{ и } f \text{ непрерывные } \}, x_0 \in K, K$ --- компакт. Почему всегда рассматривается компакт? 
+    Потому что на компакте функция достигает свой максимум, и иначе непонятно, как норму вводить
+
+    $f \in C(K), G(f) := f(x_0) \Rightarrow G \in X^*, \norm{G} = 1$ (функционал значения в точке, подлые англосаксы говорят point evaluation).
     \begin{gather*}
         G \in \Lin(C(K), \bC) \\
-        f \in C(K), |G(f)| = |f(x_0)| \leq \sup_{x \in K} |f(x)| = \norm{f}_{C(k)} \Rightarrow \\
+        f \in C(K), |G(f)| = |f(x_0)| \leq \sup_{x \in K} |f(x)| = \norm{f}_{C(K)} \Rightarrow \\
         G \in X^*, \norm{G} \leq 1 \\
         \begin{cases}
             \chi_K(x) = 1, \chi_K \in C(K), ||\chi_K|| = 1, \chi_K(x_0) = 1 \\
@@ -397,7 +403,7 @@ $(X, ||\cdot||), (Y, ||\cdot||)$
 Сейчас докажем теорему про норму интегрального оператора в $C[a,b]$. Мы ей даже когда-то нескоро воспользуемся.
  
 \begin{theorem}
-    $C[a,b] = \seq{f | f: [a,b] \rightarrow \bR, f \text{ непрерывная }}$. Ядро интегрального оператора $k(s,t) \in C([a,b] \times [a,b])$, пусть $f \in C[a,b]$.
+    $C[a,b] = \seq{f \: | \:  f: [a,b] \rightarrow \bR, f \text{ непрерывная}}$. Ядро интегрального оператора $k(s,t) \in C([a,b] \times [a,b])$, пусть $f \in C[a,b]$.
     \[ (\K f)(s) := \int^b_a k(s,t)f(t) dt \quad \text{ при } s \in [a,b] \Rightarrow \] 
     $\K \in \B(C[a,b]), \norm{\K} = \max_{a \leq s \leq b} \int^b_a |k(s,t)| dt$
 \end{theorem}
@@ -417,9 +423,9 @@ $(X, ||\cdot||), (Y, ||\cdot||)$
         G \in (C[a,b])^*, \norm{G} \leq \int^b_a |\varphi(t)| dt
     \end{multline*}
     Теперь оценка $\norm{G}$ снизу. Сначала тривиальные замечания. Если $\varphi(t) \geq 0 \: \forall t \in [a,b]$, то $\chi_{[a,b]}(x) \equiv 1$
-    \[ |G(\chi_[a,b])| = \left| \int^b_a \varphi(t) dt \right| = \int^b_a \varphi(t) dt \]
-    Если $\varphi(t) \leq 0 \, \forall t \in [a,b]$ --- то же самое.
-    \[ g(t) = \sign \, \varphi(t) = \begin{cases}
+    \[ |G(\chi_{[a,b]})| = \left| \int^b_a \varphi(t) dt \right| = \int^b_a \varphi(t) dt \]
+    Если $\varphi(t) \leq 0 \: \forall t \in [a,b]$ --- то же самое.
+    \[ g(t) = \sign \: \varphi(t) = \begin{cases}
         1 & \varphi(t) > 0 \\
         -1 & \varphi(t) < 0 \\
         0 &\varphi(t) = 0
@@ -434,13 +440,13 @@ $(X, ||\cdot||), (Y, ||\cdot||)$
     Нумерация будет не по порядку, как сперва может показаться, а совершенно другая, и она никак не будет зависеть от расположения на отрезке.
      Разобьём интервал на 2 сорта. Первый --- где функция положительна или отрицательна, то есть не меняет знак. Второй --- где меняет знак или обращается в 0.
     $\Delta_1, \ldots, \Delta_r$ --- те интервалы, на которых $\varphi(t) > 0, t \in \Delta_j$ или $\varphi(t) < 0, t \in \Delta_j$ $(1 \leq j \leq r)$ \\
-    $\Delta_{r+1}, \ldots, \Delta_n$ --- те интервалы, для которых $\exists s \in \Delta_j : \varphi(s) = 0, n \geq j > r$. \\
+    $\Delta_{r+1}, \ldots, \Delta_n$ --- те интервалы, для которых $\exists s \in \Delta_j : \varphi(s) = 0, n \geq j > r$
     \begin{gather*}
-        \text{пусть } t \in \Delta_j, j > r \Rightarrow \, \exists s \in \Delta_j, \varphi(s) = 0 \Rightarrow \\
+        \text{пусть } t \in \Delta_j, j > r \Rightarrow \: \exists s \in \Delta_j, \varphi(s) = 0 \Rightarrow \\
         |\varphi(t)| = |\varphi(t) - \varphi(s)| < \varepsilon \Rightarrow \int_{\Delta_j} |\varphi(t)| dt < \varepsilon | \Delta_j| \\
         \Rightarrow \int_{\bigcup^n_{j=r+1} \Delta_j} \abs{\varphi(t)}dt\leq \varepsilon \left( \sum^n_{j=r+1} |\Delta_j| \right) \leq \varepsilon(b-a)\\
         h(t) = \begin{cases}
-            \sign \, \varphi(t), t \in \Delta_j \quad 1 \leq j \leq r \\
+            \sign \: \varphi(t), t \in \Delta_j \quad 1 \leq j \leq r \\
             \text{линейная на } \Delta_j \quad j > r \\
             \text{если } [a,t_1] \in \Delta_j, j >r, \text{ то } h(a) = 0 \\
             \text{если } [t_{n-1}, b] \in \Delta_j, j >r, \text{ то } h(b) = 0
@@ -458,11 +464,11 @@ $(X, ||\cdot||), (Y, ||\cdot||)$
     $\Rightarrow ||G|| \geq \int^b_a |\varphi(t)| dt $
 \end{proof}
  
-Главной частью доказательства теоремы было доказательство теоремы. Вернёмся к теореме.
+Главной частью доказательства теоремы было доказательство леммы. Вернёмся к теореме.
 \begin{proof}
     Оценим сначала норму оператора сверху. $( \K f)(s) = \int^b_a k(s,t) f(t) dt, f \in C[a,b]$. $M = \max_{a \leq s \leq b} \int^b_a |k(s,t)| dt$. Мы как раз
     хотим показать, что норма оператора будет равна $M$.
-       \[ |(Kf)(s)| \leq \int_a^b |k(s,t)| |f(t)| dt \leq ||f||_\infty \int^b_a |k(s,t) |dt \leq M \norm{f}_\infty \]
+       \[ |(\K f)(s)| \leq \int_a^b |k(s,t)| |f(t)| dt \leq ||f||_\infty \int^b_a |k(s,t) |dt \leq M \norm{f}_\infty \]
        \[ \norm{\K f}_\infty = \max_{s} | \K f(s)| \leq M \cdot \norm{f} \: \forall f \in C[a,b] \Rightarrow \K \in \B(C[a,b]) \]
        $\norm{K}_{\B(C[a,b])} \leq M$ \\
        Теперь оценим $\norm{\K}$ снизу. 
@@ -472,7 +478,7 @@ $(X, ||\cdot||), (Y, ||\cdot||)$
             \intertext{применим к произвольной непрерывной функции оператор} 
             f \in C[a,b], \norm{(\K f)(s)}_\infty = \max_{a \leq s \leq b} |\K f(s)| \geq |(\K f)(s_0)| = \left| \int^b_a k(s_0,t) f(t) dt \right| = |G(f)|
        \end{gather*}
-       где $\varphi(t) = K(s_0,t), G(f) = \int^b_a k(s_0,t) f(t) dt$.
+       где $\varphi(t) = k(s_0,t), G(f) = \int^b_a k(s_0,t) f(t) dt$.
        \begin{multline*}
             \norm{\K} = \sup_{\seq{\norm{f} \leq 1}} \norm{\K(f)} \geq \sup_{\seq{\norm{f} \leq 1}} |G(f)| = \norm{G}_{(C[a,b])^*} \stackrel{\text{лемма}}{=} \\
             \int^b_a |\varphi(t)| dt = M \Rightarrow \norm{K} = M
@@ -540,7 +546,7 @@ $(X, ||\cdot||), (Y, ||\cdot||)$
  
 \begin{corollary}
     $X$ --- линейное, $\norm{\cdot}_1, \norm{\cdot}_2$ --- нормы на $X$. $\norm{\cdot}_1$ эквивалентна $\norm{\cdot}_2 \Leftrightarrow 
-    \, \exists 0 < c_1 < c_2 \leq +\infty$ т.ч. 
+    \: \exists 0 < c_1 < c_2 \leq +\infty$ т.ч. 
     \[ c_1 \norm{x}_1 \leq \norm{x}_2 \leq C_2 \norm{x}_1\]
     хотя в определении не утверждалось, что одну норму можно оценить через другую
 \end{corollary}
