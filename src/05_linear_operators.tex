@@ -63,7 +63,7 @@ $\Lin(X,Y)$ ~--- множество линейных операторов из $
 \begin{proof}[1]
     $L$ ~--- подпространство, $y,v \in A(L), \alpha \in k$. Наша мечта ~--- проверить $(\stackrel{?}{\Rightarrow} \alpha y + v \in A(L))$, не обязательно писать $\alpha$ и $\beta$.
     \begin{gather*}
-        \Rightarrow \, \exists x,y \in L : (Ax = y \land Au = v) \Rightarrow A(\alpha x + u) = \alpha A x + A u = \alpha y + v \\
+        \Rightarrow \, \exists x,u \in L : (Ax = y \land Au = v) \Rightarrow A(\alpha x + u) = \alpha A x + A u = \alpha y + v \\
         \alpha x + u \in L \Rightarrow A(\alpha x + u) \in A(L) \Rightarrow \alpha y + v \in A(L)
     \end{gather*}
 \end{proof}
@@ -108,7 +108,7 @@ $\Lin(X,Y)$ ~--- множество линейных операторов из $
  
 \section{Линейные операторы в нормированных пространствах}
 Линейные операторы в нормированных пространствах ~--- главный объект, который изучает функциональный анализ.
-\begin{definition}[Огранисченный оператор]
+\begin{definition}[Ограниченный оператор]
     $(X, || \cdot||)$, $(Y, || \cdot ||), A \in \Lin(X,Y) $. $A$ ~--- \textbf{ ограниченный}, если $\forall C \subset X, C$ ~--- ограниченное $\Rightarrow A(C)$ ~--- ограниченное 
     в $Y$.
 \end{definition}
@@ -146,25 +146,26 @@ $2 \Rightarrow 1$ очевидно
 \end{proof}
  
 \begin{proof}[$3 \Rightarrow 4$]
-    $B \subset X$, $B$ ~--- ограниченное, то есть $\exists M > 0 : (\forall x \in B \land ||x|| < M) \stackrel{3}{\Rightarrow} ||Ax|| \leq C||x|| \leq CM \, \forall x \in B \Rightarrow 
+    $B \subset X$, $B$ ~--- ограниченное, то есть $\exists M > 0 : (\forall x \in B \: ||x|| < M) \stackrel{3}{\Rightarrow} ||Ax|| \leq C||x|| \leq CM \: \forall x \in B \Rightarrow 
     \{ A(B) \}$ ~--- ограниченное.
 \end{proof}
 $4 \Rightarrow 5$ очевидно ($B_r(0)$ ~--- ограниченное)
 \begin{proof}[$5 \Rightarrow 1$]
-    $\exists R > 0 \, A(B^x_r(0)) \subset B^y_R(0)$
+    $\exists R > 0 \: A(B^x_r(0)) \subset B^y_R(0)$
     \begin{gather*}
         ||x|| < r \Rightarrow ||Ax|| < R \\
         \intertext{непрерывность в 0 означает} 
         \text{ пусть } \varepsilon > 0 \quad ||x|| < \delta(\varepsilon) \Rightarrow ||Ax|| < \varepsilon \\
         \delta(\varepsilon) = \varepsilon \cdot \frac{r}{R}\\
-        ||z|| < \varepsilon \cdot \frac{r}{R} \Rightarrow ||z \cdot \frac{R}{\varepsilon} || < r \Rightarrow ||A \left( z \cdot \frac{R}{z} \right) || < R \Rightarrow ||Az|| < \varepsilon
+        ||z|| < \varepsilon \cdot \frac{r}{R} \Rightarrow ||z \cdot \frac{R}{\varepsilon} || < r \Rightarrow ||A \left( z \cdot \frac{R}{\varepsilon} \right) || < R \Rightarrow ||Az|| < \varepsilon
     \end{gather*}
 \end{proof}
  
+$(X, ||\cdot||), (Y, ||\cdot||)$
+\[ \underbrace{\B(X,Y)}_{\text{bounded}} = \{ A \in \Lin(X,Y) \text{ и } A \text{ ~--- ограниченный} \} \]
+
 с помощью теоремы, которую мы только что доказали, введём норму в этом пространстве.
 \begin{definition}[норма оператора]
-    $(X, ||\cdot||), (Y, ||\cdot||)$
-    \[ \underbrace{\B(X,Y)}_{\text{bounded}} = \{ A \in \Lin(X,Y) \land A \text{ ~--- ограниченный} \} \]
     $A \in \B(X,Y)$
     \[ ||A|| = \inf \{ C : C > 0 \land \norm{Ax} \leq C\norm{x} \: \forall x \in X \} \]
     то бишь точная нижняя грань множества величин, на которые наш оператор увеличивает норму элемента.
@@ -175,28 +176,27 @@ $4 \Rightarrow 5$ очевидно ($B_r(0)$ ~--- ограниченное)
 \begin{statement}
     $(X, || \cdot||), (Y, ||\cdot||), A \in \B(X,Y)$
     \begin{enumerate}
-        \item $\forall x \in X \, ||Ax|| \leq ||A||  ||x||$ (то есть $\inf$ в определении нормы $=\min)$
+        \item $\forall x \in X \, ||Ax|| \leq ||A||  \cdot ||x||$ (то есть $\inf$ в определении нормы $=\min)$
         \item $||A||$ удовлетворяет аксиомам нормы
     \end{enumerate}
 \end{statement}
  
 \begin{proof}
-    $x$ - фиксирован, $\Rightarrow \, \forall c > ||A||, ||Ax|| \leq C ||x|| \Rightarrow ||Ax|| \leq ||A|| \cdot ||x||$. Был фиксирован, теперь любой,
+    $x$ - фиксирован,  по $\inf$ $\Rightarrow \, \forall C > ||A||, ||Ax|| \leq C ||x|| \Rightarrow ||Ax|| \leq ||A|| \cdot ||x||$. Был фиксирован, теперь любой,
      первое утверждение доказано. Теперь второе. 
      \begin{gather*}
         \alpha \in k, \alpha \ne 0, x \in X, x \text{ ~--- фиксирован } \\
         (\alpha A) (x) = \alpha A x \\
         \forall x \in X \quad ||(\alpha A)(x) || = ||\alpha \cdot Ax|| = |\alpha| \cdot ||A x|| \leq |\alpha| \cdot ||A|| \cdot ||x|| \\
-        \Rightarrow ||\alpha A|| \leq |\alpha| ||A||
+        \Rightarrow ||\alpha A|| \leq |\alpha|\cdot ||A|| \tag{*}
      \end{gather*}
      Очевидное замечание по слёзной просьбе двух студенток, которые ничего не понимали.
-     Если мы докажем $||Ax|| \leq M||x|| \, \forall x \in X$, то $||A|| \leq M$
- 
+     Если мы докажем $||Ax|| \leq M||x|| \, \forall x \in X$, то $||A|| \leq M$. Применим (*) к оператору $\alpha A$ и константе $\frac{1}{\alpha}$
      \begin{gather*}
-        \Rightarrow \norm{\frac{1}{\alpha}(\alpha A)} \leq \frac{1}{|\alpha|} ||\alpha A|| \Rightarrow |\alpha| || A|| \leq ||\alpha A|| \\
-        \Rightarrow ||\alpha A || = |\alpha| ||A|| \\
-        A,B \in \B(X,Y), x \in X 
+        \Rightarrow \norm{\frac{1}{\alpha}(\alpha A)} \leq \frac{1}{|\alpha|} ||\alpha A|| \Rightarrow |\alpha| \cdot || A|| \leq ||\alpha A|| \\
+        \Rightarrow ||\alpha A || = |\alpha|\cdot ||A|| \\
      \end{gather*}
+     $ A,B \in \B(X,Y), x \in X  $
      \begin{multline*}
         ||(A+B)(x)|| = ||Ax + Bx|| \leq ||Ax|| + ||Bx|| \leq ||A|| \cdot ||x|| + ||B|| \cdot ||x|| = \\
         = (||A|| + ||B||) ||x|| \quad \forall x \in X \\
@@ -214,14 +214,14 @@ $4 \Rightarrow 5$ очевидно ($B_r(0)$ ~--- ограниченное)
 \begin{proof}
     Очевидно $a \geq b, a \geq c, d \geq c$.
     Докажем $||A|| \geq a \geq b \geq ||A||, \quad ||A|| \geq d \geq c \geq ||A||$.
-       \[ ||Ax|| \leq ||A|| \cdot ||x|| \leq ||A|| \quad \forall x, ||x|| \geq 1 \Rightarrow \sup_{\{||x|| \geq 1 \}} ||Ax|| \leq ||A|| \Rightarrow a \leq ||A|| \]
+       \[ ||Ax|| \leq ||A|| \cdot ||x|| \leq ||A|| \quad \forall x, ||x|| \leq 1 \Rightarrow \sup_{\{||x|| \leq 1 \}} ||Ax|| \leq ||A|| \Rightarrow a \leq ||A|| \]
     Доказали $||A|| \geq a$. \\
     Пусть $\varepsilon > 0 \, z \in X, z \ne 0 \Rightarrow \left| \left| \frac{z}{||z||(1+\varepsilon)} \right| \right| = \frac{1}{1+\varepsilon} < 1$
     \begin{gather*}
-        \left| \left| A(\frac{z}{||z||(1+\varepsilon)}) \right| \right| \leq b \Rightarrow ||Az|| \leq b(1+\varepsilon) ||z|| \quad \forall z \in X \\
+        \left| \left| A\left(\frac{z}{||z||(1+\varepsilon)}\right) \right| \right| \leq b \Rightarrow ||Az|| \leq b(1+\varepsilon) ||z|| \quad \forall z \in X \\
         \Rightarrow ||A|| \leq b(1 + \varepsilon) \, \forall \varepsilon > 0 \Rightarrow ||A|| \leq b
     \end{gather*}
-    Закончили с первой цепочкой неравенств. \\
+    Получаем $b \geq \norm{A} \geq a$, а $a \geq b$  $\Rightarrow b = a$ и закончили с первой цепочкой неравенств. \\
     Пусть $x \ne 0 \Rightarrow ||Ax|| \leq ||A|| \cdot ||x|| \Rightarrow \frac{||Ax||}{||x||} \leq ||A|| \Rightarrow d = \sup_{\{x \ne 0 \}} \frac{||Ax||}{||x||} \leq ||A||$.
     \begin{gather*}
         \text{пусть } z \in X, z \ne 0, \, \left| \left| \frac{z}{||z||} \right|\right| = 1 \Rightarrow ||A\left(\frac{z}{||z||}\right)|| \leq c \Rightarrow ||Az|| \leq C||z|| \forall z \in X
